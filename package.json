@@ -1,0 +1,18 @@
+{
+  "name": "aws-hosted-parser-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.0.0-beta.50",
+    "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
+    "next": "9.4.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  }
+}
