@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.0.0-beta.50",
+    "aws-appsync": "^3.0.3",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.3",
     "next": "9.4.4",

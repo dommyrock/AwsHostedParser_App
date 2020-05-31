@@ -6,6 +6,9 @@ export default function Home() {
       <Head>
         <title>Create Next App</title>
         <title>Todo: Go to AWS Console -->Appsync -->graphql --->download config </title>
+        <title>
+          See: <a href="https://www.youtube.com/watch?v=H36p3evcRC0">Video</a>
+        </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
