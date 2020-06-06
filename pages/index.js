@@ -1,6 +1,10 @@
 import Head from "next/head";
+import { provider } from "../apollo/client";
 
 export default function Home() {
+  debugger;
+  const clientData = provider; //test init provider
+
   return (
     <div className="container">
       <Head>
