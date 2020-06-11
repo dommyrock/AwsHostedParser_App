@@ -3,7 +3,7 @@
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
-import { AppSync } from "../src/AppSyncConfig.json";
+// import { AppSync } from "../src/AppSyncConfig.json";
 //or from env varables
 
 import { ApolloClient, InMemoryCache } from "@apollo/client";
