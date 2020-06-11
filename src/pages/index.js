@@ -1,12 +1,10 @@
 import Head from "next/head";
-import { provider } from "../apollo/client";
+import Layout from "../components/layout";
 
 export default function Home() {
-  debugger;
-  const clientData = provider; //test init provider
-
   return (
     <div className="container">
+      <Layout />
       <Head>
         <title>Create Next App</title>
         <title>Todo: Go to AWS Console -->Appsync -->graphql --->download config </title>
@@ -51,7 +49,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer>
+      {/* <footer>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -59,7 +57,7 @@ export default function Home() {
         >
           Powered by <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
-      </footer>
+      </footer> */}
 
       <style jsx>{`
         .container {
