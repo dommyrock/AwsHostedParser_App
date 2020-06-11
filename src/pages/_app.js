@@ -5,8 +5,15 @@ import { client } from "../../apollo/client";
 //my dashboard :https://vercel.com/dashboard
 //DEPLOY:https://www.youtube.com/watch?v=OF9UkxDOSII
 //TODO: Vercel deloy :https://vercel.com/docs/v2/build-step
+// https://vercel.com/docs/v2/platform/deployments
 //than --https://vercel.com/docs/cli#getting-started
 
+/*
+2) page will not render untill data is available , so we can show progress bar 
+--https://github.com/rstacruz/nprogress
+--npmjs.com/package/nprogress  (documentation)
+for css i need to import 'nprogress/nprogress.css' in main App compont so it's availiable in every page
+*/
 function App({ Component, pageProps }) {
   return (
     <div>
