@@ -4,12 +4,14 @@
 //-------------------------------------------------------------------------------------------------------------------------------------------------
 
 import { AppSync } from "../src/AppSyncConfig.json";
+//or from env varables
+
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 export const client = new ApolloClient({
-  uri: AppSync.Default.ApiUrl,
+  uri: process.env.API_URL,
   cache: new InMemoryCache(),
   headers: {
-    "x-api-key": AppSync.Default.ApiKey,
+    "x-api-key": process.env.API_KEY,
   },
 });
 

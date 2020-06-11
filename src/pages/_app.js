@@ -2,6 +2,11 @@
 import { ApolloProvider } from "@apollo/client";
 import { client } from "../../apollo/client";
 
+//my dashboard :https://vercel.com/dashboard
+//DEPLOY:https://www.youtube.com/watch?v=OF9UkxDOSII
+//TODO: Vercel deloy :https://vercel.com/docs/v2/build-step
+//than --https://vercel.com/docs/cli#getting-started
+
 function App({ Component, pageProps }) {
   return (
     <div>
