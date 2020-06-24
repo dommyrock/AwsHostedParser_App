@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import useSWR from "swr";
 import gqlClient from "../pages/api/graphql/prismaClient";
 
@@ -20,9 +20,9 @@ const GET_BOOKS = /* GraphQL */ `
 export default function Home({ initialHomeData }) {
   const { data } = useSWR(GET_BOOKS, { initialData: initialHomeData });
   return (
-    <Suspense fallback={<div>loading...</div>}>
-      <pre>{data} </pre>
-    </Suspense>
+    // <Suspense fallback={<div>loading...</div>}> NOTE: Suspense was causing errors on initial render after npm run dev so i removed it from swrConfig and here
+    // </Suspense>
+    <pre>{data} </pre>
   );
 }
 //Get SSR Data on initial page load:

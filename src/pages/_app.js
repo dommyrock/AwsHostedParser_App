@@ -27,7 +27,7 @@ function App({ Component, pageProps }) {
   return (
     <div>
       <h2 style={{ display: "flex", justifyContent: "center" }}>This is main component.</h2>
-      <SWRConfig value={{ fetcher: qglFetcher, suspense: true, revalidateOnFocus: false }}>
+      <SWRConfig value={{ fetcher: qglFetcher, revalidateOnFocus: false }}>
         <Component {...pageProps} />
       </SWRConfig>
     </div>
