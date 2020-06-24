@@ -4,9 +4,6 @@ import useSWR from "swr";
 
 //DOCS ;https://swr.now.sh/
 
-//TODO: check out https://nextjs.org/learn/basics/data-fetching/pre-rendering ,https://nextjs.org/learn/basics/data-fetching/with-data
-//bruno repo:https://github.com/bmvantunes/youtube-2020-feb-swr-hook
-
 //Done -added initial props to home compoenent
 // import gql from "graphql-tag"; remove this , since its alreadyi in client , and also aws npm  crap
 const GET_BOOKS = /* GraphQL */ `

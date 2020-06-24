@@ -32,3 +32,8 @@ Home.getInitialProps = async (ctx) => {
   return { initialHomeData: json };
 };
 //Note ..cant use uswSWR hook here inside getInitialProps
+
+//TODO: check out https://nextjs.org/learn/basics/data-fetching/pre-rendering ,https://nextjs.org/learn/basics/data-fetching/with-data
+//bruno repo:https://github.com/bmvantunes/youtube-2020-feb-swr-hook
+
+//https://nextjs.org/learn/basics/data-fetching/getstaticprops-details
