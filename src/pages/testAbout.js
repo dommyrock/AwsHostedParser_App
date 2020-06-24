@@ -1,8 +1,15 @@
-import React from "react";
 //Compomnent made by me for tsting fetch logic
-import { useQuery, gql } from "@apollo/client";
+import React, { Suspense } from "react";
+import useSWR from "swr";
+
+//DOCS ;https://swr.now.sh/
+
+//TODO: check out https://nextjs.org/learn/basics/data-fetching/pre-rendering ,https://nextjs.org/learn/basics/data-fetching/with-data
+//bruno repo:https://github.com/bmvantunes/youtube-2020-feb-swr-hook
+
+//Done -added initial props to home compoenent
 // import gql from "graphql-tag"; remove this , since its alreadyi in client , and also aws npm  crap
-const GET_BOOKS = gql`
+const GET_BOOKS = /* GraphQL */ `
   query listBookStores {
     listBookStores {
       items {
@@ -15,22 +22,31 @@ const GET_BOOKS = gql`
     }
   }
 `;
+
 const About = () => {
-  const { loading, error, data, networkStatus } = useQuery(GET_BOOKS);
-
-  if (loading) return <h1>Loading data ....</h1>;
+  // Bugs : i dont get data on initial /about visit , only on hard refresh
+  //TODO: for some reason it "revalidates" fetches 3 time when i re visit section????
+  const { data, error } = useSWR(GET_BOOKS);
   // debugger;
-  const result = data.listBookStores.items;
-  console.log(result);
-
+  console.log(data);
+  const result = data;
+  if (error) return <div>Error encountered:{JSON.stringify(error, null, 4)}</div>;
+  if (!data) return <div>Loading....</div>;
   return (
     <div>
-      <pre>{JSON.stringify(result, null, 4)}</pre>
+      <Suspense fallback={<div>loading...</div>}>
+        <pre>{result} </pre>
+      </Suspense>
     </div>
   );
 };
 
 export default About;
+// // //Get SSR Data on initial page load:
+// About.getInitialProps = async (ctx) => {
+//   const response = useSWR(GET_BOOKS);
+//   const json = await response.json();
+//   return { initialAboutData: json };
 
 //hooks api: https://www.apollographql.com/docs/react/v3.0-beta/api/react/hooks/
 
