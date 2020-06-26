@@ -8,20 +8,10 @@ import gqlClient from "./api/graphql/prismaClient";
 // https://vercel.com/docs/v2/platform/deployments
 //than --https://vercel.com/docs/cli#getting-started
 
-/*
-
-2) page will not render untill data is available , so we can show progress bar 
---https://github.com/rstacruz/nprogress
---npmjs.com/package/nprogress  (documentation)
-for css i need to import 'nprogress/nprogress.css' in main App compont so it's availiable in every page
-*/
-// const fetcher = (...args) => fetch(...args).then((res) => res.json()); global fetcher EXAMPLE
-//or gql fetch in my case
-
 /**Default gql fetcher function
  * @param  {...any} query Gql Query/mutation
  */
-const qglFetcher = (...query) => gqlClient.request(...query).then((res) => JSON.stringify(res, null, 4));
+export const qglFetcher = (...query) => gqlClient.request(...query).then((res) => res);
 
 function App({ Component, pageProps }) {
   return (
@@ -34,6 +24,10 @@ function App({ Component, pageProps }) {
   );
 }
 export default App;
+
+export function reportWebVitals(metric) {
+  console.log(metric);
+}
 /* INFO
     The Component prop is the active page, so whenever you navigate between routes, Component will change to the new page.
     Therefore, any props you send to Component will be received by the page.
