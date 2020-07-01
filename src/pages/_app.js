@@ -1,8 +1,9 @@
 // import App from "next/app";
 import { SWRConfig } from "swr";
 import gqlClient from "./api/graphql/prismaClient";
+// import { container } from "../components/home.module.css"; has some colisions
+//Vercel dashboard :https://vercel.com/dashboard
 
-//my dashboard :https://vercel.com/dashboard
 //DEPLOY:https://www.youtube.com/watch?v=OF9UkxDOSII
 //TODO: Vercel deloy :https://vercel.com/docs/v2/build-step
 // https://vercel.com/docs/v2/platform/deployments
