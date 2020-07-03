@@ -1,7 +1,7 @@
 import React from "react";
 import useSWR from "swr";
 import { qglFetcher } from "../pages/_app";
-import { container, box } from "./home.module.css";
+import { container, row } from "./home.module.css";
 import JobContainer from "./JobContainer";
 /*
   Reason my graphql query returns only 20 items  @https://stackoverflow.com/questions/55112026/aws-appsync-graphql-api-only-return-20-items-from-dynamodb
@@ -40,9 +40,11 @@ export default function Home({ initialData }) {
     //NOTE: not sure if suspennse is correct here
     // <Suspense fallback={<div>loading...</div>}> removed because it was causing ssr errros , TODO:replace with normal loaders
     <div className={container}>
-      {data.listBookStores.items.map((item) => {
-        return <JobContainer description={item} key={item.Id} />;
-      })}
+      <div className={row}>
+        {data.listBookStores.items.map((item) => {
+          return <JobContainer description={item} key={item.Id} />;
+        })}
+      </div>
     </div>
   );
 }

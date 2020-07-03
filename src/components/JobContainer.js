@@ -1,12 +1,12 @@
 import React from "react";
-import { job_box2 } from "./home.module.css";
+import { job_column } from "./home.module.css";
 import PropTypes from "prop-types";
 
 //Map job data to div/card here
 export default function JobContainer({ description }) {
   debugger;
   return (
-    <div className={job_box2}>
+    <div className={job_column}>
       <h3>{description.Title}</h3>
 
       <h5>created:{description.CreatedTimestamp}</h5>
