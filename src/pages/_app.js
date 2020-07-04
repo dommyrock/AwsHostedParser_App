@@ -3,8 +3,7 @@ import { SWRConfig } from "swr";
 import { qglFetcher } from "./api/graphql/prismaClient";
 import Layout from "../components/layout";
 import "../css/index.css";
-//NOTE: css from module.css not loaded on init page, only inline css(try moving css into normal css file for global css)
-
+//NOTE: ON DEV WE STILL REFETCH DATA ON NAVIGATION(BECAUSE ITS NOT CACHED BY CDN), THIS IS WORKING IN PRODUCTION!!!
 function App({ Component, pageProps }) {
   return (
     <div>
