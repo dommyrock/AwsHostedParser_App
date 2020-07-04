@@ -1,8 +1,13 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import Home from "../components/Home";
+import next from "next";
 
 export default Home;
+//NOTE: when i export compoenent from index.js its home page by default,other routes in pages are accessed by /route
+
+// DEFAULT Template App by -next.js
+
 // export default function Home() {
 //   return (
 //     <div className="container">

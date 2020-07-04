@@ -1,6 +1,6 @@
 import React from "react";
 import useSWR from "swr";
-import { qglFetcher } from "../pages/_app";
+import { qglFetcher } from "../pages/api/graphql/prismaClient";
 import { container, row } from "./home.module.css";
 import JobContainer from "./JobContainer";
 /*
@@ -33,9 +33,10 @@ for css i need to import 'nprogress/nprogress.css' in main App compont so it's a
 */
 
 export default function Home({ initialData }) {
-  const { data } = useSWR(GET_BOOKS, { initialData, suspense: true });
+  const { data, error } = useSWR(GET_BOOKS, { initialData, suspense: true });
   // debugger;
-  // const titles = data.listBookStores.items.map((i) => <li>{i.Title}</li>);
+  if (error) return <div>Error encountered:{JSON.stringify(error, null, 4)}</div>;
+  if (!data) return <div>Loading....</div>;
   return (
     //NOTE: not sure if suspennse is correct here
     // <Suspense fallback={<div>loading...</div>}> removed because it was causing ssr errros , TODO:replace with normal loaders
@@ -50,10 +51,12 @@ export default function Home({ initialData }) {
 }
 //Get SSR Data on initial page load @build time:
 Home.getInitialProps = async (ctx) => {
-  //NOTE :Passed fetcher this way because i cant useSwr hook here
+  //NOTE :Passed fetcher this way because i can't useSwr hook here
   const initialData = await qglFetcher(GET_BOOKS);
   return { initialData };
 };
+//By default SWR caches pre rendered data , but makes another call in background (to stay in sync when more tabs are open)
+//TO disable this ADD:
 
 //TODO: PRefetching --https://swr.vercel.app/docs/prefetching
 //SSR render getinitialprops--//example--https://codeconqueror.com/blog/fetching-data-in-next-js
@@ -66,3 +69,5 @@ Home.getInitialProps = async (ctx) => {
 //https://nextjs.org/learn/basics/data-fetching/getstaticprops-details
 
 //example repo (tsx)https://github.com/bmvantunes/youtube-2020-feb-swr-hook
+
+//DOCS ;https://swr.now.sh/

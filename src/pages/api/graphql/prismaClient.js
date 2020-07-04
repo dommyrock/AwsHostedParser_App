@@ -6,3 +6,8 @@ const gqlClient = new GraphQLClient(process.env.API_URL, {
   },
 });
 export default gqlClient;
+
+/**Default gql fetcher function (imported into main app + getInitialProps)
+ * @param  {...any} query Gql Query/mutation
+ */
+export const qglFetcher = (...query) => gqlClient.request(...query).then((res) => res);

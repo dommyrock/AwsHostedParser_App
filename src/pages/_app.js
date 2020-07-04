@@ -1,23 +1,17 @@
 // import App from "next/app";
 import { SWRConfig } from "swr";
-import gqlClient from "./api/graphql/prismaClient";
+import gqlClient, { qglFetcher } from "./api/graphql/prismaClient";
 // import { container } from "../components/home.module.css"; has some colisions
+import Layout from "../components/layout";
 //Vercel dashboard :https://vercel.com/dashboard
-
-//DEPLOY:https://www.youtube.com/watch?v=OF9UkxDOSII
-//TODO: Vercel deloy :https://vercel.com/docs/v2/build-step
-// https://vercel.com/docs/v2/platform/deployments
-//than --https://vercel.com/docs/cli#getting-started
-
-/**Default gql fetcher function
- * @param  {...any} query Gql Query/mutation
- */
-export const qglFetcher = (...query) => gqlClient.request(...query).then((res) => res);
 
 function App({ Component, pageProps }) {
   return (
     <div>
       <h2 style={{ display: "flex", justifyContent: "center" }}>This is main component.</h2>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Layout />
+      </div>
       <SWRConfig value={{ fetcher: qglFetcher, revalidateOnFocus: false }}>
         <Component {...pageProps} />
       </SWRConfig>
@@ -58,3 +52,8 @@ export function reportWebVitals(metric) {
 
 //_app.js in pages directory overrides default index.js app as enntry point to our app
 //see https://nextjs.org/docs/basic-features/typescript#custom-app (when i wan't to swithc to typescript)
+
+// DEPLOY:https://www.youtube.com/watch?v=OF9UkxDOSII
+// /Vercel deloy :https://vercel.com/docs/v2/build-step
+//  https://vercel.com/docs/v2/platform/deployments
+// than --https://vercel.com/docs/cli#getting-started
