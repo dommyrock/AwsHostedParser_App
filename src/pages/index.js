@@ -1,9 +1,72 @@
-import Head from "next/head";
-import Layout from "../components/layout";
-import Home from "../components/Home";
-import next from "next";
+import React from "react";
+import useSWR from "swr";
+import { qglFetcher } from "./api/graphql/prismaClient";
+import { container, row } from "../css/home.module.css";
+import JobContainer from "../components/JobContainer";
+/*
+  Reason my graphql query returns only 20 items  @https://stackoverflow.com/questions/55112026/aws-appsync-graphql-api-only-return-20-items-from-dynamodb
+  Appsync -->schema->resolvers ->listBookStores
+  For pagination take 1kb (min item size in Dynamo)[you can expect to get around 1024 records before your results will be paginated
+     (meaning you will get a nextToken in the response from DynamoDB)]
+  Note: DynamoDB will automatically paginate once your result set reaches 1 MB.))
+*/
+//Use this as exmple , here i pre render data at buildd time
+const GET_BOOKS = /* GraphQL */ `
+  query listBookStores {
+    listBookStores {
+      items {
+        Book_Id
+        Id
+        Isbn
+        Title
+        CreatedTimestamp
+      }
+    }
+  }
+`;
+/*
+ TODO:
+2) page will not render untill data is available , so we can show progress bar 
+--https://github.com/rstacruz/nprogress
+--npmjs.com/package/nprogress  (documentation)
+for css i need to import 'nprogress/nprogress.css' in main App compont so it's availiable in every page
+*/
 
-export default Home;
+export default function Home({ jobsData }) {
+  const { data, error } = useSWR(GET_BOOKS, { initialData: jobsData });
+  //   debugger;
+  if (error) return <div>Error encountered:{JSON.stringify(error, null, 4)}</div>;
+  if (!data) return <div>Loading....</div>;
+  return (
+    //NOTE: not sure if suspennse is correct here
+    // <Suspense fallback={<div>loading...</div>}> removed because it was causing ssr errros , TODO:replace with normal loaders
+    <div className="container">
+      <div className="row">
+        {data.listBookStores.items.map((item) => {
+          return <JobContainer description={item} key={item.Id} />;
+        })}
+      </div>
+    </div>
+  );
+}
+
+//Get SSR Data on initial page load @build time:
+export async function getStaticProps(context) {
+  //NOTE :Passed fetcher this way because i can't useSwr hook here
+  const jobsData = await qglFetcher(GET_BOOKS);
+  return { props: { jobsData } };
+}
+
+//THIS IS OLDER VERSION of getStaticProps BUT PERFS SEEM SAME
+// Home.getInitialProps = async (ctx) => {
+//     //NOTE :Passed fetcher this way because i can't useSwr hook here
+//     const jobsData = await qglFetcher(GET_BOOKS);
+//     return { props: { jobsData } };
+//   };
+
+// import Head from "next/head";
+// import next from "next";
+
 //NOTE: when i export compoenent from index.js its home page by default,other routes in pages are accessed by /route
 
 // DEFAULT Template App by -next.js

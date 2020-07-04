@@ -1,9 +1,9 @@
 // import App from "next/app";
 import { SWRConfig } from "swr";
-import gqlClient, { qglFetcher } from "./api/graphql/prismaClient";
-// import { container } from "../components/home.module.css"; has some colisions
+import { qglFetcher } from "./api/graphql/prismaClient";
 import Layout from "../components/layout";
-//Vercel dashboard :https://vercel.com/dashboard
+import "../css/index.css";
+//NOTE: css from module.css not loaded on init page, only inline css(try moving css into normal css file for global css)
 
 function App({ Component, pageProps }) {
   return (
@@ -23,6 +23,8 @@ export default App;
 export function reportWebVitals(metric) {
   console.log(metric);
 }
+//Vercel dashboard :https://vercel.com/dashboard
+
 /* INFO
     The Component prop is the active page, so whenever you navigate between routes, Component will change to the new page.
     Therefore, any props you send to Component will be received by the page.
@@ -42,6 +44,28 @@ export function reportWebVitals(metric) {
 //   return { ...appProps }
 // }
 
+//By default SWR caches pre rendered data , but makes another call in background (to stay in sync when more tabs are open)
+//------------------------------------------------------------------------
+//CACHING
+//https://scale.com/blog/performance-on-next-js-websites
+//Github:https://github.com/pamelafox/lscache
+//or sw caching
+//:https://logaretm.com/blog/2020-02-24-caching-graphql-requests/
+
+//------------------------------------------------------------------------
+//TODO: PRefetching --https://swr.vercel.app/docs/prefetching
+//SSR render getinitialprops--//example--https://codeconqueror.com/blog/fetching-data-in-next-js
+
+//ctx props ->https://nextjs.org/docs/api-reference/data-fetching/getInitialProps#context-object
+
+//TODO: check out https://nextjs.org/learn/basics/data-fetching/pre-rendering ,https://nextjs.org/learn/basics/data-fetching/with-data
+//bruno repo:https://github.com/bmvantunes/youtube-2020-feb-swr-hook
+
+//https://nextjs.org/learn/basics/data-fetching/getstaticprops-details
+
+//example repo (tsx)https://github.com/bmvantunes/youtube-2020-feb-swr-hook
+
+//DOCS ;https://swr.now.sh/
 
 //TODO:
 /*

@@ -1,0 +1,51 @@
+/* Global css */
+/* color pallete
+  --main: #e9eafb;
+    --bgMain: #2f3030;
+    --bgMain: #939794;
+    --bgMain: #f3fafb;
+  */
+
+.container {
+  --bgMain: #f3f3f2;
+  background: var(--bgMain);
+  /* min-height: 100vh; */
+  display: flex;
+  /* comment foe job_box 3 column grid */
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  align-items: center;
+
+  /* Background image css*/
+  background-image: radial-gradient(#ddd 1.7px, transparent 0), radial-gradient(#ddd 1.5px, transparent 0);
+  background-position: 0 0, 25px, 25px;
+  background-attachment: fixed;
+  background-size: 50px 50px;
+  overflow-x: hidden;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 70%;
+}
+
+/* .column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.double_column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2;
+} */
+
+/* TODO :
+1 add media qury for mobile 
+2try our nwumoephic css design after V1*/

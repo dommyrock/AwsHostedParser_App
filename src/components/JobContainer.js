@@ -1,5 +1,5 @@
 import React from "react";
-import { job_column } from "./home.module.css";
+import { job_column } from "../css/home.module.css";
 import PropTypes from "prop-types";
 
 //Map job data to div/card here
