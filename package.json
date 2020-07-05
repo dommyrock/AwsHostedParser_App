@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.4.0",
     "aws-appsync": "^3.0.3",
     "graphql": "^15.0.0",
     "graphql-request": "^2.0.0",
@@ -15,6 +16,7 @@
     "next": "9.4.4",
     "react": "0.0.0-experimental-33c3af284",
     "react-dom": "0.0.0-experimental-33c3af284",
+    "react-transition-group": "^4.4.1",
     "swr": "^0.2.3"
   }
 }

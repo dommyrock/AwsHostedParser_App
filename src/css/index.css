@@ -1,11 +1,135 @@
 /* Global css */
-/* color pallete
-  --main: #e9eafb;
-    --bgMain: #2f3030;
-    --bgMain: #939794;
-    --bgMain: #f3fafb;
-  */
 
+:root {
+  /* color pallete*/
+  --main: #e9eafb;
+  --bgMain: #2f3030;
+  --bgMain2: #939794;
+  --bgMain3: #f3fafb;
+  /* Dropdown CSS variables*/
+  --bg: #242526;
+  --bg-accent: #484a4d;
+  --text-color: #dadce1;
+  --nav-size: 60px;
+  --border: 1px solid #474a4d;
+  --border-radius: 8px;
+  --speed: 500ms;
+}
+/* Dropdown CSS*/
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+.navbar {
+  height: var(--nav-size);
+  background-color: var(--bg);
+  padding: 0;
+  border-bottom: var(--border);
+}
+.navbar-nav {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  /* or leave it default on the left*/
+}
+.nav-item {
+  /* calc 80% of nav bar size */
+  width: calc(var(--nav-size) * 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-button {
+  --buton-size: calc(var(--nav-size) * 0.5);
+  width: var(--buton-size);
+  height: var(--buton-size);
+  background-color: var(--bg-accent);
+  /* makes perfect circle */
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-button:hover {
+  filter: brightness(1.2);
+}
+.icon-button svg {
+  fill: var(--text-color);
+  width: 20px;
+  height: 20px;
+}
+.dropdown {
+  position: absolute;
+  top: 58px;
+  width: 300px;
+  /* move by 45% */
+  transform: translateX(-45%);
+  background-color: var(--bg);
+  border: var(--border);
+
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  /* hide any child if they overlap this container*/
+  overflow: hidden;
+  transition: height var(--speed) ease;
+}
+.menu {
+  width: 100%;
+}
+.menu-item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.5rem;
+  padding-bottom: 25px;
+}
+.menu-item:hover {
+  background-color: #525357;
+}
+.icon-right {
+  margin-left: auto;
+}
+/* CSSTransition classes  */
+.menu-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+.menu-primary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-primary-exit {
+  position: absolute;
+}
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all var(--speed) ease;
+}
+
+.menu-secondary-enter {
+  transform: translateX(110%);
+}
+.menu-secondary-enter-active {
+  transform: translateX(0%);
+  transition: all var(--speed) ease;
+}
+.menu-secondary-exit {
+}
+.menu-secondary-exit-active {
+  transform: translateX(110%);
+  transition: all var(--speed) ease;
+}
+/* Dropdown CSS ends*/
 .container {
   --bgMain: #f3f3f2;
   background: var(--bgMain);
