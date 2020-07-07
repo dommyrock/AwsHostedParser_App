@@ -4,9 +4,7 @@ import React from "react";
 const About = () => {
   return (
     <div className="container">
-      <div className="row">
-        <h1>Test dat </h1>
-      </div>
+      <h1>Test dat </h1>
     </div>
   );
 };

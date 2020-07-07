@@ -5,6 +5,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
+  --bgMain: #f3f3f2;
 }
 
 * {
@@ -12,10 +13,10 @@ body {
 }
 :root {
   /* color pallete*/
-  --main: #e9eafb;
-  --bgMain: #2f3030;
-  --bgMain2: #939794;
-  --bgMain3: #f3fafb;
+  --lightGrey: #e9eafb;
+  --bg1: #2f3030;
+  --bg2: #939794;
+  --bg3: #f3fafb;
   /* Dropdown CSS variables*/
   --bg: #242526;
   --bg-accent: #484a4d;
@@ -27,14 +28,11 @@ body {
 }
 /* GRID CSS */
 .container {
-  --bgMain: #f3f3f2;
   background: var(--bgMain);
   min-height: 100vh;
   display: flex;
-  /* comment foe job_box 3 column grid */
+  /* comment for job_box 3 column grid */
   flex-direction: column;
-  flex-wrap: wrap;
-  /* justify-content: space-between; */
   align-items: center;
 
   /* Background image css */
@@ -45,13 +43,42 @@ body {
   overflow-x: hidden;
 }
 
-.row {
+.container-items {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   flex-wrap: wrap;
-  width: 70%;
+  width: 80%;
 }
-
+/* This works for now , might change layout later */
+#container-top {
+  display: flex;
+  width: 80%;
+  /* align-items: center; */
+  margin-top: 12px;
+  justify-content: space-evenly;
+}
+#a {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  width: 70%;
+  height: 400px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  background: white;
+  border-radius: 5px;
+}
+#b {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* flex-wrap: wrap; dont need it since i got column flex */
+  padding: 10px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  background: white;
+  border-radius: 5px;
+}
 /* .column {
   display: flex;
   flex-direction: column;
