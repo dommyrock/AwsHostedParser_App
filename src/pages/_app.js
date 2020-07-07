@@ -3,16 +3,14 @@ import { SWRConfig } from "swr";
 import { qglFetcher } from "./api/graphql/prismaClient";
 import NavMain from "../components/nav/NavMain";
 import "../css/index.css";
+
 //NOTE: ON DEV WE STILL REFETCH DATA ON NAVIGATION(BECAUSE ITS NOT CACHED BY CDN), THIS IS WORKING IN PRODUCTION!!!
 //AND ALSO WORKS ON BUILD + "nom run start"
 function App({ Component, pageProps }) {
   return (
     <>
+      {/* TODO: move layout links into navmain component */}
       <NavMain />
-      {/* <div style={{ display: "flex", justifyContent: "center" }}>
-        <Layout />
-      </div> */}
-
       <SWRConfig value={{ fetcher: qglFetcher, revalidateOnFocus: false }}>
         <Component {...pageProps} />
       </SWRConfig>
