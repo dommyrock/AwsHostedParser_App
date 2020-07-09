@@ -3,13 +3,11 @@ import { job_column, job_column2 } from "../css/home.module.css";
 import PropTypes from "prop-types";
 
 //Map job data to div/card here
-export default function JobContainer({ description, index }) {
+export default function JobContainer({ description }) {
   // debugger;
   let arr = [job_column, job_column2];
   let randomClass = arr[Math.floor(Math.random() * arr.length)];
-  // if (index % 2) {
-  //   bgStyle = bg_2;
-  // } else bgStyle = bg_1;
+
   return (
     <div className={randomClass}>
       <h3>{description.Title}</h3>

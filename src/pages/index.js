@@ -54,7 +54,7 @@ export default function Home({ jobsData }) {
         </div>
         <div className="container-items">
           {data.listBookStores.items.map((item, index) => {
-            return <JobContainer description={item} index={index} key={item.Id} />;
+            return <JobContainer description={item} key={item.Id} />;
           })}
         </div>
       </div>
