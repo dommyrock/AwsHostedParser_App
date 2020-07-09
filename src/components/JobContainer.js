@@ -1,12 +1,17 @@
 import React from "react";
-import { job_column } from "../css/home.module.css";
+import { job_column, job_column2 } from "../css/home.module.css";
 import PropTypes from "prop-types";
 
 //Map job data to div/card here
-export default function JobContainer({ description }) {
+export default function JobContainer({ description, index }) {
   // debugger;
+  let arr = [job_column, job_column2];
+  let randomClass = arr[Math.floor(Math.random() * arr.length)];
+  // if (index % 2) {
+  //   bgStyle = bg_2;
+  // } else bgStyle = bg_1;
   return (
-    <div className={job_column}>
+    <div className={randomClass}>
       <h3>{description.Title}</h3>
 
       <h5>created:{description.CreatedTimestamp}</h5>

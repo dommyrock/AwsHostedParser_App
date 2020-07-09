@@ -2,7 +2,6 @@ import React from "react";
 import useSWR from "swr";
 import { qglFetcher } from "./api/graphql/prismaClient";
 import JobContainer from "../components/JobContainer";
-import { job_focused } from "../css/home.module.css";
 /*
   Reason my graphql query returns only 20 items  @https://stackoverflow.com/questions/55112026/aws-appsync-graphql-api-only-return-20-items-from-dynamodb
   Appsync -->schema->resolvers ->listBookStores
@@ -55,7 +54,7 @@ export default function Home({ jobsData }) {
         </div>
         <div className="container-items">
           {data.listBookStores.items.map((item, index) => {
-            return <JobContainer description={item} key={item.Id} />;
+            return <JobContainer description={item} index={index} key={item.Id} />;
           })}
         </div>
       </div>
