@@ -19,7 +19,7 @@ const SearchIcon = ({ width, height }) => {
           <SearchPopup />
         </div>
       )}
-      <button style={override} onClick={() => setIsComponentVisible(!isComponentVisible)}>
+      <button style={override} aria-label="searchBtn" onClick={() => setIsComponentVisible(!isComponentVisible)}>
         <svg
           width={width}
           height={height}
