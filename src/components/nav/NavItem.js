@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
+import useComponentVisible from "../helpers/hooks/useComponentVisible";
 
 const NavItem = (props) => {
-  const [open, setOpen] = useState(false);
+  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   return (
-    <li className="nav-item">
-      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+    <li ref={ref} className="nav-item">
+      <a href="#" className="icon-button" onClick={() => setIsComponentVisible(!isComponentVisible)}>
         {props.icon}
       </a>
-      {open && props.children}
+      {isComponentVisible && props.children}
     </li>
   );
 };

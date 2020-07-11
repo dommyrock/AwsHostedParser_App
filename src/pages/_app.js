@@ -9,9 +9,8 @@ import "../css/index.css";
 function App({ Component, pageProps }) {
   return (
     <>
-      {/* TODO: move layout links into navmain component */}
-      <NavMain />
       <SWRConfig value={{ fetcher: qglFetcher, revalidateOnFocus: false }}>
+        <NavMain />
         <Component {...pageProps} />
       </SWRConfig>
     </>

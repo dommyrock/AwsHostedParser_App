@@ -1,17 +1,18 @@
 import React from "react";
-import { job_column, job_column2 } from "../css/home.module.css";
+import { job_column_new } from "../css/home.module.css";
 import PropTypes from "prop-types";
 
 //Map job data to div/card here
 export default function JobContainer({ description }) {
   // debugger;
-  let arr = [job_column, job_column2];
-  let randomClass = arr[Math.floor(Math.random() * arr.length)];
+
+  //Randomize classes
+  // let arr = [job_column, job_column2];
+  // let randomClass = arr[Math.floor(Math.random() * arr.length)];
 
   return (
-    <div className={randomClass}>
+    <div className={job_column_new}>
       <h3>{description.Title}</h3>
-
       <h5>created:{description.CreatedTimestamp}</h5>
     </div>
   );
@@ -20,6 +21,9 @@ JobContainer.propTypes = {
   description: PropTypes.object,
 };
 //TODO:
+//Ideas
+//JOb filtering/ with pre configured ssr paths ,for common searches eg. "software engineer"
+//keep all extra features insde the app , dont redirrect elswhere to keep seemles experience
 
 /*
  Cache ssr responses

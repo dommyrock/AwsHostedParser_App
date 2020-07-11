@@ -2,12 +2,15 @@ import React from "react";
 import Navbar from "./Navbar";
 import NavItem from "./NavItem";
 import DropdownMenu from "./DropdownMenu";
+import SearchIcon from "../search/SearchIcon";
 //icons: https://icons.getbootstrap.com/
 //TODO: install npm csstransition
 // from https://www.youtube.com/watch?v=IF6k0uZuypA&list=WL&index=71&t=0s
 const NavMain = () => {
   return (
     <Navbar>
+      <SearchIcon width={25} height={25} />
+      <h3>More</h3>
       <NavItem
         icon={
           <svg
@@ -15,6 +18,8 @@ const NavMain = () => {
             className="bi bi-arrow-down-circle-fill"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
+            width="40px"
+            height="40px"
           >
             <path
               fillRule="evenodd"
@@ -25,7 +30,7 @@ const NavMain = () => {
       >
         <DropdownMenu></DropdownMenu>
       </NavItem>
-      <NavItem
+      {/* <NavItem
         icon={
           <svg
             viewBox="0 0 16 16"
@@ -39,7 +44,7 @@ const NavMain = () => {
             />
           </svg>
         }
-      />
+      /> */}
     </Navbar>
   );
 };
