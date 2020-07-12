@@ -234,15 +234,18 @@ a {
 /*search popup css*/
 #search_popup {
   display: flex;
+  flex-direction: column;
+  /* align-items: center; */
   z-index: 10;
   position: absolute;
   top: 62px;
   transform: translateX(-85%);
   padding: 1rem;
+  padding-top: 2rem;
   /* hide any child if they overlap this container*/
   overflow: hidden;
   transition: height var(--speed) ease;
-  height: 170px;
+  height: 150px;
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 1.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
@@ -252,6 +255,19 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#search_popup > .search_popupContainer h5 {
+  margin-block-start: 5px;
+  margin-block-end: 5px;
+}
+#search_popup .inputRow input {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans;
+  font-weight: 600;
+  width: 150px;
+  border-radius: 5px;
+  border-color: #fff;
+  outline: none;
+  text-decoration: none;
 }
 
 #hoverableIcon > button {

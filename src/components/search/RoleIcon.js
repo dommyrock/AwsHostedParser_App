@@ -8,6 +8,7 @@ const RoleIcon = ({ width, height }) => {
       height={height}
       viewBox="0 0 16 16"
       className="bi bi-credit-card-2-front"
+      style={{ marginRight: "5px" }}
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >

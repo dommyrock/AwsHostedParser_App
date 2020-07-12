@@ -16,6 +16,7 @@
     "next": "9.4.4",
     "prop-types": "^15.7.2",
     "react": "0.0.0-experimental-33c3af284",
+    "react-datepicker": "^3.1.3",
     "react-dom": "0.0.0-experimental-33c3af284",
     "react-transition-group": "^4.4.1",
     "swr": "^0.2.3"

@@ -3,6 +3,7 @@ import { SWRConfig } from "swr";
 import { qglFetcher } from "./api/graphql/prismaClient";
 import NavMain from "../components/nav/NavMain";
 import "../css/index.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 //NOTE: ON DEV WE STILL REFETCH DATA ON NAVIGATION(BECAUSE ITS NOT CACHED BY CDN), THIS IS WORKING IN PRODUCTION!!!
 //AND ALSO WORKS ON BUILD + "nom run start"
