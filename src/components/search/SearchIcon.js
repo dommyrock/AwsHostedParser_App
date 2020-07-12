@@ -4,18 +4,13 @@ import SearchPopup from "./SearchPopup";
 import useComponentVisible from "../helpers/hooks/useComponentVisible";
 
 const SearchIcon = ({ width, height }) => {
-  /**
-   * TODO :
-   * maybe open searchbox on hover and close on click outside of seatch box
-   */
-
   //handle visibility state
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   return (
     <li id="hoverableIcon" className="nav-item">
       {/* render search box on click (NOTE:box doesnt close on icon click for some reason) */}
       {isComponentVisible && (
-        <div ref={ref} className="dropdown">
+        <div ref={ref}>
           <SearchPopup />
         </div>
       )}

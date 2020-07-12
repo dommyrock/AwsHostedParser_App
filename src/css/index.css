@@ -234,15 +234,24 @@ a {
 /*search popup css*/
 #search_popup {
   display: flex;
-  justify-content: center;
-  padding: 10px;
-  width: 70%;
-  height: 400px;
-  /* box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 1.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12); */
-  border-radius: 5px;
+  z-index: 10;
+  position: absolute;
+  top: 62px;
+  transform: translateX(-85%);
+  padding: 1rem;
+  /* hide any child if they overlap this container*/
+  overflow: hidden;
+  transition: height var(--speed) ease;
+  height: 170px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 1.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
   background: var(--bgMain); /*thsi gets overriden by filter */
-  /* fading dots */
+}
+#search_popup > .search_popupContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #hoverableIcon > button {
