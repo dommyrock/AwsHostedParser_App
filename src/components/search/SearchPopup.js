@@ -20,13 +20,12 @@ import DatePicker from "react-datepicker";
  */
 const iHeight = 20;
 const iWidth = 20;
-const mRight = "120px";
 const SearchPopup = () => {
   //Dropdown locations: Croatia,Austria,Remote (at firsst)
   //Roles ,SDE, Frontend, backend ,project manager...
   const [role, setRole] = useState("");
   const [location, setLocation] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null); //today new Date()
   //could also useReducer +Context for this
   function handleRoleChange(taget) {
     setRole(taget);
@@ -47,29 +46,39 @@ const SearchPopup = () => {
       <div className="search_popupContainer">
         {/* make this into separate divs  so dropdowns fit */}
         {/* try out neumorphic design on search_popup  */}
-        <RoleIcon width={iWidth} height={iHeight} />
-        <h5 style={{ marginRight: mRight }}>Role</h5>
-
-        <LocationIcon width={iWidth} height={iHeight} />
-        <h5 style={{ marginRight: mRight }}>Location</h5>
-        <CalendarIcon width={iWidth} height={iHeight} />
-        <h5>Expiration</h5>
+        <h5>
+          <RoleIcon width={iWidth} height={iHeight} />
+          Role
+          <br />
+          <SearchInput data={roles} listName="roles" onChangeCallback={handleRoleChange} />
+        </h5>
       </div>
-      <div className="inputRow">
-        <SearchInput data={roles} listName="roles" onChangeCallback={handleRoleChange} />
-        <SearchInput data={countries} listName="countries" onChangeCallback={handleLocationChange} />
-        <DatePicker
-          selected={startDate}
-          onInputClick={handleClick}
-          onChange={(date) => setStartDate(date)}
-          onSelect={handleSElect}
-          popperModifiers={{
-            offset: {
-              enabled: true,
-              offset: "-90px",
-            },
-          }}
-        />
+      <div className="search_popupContainer">
+        <h5>
+          <LocationIcon width={iWidth} height={iHeight} />
+          Location
+          <br />
+          <SearchInput data={countries} listName="countries" onChangeCallback={handleLocationChange} />
+        </h5>
+      </div>
+      <div className="search_popupContainer">
+        <h5>
+          <CalendarIcon width={iWidth} height={iHeight} />
+          Expiration
+          <br />
+          <DatePicker
+            selected={startDate}
+            onInputClick={handleClick}
+            onChange={(date) => setStartDate(date)}
+            onSelect={handleSElect}
+            popperModifiers={{
+              offset: {
+                enabled: true,
+                offset: "-90px",
+              },
+            }}
+          />
+        </h5>
       </div>
     </div>
   );
@@ -80,6 +89,7 @@ export default SearchPopup;
 const countries = [
   { data: "Austria", key: "aus" },
   { data: "Croatia", key: "cro" },
+  { data: "USA", key: "usa" },
   { data: "Remote", key: "remote" },
 ];
 const roles = [
