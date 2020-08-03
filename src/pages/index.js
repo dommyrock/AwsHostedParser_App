@@ -48,14 +48,14 @@ export default function Home({ jobsData }) {
       </Head>
       <div className="container">
         <div id="container-top">
-          <div id="a">
+          <div id="highlight_div">
             <h1>job previewwwwww</h1>
           </div>
           <JobExtrasCard />
         </div>
         <div className="container-items">
           {data.listBookStores.items.map((item, index) => {
-            return <JobCard description={item} key={item.Id} />;
+            return <JobCard data={item} key={item.Id} />;
           })}
         </div>
       </div>

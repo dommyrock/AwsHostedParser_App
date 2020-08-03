@@ -57,7 +57,7 @@ body {
   margin-top: 12px;
   justify-content: space-evenly;
 }
-#a {
+#highlight_div {
   display: flex;
   justify-content: center;
   padding: 10px;
@@ -71,8 +71,9 @@ body {
   /* fading dots */
   filter: contrast(7);
   --mask: linear-gradient(rgb(0, 17, 255), rgba(0, 0, 0, 0.45));
+  max-width: 1080px;
 }
-#a::before {
+#highlight_div::before {
   position: absolute;
   top: 0;
   right: 0;
@@ -87,7 +88,7 @@ body {
 }
 /* fading dots ends */
 
-#b {
+#extras_div {
   display: flex;
   flex-direction: column;
   justify-content: center;

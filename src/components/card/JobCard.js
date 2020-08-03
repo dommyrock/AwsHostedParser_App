@@ -1,24 +1,36 @@
 import React from "react";
-import { job_column_new } from "../../css/home.module.css";
+import { job_column_new, background_img1, background_img2, background_img3 } from "../../css/jobCard.module.css";
 import PropTypes from "prop-types";
 
 //Map job data to div/card here
-export default function JobCard({ description }) {
-  // debugger;
+export default function JobCard({ data }) {
+  //   debugger;
 
   //Randomize classes
-  // let arr = [job_column, job_column2];
-  // let randomClass = arr[Math.floor(Math.random() * arr.length)];
+  let bgImgArr = [background_img1, background_img2, background_img3];
+  //randomise data from Array
+  let randomClass = bgImgArr[Math.floor(Math.random() * bgImgArr.length)];
+  //moch data for testign
+  let randArr = ["Frontend developer", "Backend developer", "Database engineer", "Product manager"];
+  let randDEv = randArr[Math.floor(Math.random() * randArr.length)];
+  let randLogoArr = ["/adecco-logo.png", "/microblink-logo-min.png", "/rimac-logo-min.png"];
+  let randLogo = randLogoArr[Math.floor(Math.random() * randLogoArr.length)];
 
   return (
     <div className={job_column_new}>
-      <h3>{description.Title}</h3>
-      <h5>created:{description.CreatedTimestamp}</h5>
+      <div className={randomClass}>
+        {/* <h3>{data.Title}</h3>
+      <h5>created:{data.CreatedTimestamp}</h5> */}
+        <img src={randLogo} width="80px" alt="company Logo" className="logo" />
+        <h4>{randDEv}</h4>
+        <p>{data.Title}</p>
+        <p>Zagreb, Hektoroviceva 2234</p>
+      </div>
     </div>
   );
 }
 JobCard.propTypes = {
-  description: PropTypes.object,
+  data: PropTypes.object,
 };
 //TODO:
 //Ideas
@@ -41,3 +53,6 @@ https://www.youtube.com/watch?v=a7JigiLw_OY
 
 //Pass props to children example:
 //https://reactjs.org/docs/components-and-props.html
+
+//Ionic icons
+//https://ionicons.com/
