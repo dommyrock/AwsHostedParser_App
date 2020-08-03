@@ -1,8 +1,9 @@
 import React from "react";
 import useSWR from "swr";
-import { qglFetcher } from "./api/graphql/prismaClient";
-import JobContainer from "../components/JobContainer";
 import Head from "next/head";
+import { qglFetcher } from "./api/graphql/prismaClient";
+import JobExtrasCard from "../components/card/JobExtrasCard";
+import JobCard from "../components/card/JobCard";
 /*
   Reason my graphql query returns only 20 items  @https://stackoverflow.com/questions/55112026/aws-appsync-graphql-api-only-return-20-items-from-dynamodb
   Appsync -->schema->resolvers ->listBookStores
@@ -10,7 +11,6 @@ import Head from "next/head";
      (meaning you will get a nextToken in the response from DynamoDB)]
   Note: DynamoDB will automatically paginate once your result set reaches 1 MB.))
 */
-//Use this as exmple , here i pre render data at buildd time
 const GET_BOOKS = /* GraphQL */ `
   query listBookStores {
     listBookStores {
@@ -51,16 +51,11 @@ export default function Home({ jobsData }) {
           <div id="a">
             <h1>job previewwwwww</h1>
           </div>
-          <div id="b">
-            <h3>salary calculator</h3>
-            <h3>salary ranges for that role </h3>
-            <h3>simmilar jobs</h3>
-            <h3>cost of livinggggggggggggggg</h3>
-          </div>
+          <JobExtrasCard />
         </div>
         <div className="container-items">
           {data.listBookStores.items.map((item, index) => {
-            return <JobContainer description={item} key={item.Id} />;
+            return <JobCard description={item} key={item.Id} />;
           })}
         </div>
       </div>

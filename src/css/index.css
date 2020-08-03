@@ -255,9 +255,6 @@ a {
 #search_popup > .search_popupContainer {
   display: flex;
   flex-direction: column;
-  /* justify-content: center;
-  align-items: center;
-  width: 33%; */
 }
 #search_popup > .search_popupContainer h5 {
   margin-block-start: 5px;

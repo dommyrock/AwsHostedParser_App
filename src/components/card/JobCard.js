@@ -1,9 +1,9 @@
 import React from "react";
-import { job_column_new } from "../css/home.module.css";
+import { job_column_new } from "../../css/home.module.css";
 import PropTypes from "prop-types";
 
 //Map job data to div/card here
-export default function JobContainer({ description }) {
+export default function JobCard({ description }) {
   // debugger;
 
   //Randomize classes
@@ -17,7 +17,7 @@ export default function JobContainer({ description }) {
     </div>
   );
 }
-JobContainer.propTypes = {
+JobCard.propTypes = {
   description: PropTypes.object,
 };
 //TODO:
