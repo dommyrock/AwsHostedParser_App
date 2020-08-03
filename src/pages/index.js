@@ -45,20 +45,59 @@ export default function Home({ jobsData }) {
         <title>Create Next App</title>
         <title>Vercel frontend-parser</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossOrigin="anonymous"
+        ></link>
       </Head>
-      <div className="container">
-        <div id="container-top">
-          <div id="highlight_div">
-            <h1>job previewwwwww</h1>
+      <main>
+        <div className="container">
+          <div id="container-top">
+            <div id="highlight_div">
+              <h1>job previewwwwww</h1>
+            </div>
+            <JobExtrasCard />
           </div>
-          <JobExtrasCard />
+          <div className="container-items">
+            {data.listBookStores.items.map((item, index) => {
+              return <JobCard data={item} key={item.Id} />;
+            })}
+          </div>
         </div>
-        <div className="container-items">
-          {data.listBookStores.items.map((item, index) => {
-            return <JobCard data={item} key={item.Id} />;
-          })}
-        </div>
-      </div>
+      </main>
+      <footer>
+        {/* <a
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+        </a> */}
+        <ul>
+          <li>
+            <a href="https://twitter.com/dompolzer">
+              <i className="fa fa-twitter" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/dominik-polzer-hi-o/">
+              <i className="fa fa-linkedin-square" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/dommyrock">
+              <i className="fa fa-github" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/dominik.polzerr/">
+              <i className="fa fa-facebook-square" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </footer>
     </div>
   );
 }

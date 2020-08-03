@@ -68,6 +68,7 @@ const SearchPopup = () => {
           <br />
           <DatePicker
             selected={startDate}
+            disabled={true} //NOTE: comment this out when i want this option
             onInputClick={handleClick}
             onChange={(date) => setStartDate(date)}
             onSelect={handleSElect}

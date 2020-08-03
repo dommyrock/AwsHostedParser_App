@@ -53,6 +53,3 @@ https://www.youtube.com/watch?v=a7JigiLw_OY
 
 //Pass props to children example:
 //https://reactjs.org/docs/components-and-props.html
-
-//Ionic icons
-//https://ionicons.com/

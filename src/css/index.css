@@ -1,13 +1,4 @@
 /* Global css */
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
-  --bgMain: #f3f3f2;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -26,6 +17,79 @@ body {
   --border-radius: 8px;
   --speed: 500ms;
 }
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
+  --bgMain: #f3f3f2;
+}
+/* Footer CSS */
+footer {
+  background: #dadce1b9;
+  padding-bottom: 5px;
+}
+footer ul {
+  display: flex;
+  justify-content: center;
+}
+footer ul li {
+  position: relative;
+  list-style: none;
+  margin: 0 10px;
+  cursor: pointer;
+}
+footer ul li a {
+  text-decoration: none;
+}
+footer ul li a .fa {
+  font-size: 2em;
+  color: rgb(116, 116, 116);
+}
+footer ul li::before {
+  font-family: fontAwesome;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  font-size: 2em;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+}
+footer ul li:nth-child(1)::before {
+  content: "\f099";
+  color: #1da1f2;
+  border-bottom: 4px solid #1da1f2;
+}
+footer ul li:nth-child(2)::before {
+  content: "\f08c";
+  color: #1c79b3;
+  border-bottom: 4px solid #1c79b3;
+}
+footer ul li:nth-child(3)::before {
+  content: "\f09b ";
+  color: #111;
+  border-bottom: 4px solid #111;
+}
+footer ul li:nth-child(4)::before {
+  content: "\f082";
+  color: #1c79b3;
+  border-bottom: 4px solid #1c79b3;
+}
+footer ul li:hover::before {
+  height: 100%;
+  /* Make links clickable after hover effect */
+  pointer-events: none;
+}
+/* Footer CSS  ends*/
+
+p {
+  margin-block-end: 0.2em;
+  margin-block-start: 0.2em;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+}
 /* GRID CSS */
 .container {
   background: var(--bgMain);
@@ -40,7 +104,8 @@ body {
   background-position: 0 0, 25px, 25px;
   background-attachment: fixed;
   background-size: 50px 50px;
-  overflow-x: hidden;
+  /* Hide y axis scrol bar that appears on last cards row */
+  overflow: hidden;
 }
 
 .container-items {
@@ -88,17 +153,6 @@ body {
 }
 /* fading dots ends */
 
-#extras_div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* flex-wrap: wrap; dont need it since i got column flex */
-  padding: 10px;
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
-  background-color: #e1e4e3;
-  border-radius: 5px;
-}
 /* .column {
   display: flex;
   flex-direction: column;
@@ -269,6 +323,22 @@ a {
   border-color: #fff;
   outline: none;
   text-decoration: none;
+}
+/* switch to column view for mobile @ 660px */
+@media (max-width: 660px) {
+  #search_popup {
+    /* flex-direction: column; */
+    display: block;
+    /* width: 70%; */
+    height: 30%;
+  }
+  #container-top {
+    display: block;
+    width: 100%;
+  }
+  #highlight_div {
+    width: 100%;
+  }
 }
 
 #hoverableIcon > button {
