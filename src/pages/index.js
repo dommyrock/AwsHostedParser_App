@@ -4,6 +4,7 @@ import Head from "next/head";
 import { qglFetcher } from "./api/graphql/prismaClient";
 import JobExtrasCard from "../components/card/JobExtrasCard";
 import JobCard from "../components/card/JobCard";
+import JobHighlightCard from "../components/card/JobHighlightCard";
 /*
   Reason my graphql query returns only 20 items  @https://stackoverflow.com/questions/55112026/aws-appsync-graphql-api-only-return-20-items-from-dynamodb
   Appsync -->schema->resolvers ->listBookStores
@@ -42,7 +43,6 @@ export default function Home({ jobsData }) {
     // <Suspense fallback={<div>loading...</div>}> removed because it was causing ssr errros , TODO:replace with normal loaders
     <div>
       <Head>
-        <title>Create Next App</title>
         <title>Vercel frontend-parser</title>
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -56,10 +56,8 @@ export default function Home({ jobsData }) {
       <main>
         <div className="container">
           <div id="container-top">
-            <div id="highlight_div">
-              {/* TODO: show some data here by default ..like some graph of total jobs currently on market ... (on job click switch to details) */}
-              <h1>job previewwwwww</h1>
-            </div>
+            {/* TODO: show some data here by default ..like some graph of total jobs currently on market ... (on job click switch to details) */}
+            <JobHighlightCard />
             <JobExtrasCard />
           </div>
           <div className="container-items">

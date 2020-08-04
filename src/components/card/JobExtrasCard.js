@@ -25,7 +25,7 @@ const JobExtrasCard = () => {
       </h4>
       <h4>
         <ListIcon width={21} height={21} />
-        Simmilar jobs
+        Similar jobs
       </h4>
       <h4>
         <GraphIcon width={18} height={18} />
