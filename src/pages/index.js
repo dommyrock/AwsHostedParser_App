@@ -51,11 +51,13 @@ export default function Home({ jobsData }) {
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
           crossOrigin="anonymous"
         ></link>
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,900" rel="stylesheet"></link>
       </Head>
       <main>
         <div className="container">
           <div id="container-top">
             <div id="highlight_div">
+              {/* TODO: show some data here by default ..like some graph of total jobs currently on market ... (on job click switch to details) */}
               <h1>job previewwwwww</h1>
             </div>
             <JobExtrasCard />
