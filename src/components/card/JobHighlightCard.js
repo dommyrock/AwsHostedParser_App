@@ -1,14 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import PinIcon from "./icons/PinIcon";
 import { layout_div } from "../../css/jobHighlightCard.module.css";
+//this is v1 layout ... will improve/replace later
+//TODO: load real data and change state of this component with fresh "cliked"data (default to item[0] st first later show stats intead
+/* Maybe try open details in modal and list rest in details window, or make div scrollable... */
+/* NOTE :Also if i make it scrollable  , snap to page top on icon click ..if item is far down...
+  --add css outline to selected job card so we know wher we left of
+  --maybe add "modal" tooltip open on "quick view" click/hover with only "basic Qualifications"
+  https://github.com/tvkhoa/react-tippy (lightweight) 
+  or
+  https://github.com/wwayne/react-tooltip
+  */
+/* NOTE If none is working fine , make it similar to linkedin */
 const JobHighlightCard = ({ data }) => {
-  //this is v1 layout ... will improve/replace later
-  //TODO: load real data and change state of this component with fresh "cliked"data (default to item[0] st first later show stats intead
-  /* Maybe try open details in modal and list rest in details window, or make div scrollable... */
-  /* NOTE :Also if i make it scrollable  , snap to page top on icon click ..if item is far down... */
-  /* NOTE If none is working fine , make it similar to linkedin */
   return (
     <div id="highlight_div" className="highhlight_div-scrollbar">
       <div className={layout_div}>
@@ -59,7 +64,7 @@ const JobHighlightCard = ({ data }) => {
     </div>
   );
 };
-JobHighlightCard.PropTypes = {
+JobHighlightCard.propTypes = {
   data: PropTypes.object,
 };
 export default JobHighlightCard;

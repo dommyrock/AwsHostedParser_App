@@ -138,22 +138,23 @@ p {
   /* darker this color is further down dots go  */
   background: #fff;
   /* fading dots */
-  /* filter: contrast(7); filter,--mask & background temp disabled because it was causing text to fkup */
-  /* --mask: linear-gradient(rgb(0, 17, 255), rgba(0, 0, 0, 0.45)); */
+  /* NOTE this filter removes my scrollbar  */
+  filter: contrast(4);
+  --mask: linear-gradient(rgb(0, 17, 255), rgba(0, 0, 0, 0.45));
   max-width: 1080px;
 }
 
-#highlight_div::before {
+#highlight_divv::before {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  /* z-index: -1; */
+  z-index: -1;
   /* darker color is further down on page it goes */
-  /* background: radial-gradient(rgb(112, 111, 111), transparent) 0 0/1em 1em space;  original*/
-  /* background: radial-gradient(rgb(117, 116, 116), transparent) 0 0/1em 1em space; */
-  /* -webkit-mask: var(--mask); */
+  /* background: radial-gradient(rgb(112, 111, 111), transparent) 0 0/1em 1em space; */
+  background: radial-gradient(rgb(128, 126, 126), transparent) 0 0/1em 1em space;
+  -webkit-mask: var(--mask);
   mask: var(--mask);
   content: "";
 }
@@ -169,7 +170,9 @@ p {
   background-clip: content-box;
 }
 .highhlight_div-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.25);
+  /* background: rgba(0, 0, 0, 0.25); */
+  /* modified because filter from highlight_div was removing it  */
+  background: rgba(0, 0, 0, 0.418);
   border-radius: 5px;
 }
 
