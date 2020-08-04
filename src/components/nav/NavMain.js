@@ -11,41 +11,25 @@ const NavMain = () => {
   return (
     <Navbar>
       <SearchIcon width={25} height={25} />
-      <h3>More</h3>
       <NavItem
         icon={
           <svg
+            width="1em"
+            height="1em"
             viewBox="0 0 16 16"
-            className="bi bi-arrow-down-circle-fill"
+            class="bi bi-three-dots"
             fill="currentColor"
             xmlns="http://www.w3.org/2000/svg"
-            width="40px"
-            height="40px"
           >
             <path
-              fillRule="evenodd"
-              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z"
+              fill-rule="evenodd"
+              d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
             />
           </svg>
         }
       >
         <DropdownMenu></DropdownMenu>
       </NavItem>
-      {/* <NavItem
-        icon={
-          <svg
-            viewBox="0 0 16 16"
-            className="bi bi-arrow-up-circle-fill"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-10.646.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"
-            />
-          </svg>
-        }
-      /> */}
     </Navbar>
   );
 };

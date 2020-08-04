@@ -37,7 +37,7 @@ const DropdownMenu = () => {
         onEnter={calcHeight}
       >
         <div className="menu">
-          <DropdownItem>My Profile</DropdownItem>
+          <DropdownItem>Work in progress</DropdownItem>
           <DropdownItem
             leftIcon={
               <svg
