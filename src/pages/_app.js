@@ -1,6 +1,6 @@
 // import App from "next/app";
 import { SWRConfig } from "swr";
-import { qglFetcher } from "./api/graphql/prismaClient";
+import { gqlFetcher } from "./api/graphql/prismaClient";
 import NavMain from "../components/nav/NavMain";
 import "../css/index.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 function App({ Component, pageProps }) {
   return (
     <>
-      <SWRConfig value={{ fetcher: qglFetcher, revalidateOnFocus: false }}>
+      <SWRConfig value={{ fetcher: gqlFetcher, revalidateOnFocus: false }}>
         <NavMain />
         <Component {...pageProps} />
       </SWRConfig>

@@ -1,7 +1,8 @@
 import React from "react";
 import useSWR from "swr";
 import Head from "next/head";
-import { qglFetcher } from "./api/graphql/prismaClient";
+import { gqlFetcher } from "./api/graphql/prismaClient";
+import { GET_BOOKS } from "../pages/api/graphql/queries";
 import JobExtrasCard from "../components/card/JobExtrasCard";
 import JobCard from "../components/card/JobCard";
 import JobHighlightCard from "../components/card/JobHighlightCard";
@@ -12,19 +13,8 @@ import JobHighlightCard from "../components/card/JobHighlightCard";
      (meaning you will get a nextToken in the response from DynamoDB)]
   Note: DynamoDB will automatically paginate once your result set reaches 1 MB.))
 */
-const GET_BOOKS = /* GraphQL */ `
-  query listBookStores {
-    listBookStores {
-      items {
-        Book_Id
-        Id
-        Isbn
-        Title
-        CreatedTimestamp
-      }
-    }
-  }
-`;
+const variables = { limit: 20, nextToken: "" };
+
 /*
  TODO:
 2) page will not render untill data is available , so we can show progress bar 
@@ -34,8 +24,8 @@ for css i need to import 'nprogress/nprogress.css' in main App compont so it's a
 */
 
 export default function Home({ jobsData }) {
-  const { data, error } = useSWR(GET_BOOKS, { initialData: jobsData });
-  //   debugger;
+  const { data, error } = useSWR([GET_BOOKS, variables], { initialData: jobsData });
+  // debugger;
   if (error) return <div>Error encountered:{JSON.stringify(error, null, 4)}</div>;
   if (!data) return <div>Loading....</div>;
   return (
@@ -98,7 +88,7 @@ export default function Home({ jobsData }) {
 //Get SSR Data on initial page load @build time:
 export async function getStaticProps(context) {
   //NOTE :Passed fetcher this way because i can't useSwr hook here
-  const jobsData = await qglFetcher(GET_BOOKS);
+  const jobsData = await gqlFetcher(GET_BOOKS, variables);
   return { props: { jobsData } };
 }
 
