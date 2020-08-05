@@ -1,6 +1,8 @@
 .layout_div {
   display: flex;
   flex-direction: column;
+  /* keep content above dots background */
+  z-index: 2;
   /* word-wrap: break-word; */
 }
 

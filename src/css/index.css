@@ -144,13 +144,12 @@ p {
   max-width: 1080px;
 }
 
-#highlight_divv::before {
+#highlight_div::before {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: -1;
   /* darker color is further down on page it goes */
   /* background: radial-gradient(rgb(112, 111, 111), transparent) 0 0/1em 1em space; */
   background: radial-gradient(rgb(128, 126, 126), transparent) 0 0/1em 1em space;
