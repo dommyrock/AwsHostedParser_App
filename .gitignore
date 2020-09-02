@@ -32,3 +32,4 @@ yarn-error.log*
 
 # AppSync config
 src/AppSyncConfig.json
+.vscode/launch.json

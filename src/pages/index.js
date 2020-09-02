@@ -6,6 +6,7 @@ import { GET_BOOKS } from "../pages/api/graphql/queries";
 import JobExtrasCard from "../components/card/JobExtrasCard";
 import JobCard from "../components/card/JobCard";
 import JobHighlightCard from "../components/card/JobHighlightCard";
+import SlidingSnackbar from "../components/shared/SlidingSnackbar";
 /*
   Reason my graphql query returns only 20 items  @https://stackoverflow.com/questions/55112026/aws-appsync-graphql-api-only-return-20-items-from-dynamodb
   Appsync -->schema->resolvers ->listBookStores
@@ -17,6 +18,9 @@ const variables = { limit: 20, nextToken: "" };
 
 /*
  TODO:
+ 1) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ https://swr.vercel.app/docs/pagination
+ 
 2) page will not render untill data is available , so we can show progress bar 
 --https://github.com/rstacruz/nprogress
 --npmjs.com/package/nprogress  (documentation)
@@ -56,6 +60,7 @@ export default function Home({ jobsData }) {
             })}
           </div>
         </div>
+        <SlidingSnackbar />
       </main>
       <footer>
         <ul>
