@@ -1,15 +1,29 @@
-.extras_div {
+.extras_div_original {
   display: flex;
   flex-direction: column;
   justify-content: center;
   /* flex-wrap: wrap; dont need it since i got column flex */
   padding: 15px;
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 5px 17.9px rgba(0, 0, 0, 0.072), 0 1.8px 33.4px rgba(0, 0, 0, 0.086), 0 5px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06), 0 5px 17.9px rgba(0, 0, 0, 0.072),
+    0 1.8px 33.4px rgba(0, 0, 0, 0.086), 0 5px 20px rgba(0, 0, 0, 0.12);
   background-color: rgba(69, 145, 221, 0.77);
   /* background-color: #dadce1b9; */
   border-radius: 5px;
   min-width: 250px; /*might remove later */
+}
+.extras_div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 28px;
+  box-shadow: 7px 7px 14px #b8c2ca, -7px -7px 14px #f8ffff;
+  background-color: #d8e4ee;
+  /* background-color: #87bce8; */
+  /* background-color: #8dadc9; */
+  border-radius: 5px;
+  min-width: 250px;
 }
 
 .extras_div h4 {
@@ -18,3 +32,24 @@
   /* color: rgba(0, 0, 0, 0.575); */
   color: #44474a;
 }
+
+.extras_div div {
+  border-radius: 20px;
+  box-shadow: 7px 7px 14px #b8c2ca, -7px -7px 14px #f8ffff;
+  background-color: #d8e4ee;
+  text-align: center;
+  /* padding-left: 35px; */
+  margin-bottom: 15px;
+}
+.extras_div div:hover {
+  background: #b4ccdf;
+  box-shadow: inset 7px 7px 14px #99adbe, inset -7px -7px 14px #cfebff;
+}
+/* pressed div css
+border-radius: 28px;
+background: #b4ccdf;
+box-shadow: inset 7px 7px 14px #99adbe, 
+            inset -7px -7px 14px #cfebff;
+
+help:https://neumorphism.io/#b4ccdf
+*/
