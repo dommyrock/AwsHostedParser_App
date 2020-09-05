@@ -5,18 +5,26 @@ import PostIcon from "./icons/PostIcon";
 import RangeIcon from "./icons/RangeIcon";
 import ListIcon from "./icons/ListIcon";
 import GraphIcon from "./icons/GraphIcon";
+import GridIcon from "./icons/GridIcon";
 
 //TODO: after all basic layout is done and we show/filter real data do this ....because this is not priority
 
 const JobExtrasCard = () => {
   return (
     <div className={extras_div} style={{ fontWeight: "700px" }}>
-      <div>
+      {/* <div> TODO: extra feature link to local calculator sites intead
         <h4>
           <CalculatorIcon width={18} height={18} />
           Salary calculator
         </h4>
+      </div> */}
+      <div>
+        <h4>
+          <GridIcon width={18} height={18} />
+          Big tech companies
+        </h4>
       </div>
+
       <div>
         <h4>
           <PostIcon width={18} height={18} />

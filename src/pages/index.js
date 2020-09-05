@@ -7,6 +7,7 @@ import JobExtrasCard from "../components/card/JobExtrasCard";
 import JobCard from "../components/card/JobCard";
 import JobHighlightCard from "../components/card/JobHighlightCard";
 import SlidingSnackbar from "../components/shared/SlidingSnackbar";
+import SocialsContainer from "../components/shared/SocialsContainer";
 /*
   Reason my graphql query returns only 20 items  @https://stackoverflow.com/questions/55112026/aws-appsync-graphql-api-only-return-20-items-from-dynamodb
   Appsync -->schema->resolvers ->listBookStores
@@ -45,7 +46,10 @@ export default function Home({ jobsData }) {
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
           crossOrigin="anonymous"
         ></link>
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,900" rel="stylesheet"></link>
+        <link
+          href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,900"
+          rel="stylesheet"
+        ></link>
       </Head>
       <main>
         <div className="container">
@@ -63,28 +67,7 @@ export default function Home({ jobsData }) {
         <SlidingSnackbar />
       </main>
       <footer>
-        <ul>
-          <li>
-            <a href="https://twitter.com/dompolzer">
-              <i className="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/dominik-polzer-hi-o/">
-              <i className="fa fa-linkedin-square" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/dommyrock">
-              <i className="fa fa-github" aria-hidden="true"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.facebook.com/dominik.polzerr/">
-              <i className="fa fa-facebook-square" aria-hidden="true"></i>
-            </a>
-          </li>
-        </ul>
+        <SocialsContainer />
       </footer>
     </div>
   );
