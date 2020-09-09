@@ -14,3 +14,11 @@ export const GET_BOOKS = /* GraphQL */ `
     }
   }
 `;
+export const GET_SALARIES = /* GraphQL */ `
+  query getSalaryData($Company: String!) {
+    getSalaryData(Company: $Company) {
+      Company
+      Data
+    }
+  }
+`;
