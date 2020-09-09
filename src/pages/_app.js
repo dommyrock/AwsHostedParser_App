@@ -4,11 +4,11 @@ import { gqlFetcher } from "./api/graphql/prismaClient";
 import NavMain from "../components/nav/NavMain";
 import "../css/index.css";
 import "react-datepicker/dist/react-datepicker.css";
-import "../css/snackbar.css"
-
+import "../css/snackbar.css";
 
 //NOTE: ON DEV WE STILL REFETCH DATA ON NAVIGATION(BECAUSE ITS NOT CACHED BY CDN), THIS IS WORKING IN PRODUCTION!!!
 //AND ALSO WORKS ON BUILD + "nom run start"
+//NOTE : npm run build pulls credentials from .env.local (non public version) [REMEMBER TO UPDATE!]
 function App({ Component, pageProps }) {
   return (
     <>

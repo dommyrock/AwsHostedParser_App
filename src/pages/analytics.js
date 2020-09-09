@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useSWR from "swr";
 import { GET_SALARIES } from "../pages/api/graphql/queries";
 import { gqlFetcher } from "./api/graphql/prismaClient";
+import TestGraph from "../components/graphs/TestGraph";
 
 const keyVariable = {
   Company: "SalaryData",
@@ -22,13 +23,14 @@ export default function analytics({ salariesData }) {
   let salaryData = getArrayFromJson(data.getSalaryData.Data);
 
   return (
-    <div>
+    <div className="container">
       <div className="container-items">
         {salaryData.map((item, index) => {
           debugger;
           return <li>{item.Company}</li>;
         })}
       </div>
+      <TestGraph />
       Graphs go here<a href="https://www.highcharts.com/demo/3d-column-interactive">charts</a>
     </div>
   );
