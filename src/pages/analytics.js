@@ -3,6 +3,8 @@ import useSWR from "swr";
 import { GET_SALARIES } from "../pages/api/graphql/queries";
 import { gqlFetcher } from "./api/graphql/prismaClient";
 import TestGraph from "../components/graphs/TestGraph";
+import BubbleChart from "../components/graphs/BubbleChart";
+import ThreeDPieChart from "../components/graphs/ThreeDPieChart";
 
 const keyVariable = {
   Company: "SalaryData",
@@ -31,6 +33,8 @@ export default function analytics({ salariesData }) {
         })}
       </div>
       <TestGraph />
+      <ThreeDPieChart />
+      <BubbleChart />
       Graphs go here<a href="https://www.highcharts.com/demo/3d-column-interactive">charts</a>
     </div>
   );
