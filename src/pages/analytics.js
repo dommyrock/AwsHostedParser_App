@@ -96,9 +96,21 @@ export default function analytics({ salariesData }) {
   return (
     <div className="container">
       {state && <Chart options={barChartOptions} key="test" />}
-      {state && <Chart options={stackedChartOptions} key="stacked" />}
-      {state && <Chart options={stackedChartOptions2} key="stackedMid" />}
-      {state && <Chart options={stackedChartOptions3} key="stackedSenior" />}
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          marginTop: "50px",
+          backgroundColor: "#9fa3a717",
+          borderStyle: "solid",
+          borderColor: "#fff",
+        }}
+      >
+        {state && <Chart options={stackedChartOptions} key="stacked" />}
+        {state && <Chart options={stackedChartOptions2} key="stackedMid" />}
+        {state && <Chart options={stackedChartOptions3} key="stackedSenior" />}
+      </div>
       <Chart options={threeDPieChartOptions} key="3d" />
       {/* <Chart options={groupedChartOptions} key="grouped" /> */}
       {/* <Chart options={bubbleChartOptions} /> Tmporary disabled to test performance*/}

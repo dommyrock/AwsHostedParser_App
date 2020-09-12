@@ -3,6 +3,9 @@ export let stackedChartOptions = {
     type: "bar",
     backgroundColor: "none",
   },
+  credits: {
+    enabled: false,
+  },
   tooltip: {
     formatter: function () {
       return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
@@ -49,6 +52,9 @@ export let stackedChartOptions2 = {
     type: "bar",
     backgroundColor: "none",
   },
+  credits: {
+    enabled: false,
+  },
   tooltip: {
     formatter: function () {
       return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
@@ -94,6 +100,9 @@ export let stackedChartOptions3 = {
   chart: {
     type: "bar",
     backgroundColor: "none",
+  },
+  credits: {
+    enabled: false,
   },
   tooltip: {
     formatter: function () {
