@@ -1,23 +1,4 @@
-import React from "react";
-import Highcharts from "highcharts";
-import HighchartsExporting from "highcharts/modules/exporting";
-import HighchartsReact from "highcharts-react-official";
-import hc_accessibility from "highcharts/modules/accessibility";
-import hc_more from "highcharts/highcharts-more";
-
-if (typeof Highcharts === "object") {
-  HighchartsExporting(Highcharts);
-  hc_more(Highcharts);
-  hc_accessibility(Highcharts);
-}
-
-const BubbleChart = () => {
-  return <HighchartsReact highcharts={Highcharts} options={options} />;
-};
-
-export default BubbleChart;
-
-const options = {
+export const bubbleChartOptions = {
   chart: {
     type: "packedbubble",
     height: "100%",

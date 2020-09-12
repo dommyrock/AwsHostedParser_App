@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import useSWR from "swr";
 import { GET_SALARIES } from "../pages/api/graphql/queries";
 import { gqlFetcher } from "./api/graphql/prismaClient";
-import TestGraph from "../components/graphs/TestGraph";
-import BubbleChart from "../components/graphs/BubbleChart";
-import ThreeDPieChart from "../components/graphs/ThreeDPieChart";
+import { testOptions } from "../components/graphs/TestGraph";
+import { bubbleChartOptions } from "../components/graphs/BubbleChart";
+import { threeDPieChartOptions } from "../components/graphs/ThreeDPieChart";
+import { stackedChartOptions } from "../components/graphs/StackedChart";
+import Chart from "../components/graphs/Chart";
 
 const keyVariable = {
   Company: "SalaryData",
@@ -32,39 +34,15 @@ export default function analytics({ salariesData }) {
           return <li>{item.Company}</li>;
         })}
       </div>
-      <TestGraph />
-      <ThreeDPieChart />
-      <BubbleChart />
-      Graphs go here<a href="https://www.highcharts.com/demo/3d-column-interactive">charts</a>
+      <Chart options={testOptions} key="test" />
+      <Chart options={threeDPieChartOptions} />
+      <Chart options={bubbleChartOptions} />
+      <Chart options={stackedChartOptions} />
     </div>
   );
-  //TODO: start with average salaries from top 5
-  //https://www.levels.fyi/?compare=Netflix,Amazon,Google,Facebook,Microsoft&track=Software%20Engineer
 }
 
 export async function getStaticProps(context) {
   const salariesData = await gqlFetcher(GET_SALARIES, keyVariable);
   return { props: { salariesData } };
 }
-
-/**
- * Example
-myObj = {
-  "name":"John",
-  "age":30,
-  "cars": [
-    { "name":"Ford", "models":[ "Fiesta", "Focus", "Mustang" ] },
-    { "name":"BMW", "models":[ "320", "X3", "X5" ] },
-    { "name":"Fiat", "models":[ "500", "Panda" ] }
-  ]
- }
-To access arrays inside arrays, use a for-in loop for each array:
-
-Example
-for (i in myObj.cars) {
-  x += "<h1>" + myObj.cars[i].name + "</h1>";
-  for (j in myObj.cars[i].models) {
-    x += myObj.cars[i].models[j];
-  }
-}
- */

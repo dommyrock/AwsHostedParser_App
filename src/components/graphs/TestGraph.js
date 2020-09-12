@@ -1,19 +1,10 @@
-import React from "react";
-import Highcharts from "highcharts";
-import HighchartsExporting from "highcharts/modules/exporting";
-import HighchartsReact from "highcharts-react-official";
-
-if (typeof Highcharts === "object") {
-  HighchartsExporting(Highcharts);
-}
-
-const options = {
+export const testOptions = {
   chart: {
     type: "bar",
     backgroundColor: "none",
   },
   title: {
-    text: "Fruit Consumption",
+    text: "Test chart",
   },
   xAxis: {
     categories: ["Apples", "Bananas", "Oranges"],
@@ -27,17 +18,17 @@ const options = {
       name: "John",
       data: [5, 7, 3],
     },
+    {
+      name: "John",
+      data: [22, 17, 2],
+    },
+    {
+      name: "John",
+      data: [15, 11, 13],
+    },
   ],
 };
-const TestGraph = () => {
-  return (
-    <div>
-      <HighchartsReact highcharts={Highcharts} options={options} />
-    </div>
-  );
-};
 
-export default TestGraph;
 // in react
 /**
  * Options DOCS

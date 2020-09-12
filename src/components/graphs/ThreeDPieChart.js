@@ -1,17 +1,4 @@
-import React from "react";
-import Highcharts from "highcharts";
-import HighchartsExporting from "highcharts/modules/exporting";
-import HighchartsReact from "highcharts-react-official";
-import hc_accessibility from "highcharts/modules/accessibility";
-import hc_3d from "highcharts/highcharts-3d";
-
-if (typeof Highcharts === "object") {
-  HighchartsExporting(Highcharts);
-  hc_accessibility(Highcharts);
-  hc_3d(Highcharts);
-}
-
-const options = {
+export const threeDPieChartOptions = {
   chart: {
     type: "pie",
     backgroundColor: "none",
@@ -63,12 +50,3 @@ const options = {
     },
   ],
 };
-const ThreeDPieChart = () => {
-  return (
-    <div>
-      <HighchartsReact highcharts={Highcharts} options={options} />
-    </div>
-  );
-};
-
-export default ThreeDPieChart;
