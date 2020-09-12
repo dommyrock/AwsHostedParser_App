@@ -21,6 +21,7 @@ export const stackedChartOptions = {
   plotOptions: {
     series: {
       stacking: "normal",
+      animation: false,
     },
   },
   series: [

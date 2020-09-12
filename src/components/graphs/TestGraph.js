@@ -14,6 +14,11 @@ export const testOptions = {
   xAxis: {
     categories: ["Apples", "Bananas", "Oranges"],
   },
+  plotOptions: {
+    series: {
+      animation: false,
+    },
+  },
   series: [
     {
       name: "Jane",

@@ -1,6 +1,7 @@
 export const groupedChartOptions = {
   chart: {
     type: "column",
+    backgroundColor: "none",
   },
   boost: {
     enabled: true,
@@ -40,6 +41,9 @@ export const groupedChartOptions = {
   },
 
   plotOptions: {
+    series: {
+      animation: false,
+    },
     column: {
       stacking: "normal",
     },

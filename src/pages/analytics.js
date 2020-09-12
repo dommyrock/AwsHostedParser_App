@@ -6,6 +6,7 @@ import { testOptions } from "../components/graphs/TestGraph";
 import { bubbleChartOptions } from "../components/graphs/BubbleChart";
 import { threeDPieChartOptions } from "../components/graphs/ThreeDPieChart";
 import { stackedChartOptions } from "../components/graphs/StackedChart";
+import { groupedChartOptions } from "../components/graphs/StackedGrouped";
 import Chart from "../components/graphs/Chart";
 
 const keyVariable = {
@@ -36,8 +37,9 @@ export default function analytics({ salariesData }) {
       </div>
       <Chart options={testOptions} key="test" />
       <Chart options={threeDPieChartOptions} />
-      <Chart options={bubbleChartOptions} />
+      {/* <Chart options={bubbleChartOptions} /> Tmporary disabled to test performance*/}
       <Chart options={stackedChartOptions} />
+      <Chart options={groupedChartOptions} />
     </div>
   );
 }

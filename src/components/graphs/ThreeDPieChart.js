@@ -25,6 +25,7 @@ export const threeDPieChartOptions = {
   },
   plotOptions: {
     pie: {
+      animation: false,
       allowPointSelect: true,
       cursor: "pointer",
       depth: 35,
