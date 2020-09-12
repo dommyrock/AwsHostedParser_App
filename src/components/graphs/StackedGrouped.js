@@ -2,7 +2,10 @@ export const groupedChartOptions = {
   chart: {
     type: "column",
   },
-
+  boost: {
+    enabled: true,
+    useGPUTranslations: true,
+  },
   title: {
     text: "Total fruit consumption, grouped by gender",
   },

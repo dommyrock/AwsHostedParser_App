@@ -3,6 +3,10 @@ export const testOptions = {
     type: "bar",
     backgroundColor: "none",
   },
+  boost: {
+    enabled: true,
+    useGPUTranslations: true,
+  },
   title: {
     text: "Test chart",
   },
@@ -19,11 +23,11 @@ export const testOptions = {
       data: [5, 7, 3],
     },
     {
-      name: "John",
+      name: "John2",
       data: [22, 17, 2],
     },
     {
-      name: "John",
+      name: "John3",
       data: [15, 11, 13],
     },
   ],
@@ -41,6 +45,11 @@ export const testOptions = {
  *
  * github
  * https://github.com/highcharts/highcharts-react#highcharts-with-nextjs
+ *
+ *
+ * PERFORMANCE :
+ * https://www.highcharts.com/docs/advanced-chart-features/boost-module
+ * https://www.highcharts.com/blog/news/52-serverside-generated-charts/
  *  */
 
 // <see https://github.com/highcharts/highcharts?ref=stackshare

@@ -8,6 +8,10 @@ export const threeDPieChartOptions = {
       beta: 0,
     },
   },
+  boost: {
+    enabled: true,
+    useGPUTranslations: true,
+  },
   title: {
     text: "Browser market shares at a specific website, 2014",
   },

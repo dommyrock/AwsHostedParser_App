@@ -4,6 +4,10 @@ export const bubbleChartOptions = {
     height: "100%",
     backgroundColor: "none",
   },
+  boost: {
+    enabled: true,
+    useGPUTranslations: true,
+  },
   title: {
     text: "Carbon emissions around the world (2014)",
   },
