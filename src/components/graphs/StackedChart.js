@@ -2,11 +2,13 @@ export let stackedChartOptions = {
   chart: {
     type: "bar",
     backgroundColor: "none",
+    // borderRadius: 20,
   },
   credits: {
     enabled: false,
   },
   tooltip: {
+    borderRadius: 10,
     formatter: function () {
       return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
     },
@@ -30,6 +32,7 @@ export let stackedChartOptions = {
     series: {
       stacking: "normal",
       animation: false,
+      borderRadius: 3,
     },
   },
   series: [
@@ -56,6 +59,7 @@ export let stackedChartOptions2 = {
     enabled: false,
   },
   tooltip: {
+    borderRadius: 10,
     formatter: function () {
       return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
     },
@@ -79,6 +83,7 @@ export let stackedChartOptions2 = {
     series: {
       stacking: "normal",
       animation: false,
+      borderRadius: 3,
     },
   },
   series: [
@@ -105,6 +110,7 @@ export let stackedChartOptions3 = {
     enabled: false,
   },
   tooltip: {
+    borderRadius: 10,
     formatter: function () {
       return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
     },
@@ -128,6 +134,7 @@ export let stackedChartOptions3 = {
     series: {
       stacking: "normal",
       animation: false,
+      borderRadius: 3,
     },
   },
   series: [

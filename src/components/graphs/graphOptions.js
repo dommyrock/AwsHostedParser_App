@@ -3,6 +3,7 @@ export let barChartOptions = {
     type: "bar",
     backgroundColor: "none",
     height: "100%",
+    // width: 600,
   },
   boost: {
     enabled: true,
@@ -10,6 +11,7 @@ export let barChartOptions = {
     useGPUTranslations: true,
   },
   tooltip: {
+    borderRadius: 10,
     formatter: function () {
       return (
         this.series.name +
@@ -31,6 +33,7 @@ export let barChartOptions = {
   plotOptions: {
     series: {
       animation: false,
+      borderRadius: 2,
     },
   },
   series: [],

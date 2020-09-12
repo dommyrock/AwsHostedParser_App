@@ -105,6 +105,7 @@ export default function analytics({ salariesData }) {
           backgroundColor: "#9fa3a717",
           borderStyle: "solid",
           borderColor: "#fff",
+          borderRadius: "10px",
         }}
       >
         {state && <Chart options={stackedChartOptions} key="stacked" />}
