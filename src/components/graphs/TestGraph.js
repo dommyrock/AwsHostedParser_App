@@ -5,6 +5,7 @@ export const testOptions = {
   },
   boost: {
     enabled: true,
+    usePreallocated: true,
     useGPUTranslations: true,
   },
   title: {

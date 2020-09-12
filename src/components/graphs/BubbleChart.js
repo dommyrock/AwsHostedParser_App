@@ -6,6 +6,7 @@ export const bubbleChartOptions = {
   },
   boost: {
     enabled: true,
+    usePreallocated: true,
     useGPUTranslations: true,
   },
   title: {

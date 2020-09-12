@@ -4,6 +4,7 @@ export const groupedChartOptions = {
   },
   boost: {
     enabled: true,
+    usePreallocated: true,
     useGPUTranslations: true,
   },
   title: {
