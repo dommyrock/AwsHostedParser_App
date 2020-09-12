@@ -43,6 +43,7 @@ export const bubbleChartOptions = {
   },
   series: [
     {
+      boostThreshold: 1,
       name: "Europe",
       data: [
         {
@@ -193,6 +194,7 @@ export const bubbleChartOptions = {
     },
     {
       name: "Africa",
+      boostThreshold: 1,
       data: [
         {
           name: "Senegal",
@@ -266,6 +268,7 @@ export const bubbleChartOptions = {
     },
     {
       name: "Oceania",
+      boostThreshold: 1,
       data: [
         {
           name: "Australia",
@@ -283,6 +286,7 @@ export const bubbleChartOptions = {
     },
     {
       name: "North America",
+      boostThreshold: 1,
       data: [
         {
           name: "Costa Rica",
@@ -328,6 +332,7 @@ export const bubbleChartOptions = {
     },
     {
       name: "South America",
+      boostThreshold: 1,
       data: [
         {
           name: "El Salvador",
@@ -377,6 +382,7 @@ export const bubbleChartOptions = {
     },
     {
       name: "Asia",
+      boostThreshold: 1,
       data: [
         {
           name: "Nepal",

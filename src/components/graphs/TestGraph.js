@@ -32,6 +32,8 @@ export const testOptions = {
     },
   ],
 };
+//TODO: Ajax call in Next SSR Hook , and pre render on server ,
+//also prepare json data to be exactly whats needed in dynamo (divide each charts data into separate key,value))
 
 // in react
 /**
@@ -48,6 +50,7 @@ export const testOptions = {
  *
  *
  * PERFORMANCE :
+ * https://www.highcharts.com/docs/working-with-data/custom-preprocessing
  * https://www.highcharts.com/docs/advanced-chart-features/boost-module
  * https://www.highcharts.com/blog/news/52-serverside-generated-charts/
  *  */

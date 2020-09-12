@@ -11,10 +11,10 @@ import PropTypes from "prop-types";
 //Needed for next appp module registration
 if (typeof Highcharts === "object") {
   HighchartsExporting(Highcharts);
-  hc_boost(Highcharts);
   hc_accessibility(Highcharts);
   hc_3d(Highcharts);
   hc_more(Highcharts);
+  hc_boost(Highcharts); //should be last module impored(overrides default functionality)
 }
 const Chart = ({ options }) => {
   const [state, setState] = useState(options);
