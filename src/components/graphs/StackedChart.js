@@ -1,18 +1,23 @@
-export const stackedChartOptions = {
+export let stackedChartOptions = {
   chart: {
     type: "bar",
     backgroundColor: "none",
   },
+  tooltip: {
+    formatter: function () {
+      return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
+    },
+  },
   title: {
-    text: "Stacked bar chart",
+    text: "Salary breakdown",
   },
   xAxis: {
-    categories: ["Apples", "Oranges", "Pears", "Grapes", "Bananas"],
+    categories: [],
   },
   yAxis: {
     min: 0,
     title: {
-      text: "Total fruit consumption",
+      text: "",
     },
   },
   legend: {
@@ -26,16 +31,108 @@ export const stackedChartOptions = {
   },
   series: [
     {
-      name: "John",
-      data: [5, 3, 4, 7, 2],
+      name: "Salary",
+      data: [],
     },
     {
-      name: "Jane",
-      data: [2, 2, 3, 2, 1],
+      name: "Stock",
+      data: [],
     },
     {
-      name: "Joe",
-      data: [3, 4, 4, 2, 5],
+      name: "Bonus",
+      data: [],
+    },
+  ],
+};
+export let stackedChartOptions2 = {
+  chart: {
+    type: "bar",
+    backgroundColor: "none",
+  },
+  tooltip: {
+    formatter: function () {
+      return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
+    },
+  },
+  title: {
+    text: "Salary breakdown",
+  },
+  xAxis: {
+    categories: [],
+  },
+  yAxis: {
+    min: 0,
+    title: {
+      text: "",
+    },
+  },
+  legend: {
+    reversed: true,
+  },
+  plotOptions: {
+    series: {
+      stacking: "normal",
+      animation: false,
+    },
+  },
+  series: [
+    {
+      name: "Salary",
+      data: [],
+    },
+    {
+      name: "Stock",
+      data: [],
+    },
+    {
+      name: "Bonus",
+      data: [],
+    },
+  ],
+};
+export let stackedChartOptions3 = {
+  chart: {
+    type: "bar",
+    backgroundColor: "none",
+  },
+  tooltip: {
+    formatter: function () {
+      return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
+    },
+  },
+  title: {
+    text: "Salary breakdown",
+  },
+  xAxis: {
+    categories: [],
+  },
+  yAxis: {
+    min: 0,
+    title: {
+      text: "",
+    },
+  },
+  legend: {
+    reversed: true,
+  },
+  plotOptions: {
+    series: {
+      stacking: "normal",
+      animation: false,
+    },
+  },
+  series: [
+    {
+      name: "Salary",
+      data: [],
+    },
+    {
+      name: "Stock",
+      data: [],
+    },
+    {
+      name: "Bonus",
+      data: [],
     },
   ],
 };

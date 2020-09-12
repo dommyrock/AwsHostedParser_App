@@ -4,9 +4,14 @@ import { GET_SALARIES } from "../pages/api/graphql/queries";
 import { gqlFetcher } from "./api/graphql/prismaClient";
 import { bubbleChartOptions } from "../components/graphs/BubbleChart";
 import { threeDPieChartOptions } from "../components/graphs/ThreeDPieChart";
-import { stackedChartOptions } from "../components/graphs/StackedChart";
+import {
+  stackedChartOptions,
+  stackedChartOptions2,
+  stackedChartOptions3,
+} from "../components/graphs/StackedChart";
 import { groupedChartOptions } from "../components/graphs/StackedGrouped";
 import Chart from "../components/graphs/Chart";
+import { barChartOptions } from "../components/graphs/graphOptions";
 
 const keyVariable = {
   Company: "SalaryData",
@@ -25,43 +30,39 @@ function extractTotalCompensationPerCompany(role) {
     data: roles.map((item) => parseInt(item.TotalCompensation.match(/\d+\.?\d*/)[0])).slice(0, 5),
   };
 }
-let testData = {
-  chart: {
-    type: "bar",
-    backgroundColor: "none",
-    height: "100%",
-  },
-  boost: {
-    enabled: true,
-    usePreallocated: true,
-    useGPUTranslations: true,
-  },
-  tooltip: {
-    formatter: function () {
-      return (
-        this.series.name +
-        "<br>Total compensation <b>" +
-        this.x +
-        "</b> is <b>" +
-        this.y +
-        "K $" +
-        "</b>"
-      );
-    },
-  },
-  title: {
-    text: "Average SWE salaries across top companies",
-  },
-  xAxis: {
-    categories: ["Entry lvl", "Mid lvl", "Senior lvl", "Staff SWE", "Senior Staff SWE"],
-  },
-  plotOptions: {
-    series: {
-      animation: false,
-    },
-  },
-  series: [],
-};
+//0 entry
+//1 mid
+//2 senior
+function extractSalaryBreakdown(role, seniorityIndex) {
+  const entry = role.JobRole["Software Engineer "][seniorityIndex];
+
+  if (entry) {
+    const result = {
+      name: role.Company,
+      salary: parseInt(entry.Salary.match(/\d+\.?\d*/)[0]),
+      stock: parseInt(entry.Stock.match(/\d+\.?\d*/)[0]),
+      bonus: parseInt(entry.Bonus.match(/\d+\.?\d*/)[0]),
+    };
+    return result;
+  }
+  return;
+}
+function hasRoleData(role, seniorityIndex) {
+  const entry = role.JobRole["Software Engineer "][seniorityIndex];
+  if (entry) return true;
+  return false;
+}
+function mapChartData(data, target, level) {
+  const companies = data.map((item) => item.name);
+  const salary = data.map((item) => item.salary);
+  const stock = data.map((item) => item.stock);
+  const bonus = data.map((item) => item.bonus);
+  target.title.text = `${level} lvl Salary breakdown`;
+  target.xAxis.categories = companies;
+  target.series[0].data = salary;
+  target.series[1].data = stock;
+  target.series[2].data = bonus;
+}
 //Fix rerendering of clild 2x
 export default function analytics({ salariesData }) {
   const { data, error } = useSWR([GET_SALARIES, keyVariable], { initialData: salariesData });
@@ -69,18 +70,37 @@ export default function analytics({ salariesData }) {
   if (error) return <div>Error encountered:{JSON.stringify(error, null, 4)}</div>;
   if (!data) return <div>Loading....</div>;
 
+  //this is temporory display (later will extract all this in appsync resolvers !!!!)
   useEffect(() => {
     salariesData = getArrayFromJson(data.getSalaryData.Data);
     let formated = salariesData.map((item) => extractTotalCompensationPerCompany(item));
-    testData.series = formated;
-    setState(testData);
+    barChartOptions.series = formated;
+    // console.log(formated);
+    setState(barChartOptions);
+    let formatedStacked = salariesData.map((item) => extractSalaryBreakdown(item, 0));
+    mapChartData(formatedStacked, stackedChartOptions, "Entry");
+
+    let formatedStackedMid = salariesData.map((item) => extractSalaryBreakdown(item, 1));
+    mapChartData(formatedStackedMid, stackedChartOptions2, "Mid");
+
+    //needed to filter out twitch wguch had no data
+    let formatedStackedSenior = salariesData
+      .filter((item) => hasRoleData(item, 2))
+      .map((item) => extractSalaryBreakdown(item, 2));
+    debugger;
+
+    mapChartData(formatedStackedSenior, stackedChartOptions3, "Senior");
+
+    debugger;
   }, []);
   return (
     <div className="container">
-      {state && <Chart options={testData} key="test" />}
+      {state && <Chart options={barChartOptions} key="test" />}
+      {state && <Chart options={stackedChartOptions} key="stacked" />}
+      {state && <Chart options={stackedChartOptions2} key="stackedMid" />}
+      {state && <Chart options={stackedChartOptions3} key="stackedSenior" />}
       <Chart options={threeDPieChartOptions} key="3d" />
-      <Chart options={stackedChartOptions} key="stacked" />
-      <Chart options={groupedChartOptions} key="grouped" />
+      {/* <Chart options={groupedChartOptions} key="grouped" /> */}
       {/* <Chart options={bubbleChartOptions} /> Tmporary disabled to test performance*/}
     </div>
   );
@@ -91,6 +111,7 @@ export async function getStaticProps(context) {
   return { props: { salariesData } };
 }
 //TODO: Ajax call in Next SSR Hook , and pre render on server ,
+//2 Could filter data per value of first salary in Each object in array
 //also prepare json data to be exactly whats needed in dynamo (divide each charts data into separate key,value))
 
 // in react
