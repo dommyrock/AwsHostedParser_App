@@ -9,8 +9,9 @@ export let stackedChartOptions = {
   },
   tooltip: {
     borderRadius: 10,
+    useHTML: true,
     formatter: function () {
-      return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
+      return `${this.x} <br><table><tr><td><b> ${this.series.name} </b></td><td>  <b><p style='text-align: right;color:#42C619;'>$ ${this.y}K</p> </b></td><tr/></table>`;
     },
   },
   title: {
@@ -60,8 +61,9 @@ export let stackedChartOptions2 = {
   },
   tooltip: {
     borderRadius: 10,
+    useHTML: true,
     formatter: function () {
-      return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
+      return `${this.x} <br><table><tr><td><b> ${this.series.name} </b></td><td>  <b><p style='text-align: right;color:#42C619;'>$ ${this.y}K</p> </b></td><tr/></table>`;
     },
   },
   title: {
@@ -111,8 +113,9 @@ export let stackedChartOptions3 = {
   },
   tooltip: {
     borderRadius: 10,
+    useHTML: true,
     formatter: function () {
-      return this.x + "<br>" + this.series.name + "</b>  <b>" + this.y + "K $" + "</b>";
+      return `${this.x} <br><table><tr><td><b> ${this.series.name} </b></td><td>  <b><p style='text-align: right;color:#42C619;'>$ ${this.y}K</p> </b></td><tr/></table>`;
     },
   },
   title: {

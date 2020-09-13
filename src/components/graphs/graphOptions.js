@@ -12,16 +12,9 @@ export let barChartOptions = {
   },
   tooltip: {
     borderRadius: 10,
+    useHTML: true,
     formatter: function () {
-      return (
-        this.series.name +
-        "<br>Total compensation <b>" +
-        this.x +
-        "</b> is <b>" +
-        this.y +
-        "K $" +
-        "</b>"
-      );
+      return `${this.series.name}<br>Total compensation <b> ${this.x}</b><p style='color:#42C619;'>$ ${this.y}K</p>`;
     },
   },
   title: {
@@ -38,3 +31,6 @@ export let barChartOptions = {
   },
   series: [],
 };
+
+//Tooltip customization
+// https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/tooltip/footerformat/
