@@ -97,24 +97,28 @@ export default function analytics({ salariesData }) {
     <div className="container">
       {state && <Chart options={barChartOptions} key="test" />}
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          marginTop: "50px",
-          backgroundColor: "#9fa3a717",
-          borderStyle: "solid",
-          borderColor: "#fff",
-          borderRadius: "10px",
-        }}
-      >
-        {state && <Chart options={stackedChartOptions} key="stacked" />}
-        {state && <Chart options={stackedChartOptions2} key="stackedMid" />}
-        {state && <Chart options={stackedChartOptions3} key="stackedSenior" />}
+      <div className="breakdown-container">
+        <div>{state && <Chart options={stackedChartOptions} key="stacked" />}</div>
+        <div>{state && <Chart options={stackedChartOptions2} key="stackedMid" />}</div>
+        <div>{state && <Chart options={stackedChartOptions3} key="stackedSenior" />}</div>
       </div>
       <Chart options={threeDPieChartOptions} key="3d" />
       {/* <Chart options={groupedChartOptions} key="grouped" /> */}
       {/* <Chart options={bubbleChartOptions} /> Tmporary disabled to test performance*/}
+      <style jsx>{`
+        .breakdown-container {
+          display: flex;
+          flex-direction: row;
+          background-color: #9fa3a717;
+          margin-top: 50px;
+          margin-bottom: 50px;
+        }
+        .breakdown-container > div {
+          border-style: solid;
+          border-color: #fff;
+          border-radius: 10px;
+        }
+      `}</style>
     </div>
   );
 }
