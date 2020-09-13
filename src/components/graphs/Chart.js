@@ -6,6 +6,7 @@ import hc_accessibility from "highcharts/modules/accessibility";
 import hc_3d from "highcharts/highcharts-3d";
 import hc_more from "highcharts/highcharts-more";
 import hc_boost from "highcharts/modules/boost";
+import HighchartOptions from "./highchartsGlobal.options";
 import PropTypes from "prop-types";
 
 //Needed for next appp module registration
@@ -15,7 +16,9 @@ if (typeof Highcharts === "object") {
   hc_3d(Highcharts);
   hc_more(Highcharts);
   hc_boost(Highcharts); //should be last module impored(overrides default functionality)
+  HighchartOptions(Highcharts);
 }
+
 const Chart = ({ options }) => {
   const [state, setState] = useState(options);
   return <HighchartsReact options={state} highcharts={Highcharts} />;

@@ -147,6 +147,9 @@ export async function getStaticProps(context) {
  * https://www.highcharts.com/blog/news/52-serverside-generated-charts/
  *  */
 
+//Theme Examples
+//https://echarts.apache.org/en/theme-builder.html
+
 // <see https://github.com/highcharts/highcharts?ref=stackshare
 //https://www.highcharts.com/docs/getting-started/install-from-npm
 

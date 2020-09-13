@@ -40,14 +40,17 @@ export let stackedChartOptions = {
     {
       name: "Salary",
       data: [],
+      color: "#3fb1e3",
     },
     {
       name: "Stock",
       data: [],
+      color: "#87f7cf",
     },
     {
       name: "Bonus",
       data: [],
+      color: "#fc97af",
     },
   ],
 };
@@ -92,14 +95,17 @@ export let stackedChartOptions2 = {
     {
       name: "Salary",
       data: [],
+      color: "#3fb1e3",
     },
     {
       name: "Stock",
       data: [],
+      color: "#87f7cf",
     },
     {
       name: "Bonus",
       data: [],
+      color: "#fc97af",
     },
   ],
 };
@@ -144,14 +150,17 @@ export let stackedChartOptions3 = {
     {
       name: "Salary",
       data: [],
+      color: "#3fb1e3",
     },
     {
       name: "Stock",
       data: [],
+      color: "#87f7cf",
     },
     {
       name: "Bonus",
       data: [],
+      color: "#fc97af",
     },
   ],
 };
