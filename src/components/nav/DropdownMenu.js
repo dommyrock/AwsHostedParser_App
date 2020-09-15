@@ -4,11 +4,6 @@ import { CSSTransition } from "react-transition-group";
 const DropdownMenu = () => {
   const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(null);
-  //   const dropdownRef = useRef(null);
-  //ref={dropdownRef} is broken , watch video to fix
-  //   useEffect(() => {
-  //     setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
-  //   }, []);
 
   //removed --ref={dropdownRef}
   function calcHeight(el) {
@@ -19,7 +14,11 @@ const DropdownMenu = () => {
 
   function DropdownItem(props) {
     return (
-      <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+      <a
+        href="#"
+        className="menu-item"
+        onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}
+      >
         <span className="icon-button">{props.leftIcon}</span>
         {props.children}
         <span className="icon-right">{props.rightIcon}</span>
