@@ -1,6 +1,5 @@
 import React from "react";
 import useSWR from "swr";
-import Head from "next/head";
 import { gqlFetcher } from "./api/graphql/prismaClient";
 import { GET_BOOKS } from "../pages/api/graphql/queries";
 import JobExtrasCard from "../components/card/JobExtrasCard";
@@ -8,6 +7,7 @@ import JobCard from "../components/card/JobCard";
 import JobHighlightCard from "../components/card/JobHighlightCard";
 import SlidingSnackbar from "../components/shared/SlidingSnackbar";
 import SocialsContainer from "../components/shared/SocialsContainer";
+import DotsLoader from "../components/shared/DotsLoader";
 /*Note
   For pagination take 1kb (min item size in Dynamo)[you can expect to get around 1024 records before your results will be paginated
      (meaning you will get a nextToken in the response from DynamoDB)]
@@ -35,37 +35,19 @@ export default function Home({ jobsData }) {
     //NOTE: not sure if suspennse is correct here
     // <Suspense fallback={<div>loading...</div>}> removed because it was causing ssr errros , TODO:replace with normal loaders
     <div>
-      <Head>
-        <title>Vercel frontend-parser</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-          crossOrigin="anonymous"
-        ></link>
-        <link
-          href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,900"
-          rel="stylesheet"
-        ></link>
-      </Head>
-      <main>
-        <div className="container">
-          <div id="container-top">
-            <JobHighlightCard />
-            <JobExtrasCard />
-          </div>
-          <div className="container-items">
-            {data.listBookStores.items.map((item, index) => {
-              return <JobCard data={item} key={item.Id} />;
-            })}
-          </div>
+      <div className="container">
+        {/* <DotsLoader /> loading "spinner" used here for testing  */}
+        <div id="container-top">
+          <JobHighlightCard />
+          <JobExtrasCard />
         </div>
-        <SlidingSnackbar />
-      </main>
-      <footer>
-        <SocialsContainer />
-      </footer>
+        <div className="container-items">
+          {data.listBookStores.items.map((item, index) => {
+            return <JobCard data={item} key={item.Id} />;
+          })}
+        </div>
+      </div>
+      <SlidingSnackbar />
     </div>
   );
 }

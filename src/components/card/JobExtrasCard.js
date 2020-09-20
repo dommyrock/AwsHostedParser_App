@@ -7,8 +7,6 @@ import ListIcon from "./icons/ListIcon";
 import GraphIcon from "./icons/GraphIcon";
 import GridIcon from "./icons/GridIcon";
 
-//TODO: after all basic layout is done and we show/filter real data do this ....because this is not priority
-
 const JobExtrasCard = () => {
   return (
     <div className={extras_div} style={{ fontWeight: "700px" }}>

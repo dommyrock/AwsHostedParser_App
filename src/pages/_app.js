@@ -2,8 +2,10 @@
 import { SWRConfig } from "swr";
 import { gqlFetcher } from "./api/graphql/prismaClient";
 import NavMain from "../components/nav/NavMain";
+import Head from "next/head";
 import "../css/index.css";
 import "../css/snackbar.css";
+import SocialsContainer from "../components/shared/SocialsContainer";
 
 //NOTE: ON DEV WE STILL REFETCH DATA ON NAVIGATION(BECAUSE ITS NOT CACHED BY CDN), THIS IS WORKING IN PRODUCTION!!!
 //AND ALSO WORKS ON BUILD + "nom run start"
@@ -11,10 +13,29 @@ import "../css/snackbar.css";
 function App({ Component, pageProps }) {
   return (
     <>
-      <SWRConfig value={{ fetcher: gqlFetcher, revalidateOnFocus: false }}>
-        <NavMain />
-        <Component {...pageProps} />
-      </SWRConfig>
+      <Head>
+        <title>Vercel frontend-parser</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossOrigin="anonymous"
+        ></link>
+        <link
+          href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700,900"
+          rel="stylesheet"
+        ></link>
+      </Head>
+      <main>
+        <SWRConfig value={{ fetcher: gqlFetcher, revalidateOnFocus: false }}>
+          <NavMain />
+          <Component {...pageProps} />
+        </SWRConfig>
+      </main>
+      <footer>
+        <SocialsContainer />
+      </footer>
     </>
   );
 }

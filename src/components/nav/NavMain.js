@@ -6,8 +6,6 @@ import SearchIcon from "../search/SearchIcon";
 import Link from "next/link";
 //Bootstrap icons: https://icons.getbootstrap.com/
 //Ionic icons: https://ionicons.com/
-//TODO: install npm csstransition
-// from https://www.youtube.com/watch?v=IF6k0uZuypA&list=WL&index=71&t=0s
 const NavMain = () => {
   return (
     <Navbar>

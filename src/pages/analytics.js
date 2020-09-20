@@ -12,6 +12,8 @@ import {
 import { groupedChartOptions } from "../components/graphs/StackedGrouped";
 import Chart from "../components/graphs/Chart";
 import { barChartOptions } from "../components/graphs/graphOptions";
+import styles from "../css/analytics.module.css";
+import StackshareContainer from "../components/shared/stackShareContainer/StackshareContainer";
 
 const keyVariable = {
   Company: "SalaryData",
@@ -95,9 +97,12 @@ export default function analytics({ salariesData }) {
   }, []);
   return (
     <div className="container">
-      {state && <Chart options={barChartOptions} key="test" />}
+      <div className={styles.inner_container}>
+        {state && <Chart options={barChartOptions} key="test" />}
+        <StackshareContainer />
+      </div>
 
-      <div className="breakdown-container">
+      <div className={styles.breakdown_container}>
         <div>{state && <Chart options={stackedChartOptions} key="stacked" />}</div>
         <div>{state && <Chart options={stackedChartOptions2} key="stackedMid" />}</div>
         <div>{state && <Chart options={stackedChartOptions3} key="stackedSenior" />}</div>
@@ -105,20 +110,6 @@ export default function analytics({ salariesData }) {
       <Chart options={threeDPieChartOptions} key="3d" />
       {/* <Chart options={groupedChartOptions} key="grouped" /> */}
       {/* <Chart options={bubbleChartOptions} /> Tmporary disabled to test performance*/}
-      <style jsx>{`
-        .breakdown-container {
-          display: flex;
-          flex-direction: row;
-          background-color: #9fa3a717;
-          margin-top: 50px;
-          margin-bottom: 50px;
-        }
-        .breakdown-container > div {
-          border-style: solid;
-          border-color: #fff;
-          border-radius: 10px;
-        }
-      `}</style>
     </div>
   );
 }

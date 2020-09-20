@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
+import Link from "next/link";
 
 const DropdownMenu = () => {
   const [activeMenu, setActiveMenu] = useState("main");
@@ -14,15 +15,17 @@ const DropdownMenu = () => {
 
   function DropdownItem(props) {
     return (
-      <a
-        href="#"
-        className="menu-item"
-        onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}
-      >
-        <span className="icon-button">{props.leftIcon}</span>
-        {props.children}
-        <span className="icon-right">{props.rightIcon}</span>
-      </a>
+      <Link href={props.href ? props.href : "#"}>
+        <a
+          href={props.href}
+          className="menu-item"
+          onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}
+        >
+          <span className="icon-button">{props.leftIcon}</span>
+          {props.children}
+          <span className="icon-right">{props.rightIcon}</span>
+        </a>
+      </Link>
     );
   }
 
@@ -36,7 +39,26 @@ const DropdownMenu = () => {
         onEnter={calcHeight}
       >
         <div className="menu">
-          <DropdownItem>Work in progress</DropdownItem>
+          <DropdownItem
+            leftIcon={
+              <svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                className="bi bi-graph-up"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z"
+                />
+              </svg>
+            }
+            href="/analytics"
+          >
+            Analytics
+          </DropdownItem>
           <DropdownItem
             leftIcon={
               <svg

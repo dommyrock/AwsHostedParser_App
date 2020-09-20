@@ -1,0 +1,114 @@
+.breakdown_container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.breakdown_container > div {
+  border-style: solid;
+  border-color: #fff;
+  border-radius: 20px;
+  background-color: #9fa3a717;
+}
+.inner_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.inner_container a,
+.inner_container a:active,
+.inner_container a:hover,
+.inner_container a:visited {
+  text-decoration: none;
+}
+
+/* STACKSHARE CONTAINER CSS */
+
+.stackshare_header {
+  color: #929090;
+  border-bottom: solid;
+  border-radius: 20px;
+  border-color: #fff;
+  text-align: center;
+}
+
+.stackshare_tile_container {
+  --md-icon-size: 48px;
+  --icon-background-color: rgb(var(--GG100-rgb));
+  --md-icon-margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 400px;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-style: solid;
+  border-color: #fff;
+  background-color: #9fa3a717;
+  border-radius: 20px;
+}
+/* .stackshare_tile_container {
+  --md-icon-size: 48px;
+  --icon-background-color: rgb(var(--GG100-rgb));
+  --md-icon-margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 400px;
+  flex-wrap: wrap;
+} */
+
+/* div > a > div > img      example how google does it ...mine is blurry for now*/
+.stackshare_tile_container div {
+  border-radius: 20px;
+  box-shadow: 7px 7px 14px #b8c2ca, -7px -7px 14px #f8ffff;
+  background-color: #d8e4ee;
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 0 4px 0 4px;
+  margin-right: 5px;
+}
+.stackshare_tile_container div a {
+  display: block;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: rgb(var(--tile-title-color));
+  cursor: pointer;
+  height: var(--md-tile-size);
+  margin-bottom: var(--md-tile-margin);
+  opacity: 1;
+  padding-top: var(--md-tile-padding-top);
+  position: relative;
+  transition-property: background, background-color, border-color, box-shadow, opacity, filter;
+  width: var(--md-tile-size);
+}
+.stackshare_tile_container div img {
+  align-items: center;
+  background-color: var(--icon-background-color);
+  border-radius: 50%;
+  display: flex;
+  height: var(--md-icon-size);
+  justify-content: center;
+  margin-bottom: var(--md-icon-margin-bottom);
+  width: var(--md-icon-size);
+}
+.stackshare_tile_container div a div {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+.stackshare_tile_container div a div:hover {
+  background: #b4ccdf;
+  box-shadow: inset 7px 7px 14px #99adbe, inset -7px -7px 14px #cfebff;
+}
+/* STACKSHARE CONTAINER CSS  ENDS*/
+@media (max-width: 880px) {
+  .inner_container,
+  .breakdown_container {
+    display: block;
+  }
+}

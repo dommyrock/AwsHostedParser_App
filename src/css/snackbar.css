@@ -1,32 +1,91 @@
 #snackbar {
-    visibility: hidden;
-    min-width: 50%;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 20px;
-    padding: 16px;
-    position: fixed;
-    z-index: 10;
-    bottom: 30px;
-    font-size: 17px;
+  visibility: hidden;
+  min-width: 50%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 20px;
+  padding: 16px;
+  position: fixed;
+  z-index: 10;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  animation: slidein 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    opacity: 0;
   }
-  
-  #snackbar.show {
-    visibility: visible;
-    animation: slidein 5s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+
+  to {
+    margin-left: 25%;
+    opacity: 1;
   }
-  
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-      opacity: 0;
-    }
-  
-    to {
-      margin-left: 25%;
-      opacity: 1;
-    }
+}
+
+/*loader css*/
+
+div.loader-container {
+  --yellow: #feb60a;
+  --red: #ff0062;
+  --blue: #00dbf9;
+  --violet: #da00f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.loader-container > div {
+  width: 1vw;
+  height: 1vw;
+  border-radius: 100%;
+  margin: 1vw;
+  background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  animation: bounce 1.5s 0.5s linear infinite;
+}
+
+.yellow-dot {
+  background-color: var(--yellow);
+  animation-delay: 0.1s !important;
+}
+
+.red-dot {
+  background-color: var(--red);
+  animation-delay: 0.3s !important;
+}
+
+.blue-dot {
+  background-color: var(--blue);
+  animation-delay: 0.5s !important;
+}
+
+.violet-dot {
+  background-color: var(--violet);
+  animation-delay: 0.7s !important;
+}
+
+@keyframes bounce {
+  0%,
+  50%,
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
   }
+  25% {
+    transform: scale(0.6);
+    filter: blur(3px);
+  }
+  75% {
+    filter: blur(1px);
+    transform: scale(1.4);
+  }
+}
+/* Loader css ends */
