@@ -1,0 +1,98 @@
+/* SEARCH SITE SECTION CSS */
+
+.searchBox {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background: #fff;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  z-index: 2;
+}
+
+.searchBox:hover > .searchInput {
+  width: 190px;
+  padding: 0 6px;
+  color: #2f3640;
+}
+
+.searchBox:hover > .searchButton {
+  background: white;
+  color: #2f3640;
+  transform: translateY(-10px);
+}
+
+.searchButton {
+  color: white;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #759cd3;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  transition: 0.6s;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 20px;
+  width: 0px;
+}
+
+@media screen and (max-width: 620px) {
+  .searchBox:hover > .searchInput {
+    width: 150px;
+    padding: 0 6px;
+  }
+}
+
+/* SEARCH SITE SECTION CSS  ENDS*/
+
+/* CHIP CSS */
+.inline_flex {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  display: inline-flex;
+  align-items: center;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 9999px;
+  --border-opacity: 1;
+  border-color: rgba(210, 211, 215, var(--border-opacity));
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.p_px {
+  padding: 1px;
+  font-size: 0.875rem;
+}
+
+/* img css */
+.img_css_class {
+  width: 1.5rem;
+  height: 1.5rem;
+  -o-object-fit: cover;
+  object-fit: cover;
+  border-radius: 9999px;
+}
+
+/* CHIP CSS Ends*/

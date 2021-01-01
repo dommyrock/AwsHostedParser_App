@@ -30,7 +30,9 @@ function App({ Component, pageProps }) {
       <main>
         <SWRConfig value={{ fetcher: gqlFetcher, revalidateOnFocus: false }}>
           <NavMain />
-          <Component {...pageProps} />
+          <div className="container">
+            <Component {...pageProps} />
+          </div>
         </SWRConfig>
       </main>
       <footer>

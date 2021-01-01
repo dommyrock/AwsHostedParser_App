@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../../css/analytics.module.css";
 import StackShareCard from "./StackshareCard";
 
+//TODO: removed tesDB dynamo that had data for "batch job " cards inn homepage so replace it in api to look somwhere different for data
 const StackshareContainer = () => {
   return (
     <div>
