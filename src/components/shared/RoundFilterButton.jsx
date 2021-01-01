@@ -13,12 +13,15 @@ import { useEffect, useState } from "react";
   5 for mobile view display only icon or text if there  is no icon to save space
 */
 
-export default function RoundFilterButton({ id, src, label }) {
+export default function RoundFilterButton({ id, src, label, showSVG }) {
   const [bg_color, setBg_color] = useState("");
   const handleBg_color = () => {
     if (!bg_color) setBg_color("#77747459");
     else setBg_color("");
   };
+
+  //TODO
+  // Store will have globaly accessible flags , "toggle company searchbox",'toggle keyword searchbox' ,  only if chip id==="more options" flip those flags to true onClick
   return (
     <div
       id={id}
@@ -29,6 +32,18 @@ export default function RoundFilterButton({ id, src, label }) {
       {/* <input type="checkbox" className="ch" autocomplete="off" /> */}
       {src && <img className={img_css_class} src={src} />}
       <span className={p_px}>{label}</span>
+      {showSVG && (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          width={16}
+          height={16}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg>
+      )}
     </div>
   );
 }
@@ -37,4 +52,5 @@ RoundFilterButton.propTypes = {
   src: PropTypes.string,
   id: PropTypes.number.isRequired,
   label: PropTypes.string.isRequired,
+  showSVG: PropTypes.bool,
 };
