@@ -4,7 +4,8 @@ const removeBtnSelection = {
   outline: "none",
   border: 0,
 };
-
+//this component has to have accees to toggled keywords and , companies (which id does in zustand store)
+//TODO than i need to search only through un toggled keywords and companies
 export default function Search_Input() {
   return (
     <div className={searchBox}>

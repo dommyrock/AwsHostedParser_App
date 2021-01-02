@@ -29,6 +29,8 @@ export default function RoundFilterButton({ id, src, label, showSVG, type }) {
     removeKeyword,
     addCompany,
     removeCompany,
+    keywords,
+    companies,
   } = useStore();
 
   const handleChipColor = () => {
@@ -77,8 +79,21 @@ export default function RoundFilterButton({ id, src, label, showSVG, type }) {
       {isComponentVisible && (
         <div ref={ref} style={containerStyle}>
           <Search_Input />
-          <div style={columnStyle}>Test 1111111111111</div>
-          <div style={columnStyle}>Test 2</div>
+
+          <div style={columnStyle}>
+            <ul>
+              {type === "keyword"
+                ? keywords.slice(0, 5).map((kw) => <li key={kw}>{kw}</li>)
+                : companies.slice(0, 5).map((company) => <li key={company}>{company}</li>)}
+            </ul>
+          </div>
+          <div style={columnStyle}>
+            <ul>
+              {type === "keyword"
+                ? keywords.slice(5).map((kw) => <li key={kw}>{kw}</li>)
+                : companies.slice(5).map((company) => <li key={company}>{company}</li>)}
+            </ul>
+          </div>
         </div>
       )}
     </>
@@ -95,6 +110,7 @@ RoundFilterButton.propTypes = {
 const containerStyle = {
   display: "flex",
   flexDirrection: "row",
+  justifyContent: "space-evenly",
   textAlign: "left",
   position: "absolute",
   boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
@@ -110,5 +126,6 @@ const columnStyle = {
   marginTop: "55px",
   display: "flex",
   flexDirection: "columns",
+  justifyItems: "center",
   padding: "0.5rem",
 };
