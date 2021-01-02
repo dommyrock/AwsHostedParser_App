@@ -1,5 +1,10 @@
-import { inline_flex, p_px, img_css_class } from "../../css/searchSection.module.css";
-import PropTypes, { func } from "prop-types";
+import {
+  inline_flex,
+  p_px,
+  img_css_class,
+  search_container,
+} from "../../css/searchSection.module.css";
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useStore } from "../../store";
 import Search_Input from "../shared/Search_Input";
@@ -9,32 +14,38 @@ import useComponentVisible from "../helpers/hooks/useComponentVisible";
 
 // IDEA (example https://www.levels.fyi/?compare=Apple,Amazon,Facebook,Google,Microsoft&track=Software%20Engineer)
 /*
-  1 might make grid display (with max 5 chips selected to show job cards in columns next to each other)
+  1 might make grid display (with max 5 chips/companies pre-selected to show job cards in columns next to each other)
   2 have filters for roles , reuse same chips component
   3 prefetch list of companies from dyamoDB, load it in more chip
-  4 add container for more chip 
-  5 for mobile view display only icon or text if there  is no icon to save space
+  4 for mobile view display only icon or text if there  is no icon to save space
 */
 
-export default function RoundFilterButton({ id, src, label, showSVG }) {
+export default function RoundFilterButton({ id, src, label, showSVG, type }) {
   const [bg_color, setBg_color] = useState("");
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
-  const { toggleCompaniesSearch, addKeyword, removeKeyword } = useStore();
+  const {
+    toggleCompaniesSearch,
+    addKeyword,
+    removeKeyword,
+    addCompany,
+    removeCompany,
+  } = useStore();
 
-  const handleBg_color = () => {
+  const handleChipColor = () => {
     if (!bg_color) setBg_color("#77747459");
     else setBg_color("");
   };
   const handleKewords = () => {
-    removeKeyword(label);
+    if (type === "keyword") removeKeyword(label);
+    else if (type === "company") removeCompany(label);
   };
   useEffect(() => {
     if (label === "More" && bg_color) {
-      debugger;
       setIsComponentVisible(!isComponentVisible);
       toggleCompaniesSearch();
     } else if (!bg_color && label != "More") {
-      addKeyword(label);
+      if (type === "keyword") addKeyword(label);
+      else if (type === "company") addCompany(label);
     }
   }, [bg_color]);
   return (
@@ -43,7 +54,7 @@ export default function RoundFilterButton({ id, src, label, showSVG }) {
         id={id}
         className={inline_flex}
         onClick={() => {
-          handleBg_color();
+          handleChipColor();
           label !== "More" ? handleKewords(label) : undefined;
         }}
         style={{ backgroundColor: bg_color }}
@@ -73,6 +84,14 @@ export default function RoundFilterButton({ id, src, label, showSVG }) {
     </>
   );
 }
+RoundFilterButton.propTypes = {
+  id: PropTypes.number.isRequired,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  src: PropTypes.string,
+  showSVG: PropTypes.bool,
+};
+
 const containerStyle = {
   display: "flex",
   flexDirrection: "row",
@@ -83,9 +102,8 @@ const containerStyle = {
   background: "#fff",
   overflow: "hidden",
   minWidth: "350px",
-  // top: "50%", //move to center of screen while testing
   padding: "3px",
-  transform: "translate(206px, 34px)",
+  transform: "translate(410px, 34px)",
 };
 
 const columnStyle = {
@@ -93,10 +111,4 @@ const columnStyle = {
   display: "flex",
   flexDirection: "columns",
   padding: "0.5rem",
-};
-RoundFilterButton.propTypes = {
-  src: PropTypes.string,
-  id: PropTypes.number.isRequired,
-  label: PropTypes.string.isRequired,
-  showSVG: PropTypes.bool,
 };

@@ -3,7 +3,7 @@ import { devtools } from "zustand/middleware";
 
 export const useStore = create(
   devtools((set, get) => ({
-    //#region keywords
+    //#region data
     keywords: [],
     addKeyword: (kw) => {
       // debugger;
@@ -12,8 +12,17 @@ export const useStore = create(
     removeKeyword: (kw) => {
       const index = get().keywords.indexOf(kw);
       //found keyword
-      debugger;
       if (index > -1) set((state) => ({ keywords: state.keywords.filter((i) => i !== kw) }));
+    },
+    companies: [],
+    addCompany: (company) => {
+      // debugger;
+      set((state) => ({ companies: [...state.companies, company] }));
+    },
+    removeCompany: (company) => {
+      const index = get().companies.indexOf(company);
+      //found keyword
+      if (index > -1) set((state) => ({ companies: state.companies.filter((i) => i !== company) }));
     },
     //#endregion
     //#region Toggles
