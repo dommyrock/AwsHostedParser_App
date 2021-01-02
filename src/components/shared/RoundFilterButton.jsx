@@ -19,21 +19,22 @@ import useComponentVisible from "../helpers/hooks/useComponentVisible";
 export default function RoundFilterButton({ id, src, label, showSVG }) {
   const [bg_color, setBg_color] = useState("");
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
-  const { toggleCompaniesSearch, companies_search } = useStore();
+  const { toggleCompaniesSearch, addKeyword, removeKeyword } = useStore();
 
   const handleBg_color = () => {
     if (!bg_color) setBg_color("#77747459");
     else setBg_color("");
   };
-  function toggleCompanyFilter() {
-    setIsComponentVisible(!isComponentVisible);
-    toggleCompaniesSearch();
-  }
+  const handleKewords = () => {
+    removeKeyword(label);
+  };
   useEffect(() => {
     if (label === "More" && bg_color) {
       debugger;
       setIsComponentVisible(!isComponentVisible);
       toggleCompaniesSearch();
+    } else if (!bg_color && label != "More") {
+      addKeyword(label);
     }
   }, [bg_color]);
   return (
@@ -41,10 +42,12 @@ export default function RoundFilterButton({ id, src, label, showSVG }) {
       <div
         id={id}
         className={inline_flex}
-        onClick={() => handleBg_color()}
+        onClick={() => {
+          handleBg_color();
+          label !== "More" ? handleKewords(label) : undefined;
+        }}
         style={{ backgroundColor: bg_color }}
       >
-        {/* <input type="checkbox" className="ch" autocomplete="off" /> */}
         {src && <img className={img_css_class} src={src} />}
         <span className={p_px}>{label}</span>
         {showSVG && (
