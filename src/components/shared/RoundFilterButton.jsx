@@ -32,7 +32,6 @@ export default function RoundFilterButton({ id, src, label, showSVG, type }) {
     keywords,
     companies,
   } = useStore();
-
   const handleChipColor = () => {
     if (!bg_color) setBg_color("#77747459");
     else setBg_color("");
@@ -45,10 +44,11 @@ export default function RoundFilterButton({ id, src, label, showSVG, type }) {
     if (label === "More" && bg_color) {
       setIsComponentVisible(!isComponentVisible);
       toggleCompaniesSearch();
-    } else if (!bg_color && label != "More") {
-      if (type === "keyword") addKeyword(label);
-      else if (type === "company") addCompany(label);
     }
+    // else if (!bg_color && label != "More") {
+    //   if (type === "keyword") addKeyword(label);
+    //   else if (type === "company") addCompany(label);
+    // }
   }, [bg_color]);
   return (
     <>
@@ -79,19 +79,25 @@ export default function RoundFilterButton({ id, src, label, showSVG, type }) {
       {isComponentVisible && (
         <div ref={ref} style={containerStyle}>
           <Search_Input />
-
+          {/* TODO separate child elements of  <div style={columnStyle}></div> into 2x child components and pass them needed data */}
           <div style={columnStyle}>
             <ul>
               {type === "keyword"
-                ? keywords.slice(0, 5).map((kw) => <li key={kw}>{kw}</li>)
-                : companies.slice(0, 5).map((company) => <li key={company}>{company}</li>)}
+                ? keywords
+                    .slice(0, keywords.length / 2)
+                    .map((kw) => <li key={kw.id}>{kw.label}</li>)
+                : companies
+                    .slice(0, companies.length / 2)
+                    .map((company) => <li key={company.id}>{company.label}</li>)}
             </ul>
           </div>
           <div style={columnStyle}>
             <ul>
               {type === "keyword"
-                ? keywords.slice(5).map((kw) => <li key={kw}>{kw}</li>)
-                : companies.slice(5).map((company) => <li key={company}>{company}</li>)}
+                ? keywords.slice(keywords.length / 2).map((kw) => <li key={kw.id}>{kw.label}</li>)
+                : companies
+                    .slice(companies.length / 2)
+                    .map((company) => <li key={company.id}>{company.label}</li>)}
             </ul>
           </div>
         </div>
