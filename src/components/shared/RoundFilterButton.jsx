@@ -1,9 +1,4 @@
-import {
-  inline_flex,
-  p_px,
-  img_css_class,
-  search_container,
-} from "../../css/searchSection.module.css";
+import { inline_flex, p_px, img_css_class } from "../../css/searchSection.module.css";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useStore } from "../../store";
@@ -15,9 +10,8 @@ import useComponentVisible from "../helpers/hooks/useComponentVisible";
 // IDEA (example https://www.levels.fyi/?compare=Apple,Amazon,Facebook,Google,Microsoft&track=Software%20Engineer)
 /*
   1 might make grid display (with max 5 chips/companies pre-selected to show job cards in columns next to each other)
-  2 have filters for roles , reuse same chips component
-  3 prefetch list of companies from dyamoDB, load it in more chip
-  4 for mobile view display only icon or text if there  is no icon to save space
+  2 prefetch list of companies from dyamoDB, load it in more chip
+  3 for mobile view display only icon or text if there  is no icon to save space
 */
 
 export default function RoundFilterButton({ id, src, label, showSVG, type }) {
@@ -31,14 +25,23 @@ export default function RoundFilterButton({ id, src, label, showSVG, type }) {
     removeCompany,
     keywords,
     companies,
+    addDropdownKeyword,
+    addDropdownCompany,
+    dropdown_keywords,
+    dropdown_companies,
   } = useStore();
   const handleChipColor = () => {
     if (!bg_color) setBg_color("#77747459");
     else setBg_color("");
   };
   const handleKewords = () => {
-    if (type === "keyword") removeKeyword(label);
-    else if (type === "company") removeCompany(label);
+    if (type === "keyword") {
+      addDropdownKeyword(label);
+      removeKeyword(label);
+    } else if (type === "company") {
+      addDropdownCompany(label);
+      removeCompany(label);
+    }
   };
   useEffect(() => {
     if (label === "More" && bg_color) {
@@ -83,20 +86,22 @@ export default function RoundFilterButton({ id, src, label, showSVG, type }) {
           <div style={columnStyle}>
             <ul>
               {type === "keyword"
-                ? keywords
-                    .slice(0, keywords.length / 2)
+                ? dropdown_keywords
+                    .slice(0, dropdown_keywords.length / 2)
                     .map((kw) => <li key={kw.id}>{kw.label}</li>)
-                : companies
-                    .slice(0, companies.length / 2)
+                : dropdown_companies
+                    .slice(0, dropdown_companies.length / 2)
                     .map((company) => <li key={company.id}>{company.label}</li>)}
             </ul>
           </div>
           <div style={columnStyle}>
             <ul>
               {type === "keyword"
-                ? keywords.slice(keywords.length / 2).map((kw) => <li key={kw.id}>{kw.label}</li>)
-                : companies
-                    .slice(companies.length / 2)
+                ? dropdown_keywords
+                    .slice(dropdown_keywords.length / 2)
+                    .map((kw) => <li key={kw.id}>{kw.label}</li>)
+                : dropdown_companies
+                    .slice(dropdown_companies.length / 2)
                     .map((company) => <li key={company.id}>{company.label}</li>)}
             </ul>
           </div>
