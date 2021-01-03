@@ -27,6 +27,19 @@ export const useStore = create(
       //found keyword
       if (index > -1) set((state) => ({ keywords: state.keywords.filter((i) => i.label !== kw) }));
     },
+    dropdown_keywords: [],
+    addDropdownKeyword: (kw) => {
+      // debugger;
+      set((state) => ({ dropdown_keywords: [...state.dropdown_keywords, kw] }));
+    },
+    removeDropdownKeyword: (kw) => {
+      const index = get().dropdown_keywords.findIndex((item) => item.label === kw);
+      //found keyword
+      if (index > -1)
+        set((state) => ({
+          dropdown_keywords: state.dropdown_keywords.filter((i) => i.label !== kw),
+        }));
+    },
     companies: [
       { id: 1, label: "Facebook", src: "https://i.imgur.com/DkJIkWQ.png", type: "company" },
       { id: 2, label: "Google", src: "https://i.imgur.com/8KhVFYA.png", type: "company" },
@@ -34,13 +47,13 @@ export const useStore = create(
       { id: 4, label: "AWS", src: "https://i.imgur.com/SEZpYZP.png", type: "company" },
       { id: 16, label: "More", src: "", showSVG: true, type: "company" },
       { id: 27, label: "Test 1", type: "company" },
-      { id: 228, label: "Test 12", type: "company" },
-      { id: 29, label: "Test 123", type: "company" },
-      { id: 310, label: "Test 24", type: "company" },
-      { id: 47, label: "Test 45", type: "company" },
-      { id: 48, label: "Test 566", type: "company" },
-      { id: 94, label: "Test 121212", type: "company" },
-      { id: 140, label: "Test 14545445455", type: "company" },
+      // { id: 228, label: "Test 12", type: "company" },
+      // { id: 29, label: "Test 123", type: "company" },
+      // { id: 310, label: "Test 24", type: "company" },
+      // { id: 47, label: "Test 45", type: "company" },
+      // { id: 48, label: "Test 566", type: "company" },
+      // { id: 94, label: "Test 121212", type: "company" },
+      // { id: 140, label: "Test 14545445455", type: "company" },
     ],
     addCompany: (company) => {
       // debugger;
@@ -52,6 +65,20 @@ export const useStore = create(
       //found keyword
       if (index > -1)
         set((state) => ({ companies: state.companies.filter((x) => x.label !== company) }));
+    },
+    dropdown_companies: [],
+    addDropdownCompany: (company) => {
+      // debugger;
+      set((state) => ({ dropdown_companies: [...state.dropdown_companies, company] }));
+    },
+    removeDropdownCompany: (company) => {
+      const index = get().dropdown_companies.findIndex((item) => item.label === company);
+      debugger;
+      //found keyword
+      if (index > -1)
+        set((state) => ({
+          dropdown_companies: state.dropdown_companies.filter((x) => x.label !== company),
+        }));
     },
     //#endregion
     //#region Toggles

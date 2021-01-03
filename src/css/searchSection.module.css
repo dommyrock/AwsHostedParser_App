@@ -56,6 +56,8 @@
   flex-wrap: wrap;
   max-width: 428px;
   padding: 3px;
+  /* This fixed chips resizing on grid resize */
+  align-self: flex-start;
 }
 .main_container {
   display: grid;
