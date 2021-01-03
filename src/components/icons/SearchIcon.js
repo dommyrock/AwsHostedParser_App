@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SearchPopup from "./SearchPopup";
+import SearchPopup from "../shared/search/SearchPopup";
 import useComponentVisible from "../helpers/hooks/useComponentVisible";
 
 const SearchIcon = ({ width, height }) => {
@@ -14,7 +14,11 @@ const SearchIcon = ({ width, height }) => {
           <SearchPopup />
         </div>
       )}
-      <button style={override} aria-label="searchBtn" onClick={() => setIsComponentVisible(!isComponentVisible)}>
+      <button
+        style={override}
+        aria-label="searchBtn"
+        onClick={() => setIsComponentVisible(!isComponentVisible)}
+      >
         <svg
           width={width}
           height={height}

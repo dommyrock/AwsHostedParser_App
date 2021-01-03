@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import LocationIcon from "./LocationIcon";
-import RoleIcon from "./RoleIcon";
-import SearchInput from "./SearchInput";
+import LocationIcon from "../../icons/LocationIcon";
+import RoleIcon from "../../icons/RoleIcon";
+import SearchInput from "../../icons/SearchInput";
 
 const iHeight = 20;
 const iWidth = 20;

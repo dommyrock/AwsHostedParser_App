@@ -1,8 +1,5 @@
 import create from "zustand";
 import { devtools } from "zustand/middleware";
-// TODO
-// Problem ringt now is im removing kw,company PermissionRequest, i need to add removed to search container
-// ---> make 'unToggled_keywords' and únToggled_companies' props in state ,and when i remove items from seleceted ones populate this list and read from it in menue , instead of from base array
 export const useStore = create(
   devtools((set, get) => ({
     //#region data
@@ -10,7 +7,6 @@ export const useStore = create(
       { id: 32, label: "SWE", type: "keyword" },
       { id: 44, label: "Software developer", type: "keyword" },
       { id: 55, label: "Backend developer", type: "keyword" },
-      { id: 136, label: "More", showSVG: true, type: "keyword" },
       { id: 66, label: "Frontend developer", type: "keyword" },
       { id: 77, label: "Dev-ops", type: "keyword" },
       { id: 88, label: "Project manager", type: "keyword" },
@@ -44,7 +40,6 @@ export const useStore = create(
       { id: 2, label: "Google", src: "https://i.imgur.com/8KhVFYA.png", type: "company" },
       { id: 3, label: "Microsoft", src: "https://i.imgur.com/tc6VO28.png", type: "company" },
       { id: 4, label: "AWS", src: "https://i.imgur.com/SEZpYZP.png", type: "company" },
-      { id: 16, label: "More", src: "", showSVG: true, type: "company" },
       { id: 27, label: "Test 1", type: "company" },
       { id: 228, label: "Test 12", type: "company" },
       { id: 29, label: "Test 123", type: "company" },
@@ -77,15 +72,16 @@ export const useStore = create(
     },
     //#endregion
     //#region Toggles
-    companies_search: false,
-    keyword_search: false,
+    companies_search_visible: false,
+    keyword_search_visible: false,
     toggleCompaniesSearch: () => {
       // debugger;
-      set((state) => ({ companies_search: !state.companies_search }));
+      set((state) => ({ companies_search_visible: !state.companies_search_visible }));
     },
+    //currently not used (idea was that we have global indicator of which searchbox is being used kw,or companies)
     toggleKeywordSearch: () => {
       // debugger;
-      set((state) => ({ keyword_search: !state.keyword_search }));
+      set((state) => ({ keyword_search_visible: !state.keyword_search_visible }));
     },
     //#endregion
   }))

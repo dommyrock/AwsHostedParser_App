@@ -1,9 +1,7 @@
 import { inline_flex, p_px, img_css_class } from "../../css/searchSection.module.css";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
 import { useStore } from "../../store";
-import Search_Input from "../shared/Search_Input";
-import useComponentVisible from "../helpers/hooks/useComponentVisible";
+import { useState } from "react";
 
 // So called 'chip', this willl be rendered in parent 'ChipSet'Component
 
@@ -14,22 +12,10 @@ import useComponentVisible from "../helpers/hooks/useComponentVisible";
   3 for mobile view display only icon or text if there  is no icon to save space
 */
 
-export default function RoundFilterButton({ id, src, label, showSVG, type }) {
+export default function RoundFilterButton({ id, src, label, type }) {
   const [bg_color, setBg_color] = useState("");
-  const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
-  const {
-    toggleCompaniesSearch,
-    addKeyword,
-    removeKeyword,
-    addCompany,
-    removeCompany,
-    keywords,
-    companies,
-    addDropdownKeyword,
-    addDropdownCompany,
-    dropdown_keywords,
-    dropdown_companies,
-  } = useStore();
+  const { removeKeyword, removeCompany, addDropdownKeyword, addDropdownCompany } = useStore();
+
   const handleChipColor = () => {
     if (!bg_color) setBg_color("#77747459");
     else setBg_color("");
@@ -43,16 +29,7 @@ export default function RoundFilterButton({ id, src, label, showSVG, type }) {
       removeCompany(label);
     }
   };
-  useEffect(() => {
-    if (label === "More" && bg_color) {
-      setIsComponentVisible(!isComponentVisible);
-      toggleCompaniesSearch();
-    }
-    // else if (!bg_color && label != "More") {
-    //   if (type === "keyword") addKeyword(label);
-    //   else if (type === "company") addCompany(label);
-    // }
-  }, [bg_color]);
+
   return (
     <>
       <div
@@ -60,53 +37,13 @@ export default function RoundFilterButton({ id, src, label, showSVG, type }) {
         className={inline_flex}
         onClick={() => {
           handleChipColor();
-          label !== "More" ? handleKewords(label) : undefined;
+          handleKewords(label);
         }}
         style={{ backgroundColor: bg_color }}
       >
-        {src && <img className={img_css_class} src={src} />}
+        {src && <img className={img_css_class} src={src} alt={label} />}
         <span className={p_px}>{label}</span>
-        {showSVG && (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width={16}
-            height={16}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        )}
       </div>
-      {isComponentVisible && (
-        <div ref={ref} style={containerStyle}>
-          <Search_Input />
-          {/* TODO separate child elements of  <div style={columnStyle}></div> into 2x child components and pass them needed data */}
-          <div style={columnStyle}>
-            <ul>
-              {type === "keyword"
-                ? dropdown_keywords
-                    .slice(0, dropdown_keywords.length / 2)
-                    .map((kw) => <li key={kw.id}>{kw.label}</li>)
-                : dropdown_companies
-                    .slice(0, dropdown_companies.length / 2)
-                    .map((company) => <li key={company.id}>{company.label}</li>)}
-            </ul>
-          </div>
-          <div style={columnStyle}>
-            <ul>
-              {type === "keyword"
-                ? dropdown_keywords
-                    .slice(dropdown_keywords.length / 2)
-                    .map((kw) => <li key={kw.id}>{kw.label}</li>)
-                : dropdown_companies
-                    .slice(dropdown_companies.length / 2)
-                    .map((company) => <li key={company.id}>{company.label}</li>)}
-            </ul>
-          </div>
-        </div>
-      )}
     </>
   );
 }
@@ -115,28 +52,4 @@ RoundFilterButton.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   src: PropTypes.string,
-  showSVG: PropTypes.bool,
-};
-
-const containerStyle = {
-  display: "flex",
-  flexDirrection: "row",
-  justifyContent: "space-evenly",
-  textAlign: "left",
-  position: "absolute",
-  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-  borderRadius: "10px",
-  background: "#fff",
-  overflow: "hidden",
-  minWidth: "350px",
-  padding: "3px",
-  transform: "translate(410px, 34px)",
-};
-
-const columnStyle = {
-  marginTop: "55px",
-  display: "flex",
-  flexDirection: "columns",
-  justifyItems: "center",
-  padding: "0.5rem",
 };

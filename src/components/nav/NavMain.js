@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import NavItem from "./NavItem";
 import DropdownMenu from "./DropdownMenu";
-import SearchIcon from "../search/SearchIcon";
+import SearchIcon from "../icons/SearchIcon";
 import Link from "next/link";
 //Bootstrap icons: https://icons.getbootstrap.com/
 //Ionic icons: https://ionicons.com/
