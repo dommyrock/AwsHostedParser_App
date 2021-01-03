@@ -87,7 +87,10 @@
   margin-bottom: 3px;
   margin-right: 2px;
 }
-
+.inline_flex:hover {
+  --border-opacity: 1;
+  border-color: rgba(108, 167, 212, var(--border-opacity));
+}
 .p_px {
   padding: 1px;
   font-size: 0.875rem;

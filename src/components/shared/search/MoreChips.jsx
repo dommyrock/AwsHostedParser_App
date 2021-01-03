@@ -1,19 +1,38 @@
-import { useState } from "react";
 import { useStore } from "../../../store";
 import useComponentVisible from "../../helpers/hooks/useComponentVisible";
 import Search_Input from "../Search_Input";
-import { p_px, inline_flex } from "../../../css/searchSection.module.css";
+import { p_px, inline_flex, img_css_class } from "../../../css/searchSection.module.css";
 
 export default function MoreChips({ id }) {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
+  const {
+    dropdown_companies,
+    dropdown_keywords,
+    removeDropdownCompany,
+    removeDropdownKeyword,
+    addKeyword,
+    addCompany,
+  } = useStore();
   //   const [bg_color, setBg_color] = useState("");
-  const { dropdown_companies, dropdown_keywords } = useStore();
-
-  //   This was buggy so i removed it for now
-  //   const handleChipColor = () => {
+  //   const handleChipColor = () => {----------> NOTE:This was buggy so i removed it for now
   //     if (!bg_color) setBg_color("#77747459");
   //     else setBg_color("");
   //   };
+  const handleClick = (item) => {
+    debugger;
+    switch (item.type) {
+      case "company":
+        addCompany(item);
+        removeDropdownCompany(item.label);
+        break;
+      case "keyword":
+        addKeyword(item);
+        removeDropdownKeyword(item.label);
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <>
@@ -42,16 +61,40 @@ export default function MoreChips({ id }) {
         <div ref={ref} style={containerStyle}>
           <Search_Input />
           <div style={columnStyle}>
-            <ul>
+            <ul style={ulStyle}>
               {dropdown_companies.slice(0, dropdown_companies.length / 2).map((company) => (
-                <li key={company.id}>{company.label}</li>
+                <li key={company.id}>
+                  <div
+                    id={company.id}
+                    className={inline_flex}
+                    style={{ borderRadius: "10px" }}
+                    onClick={() => handleClick(company)}
+                  >
+                    {company.src && (
+                      <img className={img_css_class} src={company.src} alt={company.label} />
+                    )}
+                    <span className={p_px}>{company.label}</span>
+                  </div>
+                </li>
               ))}
             </ul>
           </div>
           <div style={columnStyle}>
-            <ul>
+            <ul style={ulStyle}>
               {dropdown_companies.slice(dropdown_companies.length / 2).map((company) => (
-                <li key={company.id}>{company.label}</li>
+                <li key={company.id}>
+                  <div
+                    id={company.id}
+                    className={inline_flex}
+                    style={{ borderRadius: "10px" }}
+                    onClick={() => handleClick(company)}
+                  >
+                    {company.src && (
+                      <img className={img_css_class} src={company.src} alt={company.label} />
+                    )}
+                    <span className={p_px}>{company.label}</span>
+                  </div>
+                </li>
               ))}
             </ul>
           </div>
@@ -62,16 +105,34 @@ export default function MoreChips({ id }) {
           <div ref={ref} style={containerStyle}>
             <Search_Input />
             <div style={columnStyle}>
-              <ul>
+              <ul style={ulStyle}>
                 {dropdown_keywords.slice(0, dropdown_keywords.length / 2).map((kw) => (
-                  <li key={kw.id}>{kw.label}</li>
+                  <li key={kw.id}>
+                    <div
+                      id={kw.id}
+                      className={inline_flex}
+                      style={{ borderRadius: "10px" }}
+                      onClick={() => handleClick(kw)}
+                    >
+                      <span className={p_px}>{kw.label}</span>
+                    </div>
+                  </li>
                 ))}
               </ul>
             </div>
             <div style={columnStyle}>
-              <ul>
+              <ul style={ulStyle}>
                 {dropdown_keywords.slice(dropdown_keywords.length / 2).map((kw) => (
-                  <li key={kw.id}>{kw.label}</li>
+                  <li key={kw.id}>
+                    <div
+                      id={kw.id}
+                      className={inline_flex}
+                      style={{ borderRadius: "10px" }}
+                      onClick={() => handleClick(kw)}
+                    >
+                      <span className={p_px}>{kw.label}</span>
+                    </div>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -80,6 +141,9 @@ export default function MoreChips({ id }) {
     </>
   );
 }
+const ulStyle = {
+  backgroundColor: "rgba(210, 211, 215,0.1)",
+};
 const containerStyle = {
   display: "flex",
   flexDirrection: "row",
