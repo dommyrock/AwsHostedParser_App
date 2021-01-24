@@ -1,10 +1,19 @@
+import { useEffect } from "react";
 import RoundFilterButton from "../components/shared/RoundFilterButton";
 import MoreChips from "../components/shared/search/MoreChips";
 import { main_container, chip_container } from "../css/searchSection.module.css";
 import { useStore } from "../store";
+import solrAPI from "./api/rest/solr";
 
-export default function SearchComponent() {
+const SearchComponent = () => {
   const { keywords, companies } = useStore();
+
+  useEffect(async () => {
+    const keywords = ["denmark", "testing", "test"];
+    const testDAta = await solrAPI.querySearchData(keywords);
+    debugger;
+  });
+
   return (
     <div className={main_container}>
       <div className={chip_container}>
@@ -21,4 +30,5 @@ export default function SearchComponent() {
       </div>
     </div>
   );
-}
+};
+export default SearchComponent;
