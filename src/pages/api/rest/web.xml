@@ -21,9 +21,7 @@
          version="2.5"
          metadata-complete="true"
 >
-
-  <!-- Any path (name) registered in solrconfig.xml will be sent to that filter -->
-  <filter>
+<filter>
   <!-- NOTE: this is how web.xml should look on server, source :http://marianoguerra.org/posts/enable-cors-in-apache-solr.html -->
   <filter-name>cross-origin</filter-name>
     <filter-name>cross-origin</filter-name>
@@ -49,7 +47,15 @@
       <param-name>chainPreflight</param-name>
       <param-value>false</param-value>
     </init-param> -->
+</filter>
+
+<filter-mapping>
+  <filter-name>cross-origin</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
+  <!-- Any path (name) registered in solrconfig.xml will be sent to that filter -->
     <!-- Original xml  -->
+  <filter>
     <filter-name>SolrRequestFilter</filter-name>
     <filter-class>org.apache.solr.servlet.SolrDispatchFilter</filter-class>
     <!--
