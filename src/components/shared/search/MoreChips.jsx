@@ -7,10 +7,10 @@ export default function MoreChips({ id }) {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const {
     dropdown_companies,
-    dropdown_keywords,
+    dropdown_roles,
     removeDropdownCompany,
-    removeDropdownKeyword,
-    addKeyword,
+    removeDropdownRole,
+    addRole,
     addCompany,
   } = useStore();
   //   const [bg_color, setBg_color] = useState("");
@@ -25,9 +25,9 @@ export default function MoreChips({ id }) {
         addCompany(item);
         removeDropdownCompany(item.label);
         break;
-      case "keyword":
-        addKeyword(item);
-        removeDropdownKeyword(item.label);
+      case "role":
+        addRole(item);
+        removeDropdownRole(item.label);
         break;
       default:
         break;
@@ -101,12 +101,12 @@ export default function MoreChips({ id }) {
         </div>
       )}
       {isComponentVisible &&
-        id === "more-keywords" && ( //NOTE: keywords should have anoter input where user can type "Contains aditional keywords ..... which solar handles"
+        id === "more-roles" && ( //NOTE: keywords should have anoter input where user can type "Contains aditional keywords ..... which solar handles"
           <div ref={ref} style={containerStyle}>
             <Search_Input />
             <div style={columnStyle}>
               <ul style={ulStyle}>
-                {dropdown_keywords.slice(0, dropdown_keywords.length / 2).map((kw) => (
+                {dropdown_roles.slice(0, dropdown_roles.length / 2).map((kw) => (
                   <li key={kw.id}>
                     <div
                       id={kw.id}
@@ -122,7 +122,7 @@ export default function MoreChips({ id }) {
             </div>
             <div style={columnStyle}>
               <ul style={ulStyle}>
-                {dropdown_keywords.slice(dropdown_keywords.length / 2).map((kw) => (
+                {dropdown_roles.slice(dropdown_roles.length / 2).map((kw) => (
                   <li key={kw.id}>
                     <div
                       id={kw.id}

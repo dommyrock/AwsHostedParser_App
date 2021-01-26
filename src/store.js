@@ -3,36 +3,37 @@ import { devtools } from "zustand/middleware";
 export const useStore = create(
   devtools((set, get) => ({
     //#region data
-    keywords: [
-      { id: 32, label: "SWE", type: "keyword" },
-      { id: 44, label: "Software developer", type: "keyword" },
-      { id: 55, label: "Backend developer", type: "keyword" },
-      { id: 66, label: "Frontend developer", type: "keyword" },
-      { id: 77, label: "Dev-ops", type: "keyword" },
-      { id: 88, label: "Project manager", type: "keyword" },
-      { id: 99, label: "Data scientist", type: "keyword" },
-      { id: 122, label: "Engineering lead", type: "keyword" },
-      { id: 123, label: "Tech lead", type: "keyword" },
+    keywords: [],
+    roles: [
+      { id: 32, label: "SWE", type: "role" },
+      { id: 44, label: "Software developer", type: "role" },
+      { id: 55, label: "Backend developer", type: "role" },
+      { id: 66, label: "Frontend developer", type: "role" },
+      { id: 77, label: "Dev-ops", type: "role" },
+      { id: 88, label: "Project manager", type: "role" },
+      { id: 99, label: "Data scientist", type: "role" },
+      { id: 122, label: "Engineering lead", type: "role" },
+      { id: 123, label: "Tech lead", type: "role" },
     ],
-    addKeyword: (kw) => {
-      set((state) => ({ keywords: [...state.keywords, kw] }));
+    addRole: (kw) => {
+      set((state) => ({ roles: [...state.roles, kw] }));
     },
-    removeKeyword: (kw) => {
-      const index = get().keywords.findIndex((item) => item.label === kw);
+    removeRole: (kw) => {
+      const index = get().roles.findIndex((item) => item.label === kw);
       //found keyword
-      if (index > -1) set((state) => ({ keywords: state.keywords.filter((i) => i.label !== kw) }));
+      if (index > -1) set((state) => ({ roles: state.roles.filter((i) => i.label !== kw) }));
     },
-    dropdown_keywords: [],
-    addDropdownKeyword: (kw) => {
-      const foundKeyword = get().keywords.find((x) => x.label === kw);
+    dropdown_roles: [],
+    addDropdownRole: (kw) => {
+      const foundKeyword = get().roles.find((x) => x.label === kw);
       if (foundKeyword)
-        set((state) => ({ dropdown_keywords: [...state.dropdown_keywords, foundKeyword] }));
+        set((state) => ({ dropdown_roles: [...state.dropdown_roles, foundKeyword] }));
     },
-    removeDropdownKeyword: (kw) => {
-      const index = get().dropdown_keywords.findIndex((item) => item.label === kw);
+    removeDropdownRole: (kw) => {
+      const index = get().dropdown_roles.findIndex((item) => item.label === kw);
       if (index > -1)
         set((state) => ({
-          dropdown_keywords: state.dropdown_keywords.filter((i) => i.label !== kw),
+          dropdown_roles: state.dropdown_roles.filter((i) => i.label !== kw),
         }));
     },
     companies: [
@@ -72,17 +73,17 @@ export const useStore = create(
     },
     //#endregion
     //#region Toggles
-    companies_search_visible: false,
-    keyword_search_visible: false,
-    toggleCompaniesSearch: () => {
-      // debugger;
-      set((state) => ({ companies_search_visible: !state.companies_search_visible }));
-    },
+    // companies_search_visible: false,
+    // keyword_search_visible: false,
+    // toggleCompaniesSearch: () => {
+    //   // debugger;
+    //   set((state) => ({ companies_search_visible: !state.companies_search_visible }));
+    // },
     //currently not used (idea was that we have global indicator of which searchbox is being used kw,or companies)
-    toggleKeywordSearch: () => {
-      // debugger;
-      set((state) => ({ keyword_search_visible: !state.keyword_search_visible }));
-    },
+    // toggleKeywordSearch: () => {
+    //   // debugger;
+    //   set((state) => ({ keyword_search_visible: !state.keyword_search_visible }));
+    // },
     //#endregion
   }))
 );

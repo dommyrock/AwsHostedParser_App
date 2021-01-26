@@ -22,7 +22,7 @@
          metadata-complete="true"
 >
 <filter>
-  <!-- NOTE: this is how web.xml should look on server, source :http://marianoguerra.org/posts/enable-cors-in-apache-solr.html -->
+  <!-- NOTE: this is how web.xml should look on server, source :https://stackoverflow.com/questions/22579367/post-document-to-solr-4-from-angularjs/22697371#22697371 -->
   <filter-name>cross-origin</filter-name>
     <filter-name>cross-origin</filter-name>
   <filter-class>org.eclipse.jetty.servlets.CrossOriginFilter</filter-class>

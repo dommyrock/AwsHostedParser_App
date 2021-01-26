@@ -8,7 +8,6 @@ export default {
     let keywordQuery;
     if (keywords.length > 0) keywordQuery = keywords.join(",");
     else keywordQuery = "*";
-    debugger;
     let response = await fetch(
       //EXMPLE 1 this example fetches all documents that have "software" in jobDescriiption
       //   `${BASE_URL}/select?fl=DescriptionMarkup,JobType,JobFunction,Source,Industry,score&q=DescriptionMarkup:software`,
@@ -20,7 +19,6 @@ export default {
       }
     );
     const data = await response.json();
-    debugger;
 
     return data.response.docs;
   },

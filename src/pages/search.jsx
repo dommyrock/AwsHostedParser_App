@@ -6,13 +6,13 @@ import { useStore } from "../store";
 import solrAPI from "./api/rest/solr";
 
 const SearchComponent = () => {
-  const { keywords, companies } = useStore();
+  const { keywords, roles, companies } = useStore();
 
   useEffect(async () => {
-    const keywords = ["denmark", "testing", "test"];
-    const testDAta = await solrAPI.querySearchData(keywords);
+    const testInput = ["denmark", "testing", "test"];
+    const testDAta = await solrAPI.querySearchData(testInput);
     debugger;
-  });
+  }, []);
 
   return (
     <div className={main_container}>
@@ -23,10 +23,10 @@ const SearchComponent = () => {
         <MoreChips id="more-companies" />
       </div>
       <div className={chip_container}>
-        {keywords.map((x) => (
+        {roles.map((x) => (
           <RoundFilterButton key={x.id} id={x.id} label={x.label} src={x.src} type={x.type} />
         ))}
-        <MoreChips id="more-keywords" />
+        <MoreChips id="more-roles" />
       </div>
     </div>
   );

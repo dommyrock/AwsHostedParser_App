@@ -14,16 +14,16 @@ import { useState } from "react";
 
 export default function RoundFilterButton({ id, src, label, type }) {
   const [bg_color, setBg_color] = useState("");
-  const { removeKeyword, removeCompany, addDropdownKeyword, addDropdownCompany } = useStore();
+  const { removeRole, removeCompany, addDropdownRole, addDropdownCompany } = useStore();
 
   const handleChipColor = () => {
     if (!bg_color) setBg_color("#77747459");
     else setBg_color("");
   };
-  const handleKewords = () => {
-    if (type === "keyword") {
-      addDropdownKeyword(label);
-      removeKeyword(label);
+  const handleRoles = () => {
+    if (type === "role") {
+      addDropdownRole(label);
+      removeRole(label);
     } else if (type === "company") {
       addDropdownCompany(label);
       removeCompany(label);
@@ -37,7 +37,7 @@ export default function RoundFilterButton({ id, src, label, type }) {
         className={inline_flex}
         onClick={() => {
           handleChipColor();
-          handleKewords(label);
+          handleRoles(label);
         }}
         style={{ backgroundColor: bg_color }}
       >
