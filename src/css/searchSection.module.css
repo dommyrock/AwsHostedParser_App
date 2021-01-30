@@ -124,6 +124,7 @@
     text-align: center; */
   }
   .mobile_max_width {
+    min-width: 100% !important;
     width: 100%;
   }
 }

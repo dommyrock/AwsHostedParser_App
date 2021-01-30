@@ -7,27 +7,51 @@ import {
   img_css_class,
   mobile_max_width,
 } from "../../../css/searchSection.module.css";
+import { useEffect } from "react";
 
 export default function MoreChips({ id }) {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const {
     dropdown_companies,
+    filtered_companies,
     dropdown_roles,
+    filtered_roles,
     removeDropdownCompany,
     removeDropdownRole,
     addRole,
     addCompany,
   } = useStore();
+
+  //Subscription example
+  // const filterSubscription = useStore.subscribe(
+  //   (filtered_companies, previous) => console.log(filtered_companies, previous),
+  //   (state) => state.filtered_companies
+  // );
+
   //   const [bg_color, setBg_color] = useState("");
   //   const handleChipColor = () => {----------> NOTE:This was buggy so i removed it for now
   //     if (!bg_color) setBg_color("#77747459");
   //     else setBg_color("");
   //   };
+
+  //Right now UseEffect runs  2x reason :https://stackoverflow.com/questions/60618844/react-hooks-useeffect-is-called-twice-even-if-an-empty-array-is-used-as-an-ar
+  useEffect(() => {
+    // console.log("Filtered companies state changed", [...filtered_companies]);
+
+    //Exited dropdowns
+    if (!ref.current) {
+      debugger;
+      //Reset data on intial render, and exit
+      useStore.setState({ filtered_companies: dropdown_companies });
+      useStore.setState({ filtered_roles: dropdown_roles });
+    }
+  }, [isComponentVisible]);
+
   const handleClick = (item) => {
-    debugger;
     switch (item.type) {
       case "company":
         addCompany(item);
+        //remove from dopdown and filered list
         removeDropdownCompany(item.label);
         break;
       case "role":
@@ -38,17 +62,17 @@ export default function MoreChips({ id }) {
         break;
     }
   };
-
+  //On search input show filtered lists[filtered_companies,filtered_roles] else show dropdown lists
   return (
     <>
       <div
-        id="more-companies"
+        id="more-button"
         className={inline_flex}
         onClick={() => {
           //   handleChipColor();
           setIsComponentVisible(!isComponentVisible);
         }}
-        style={{ backgroundColor: "#cccc" }}
+        style={{ backgroundColor: "#cccc", maxHeight: "24px" }}
       >
         <span className={p_px}>More</span>
         <svg
@@ -65,9 +89,10 @@ export default function MoreChips({ id }) {
       {isComponentVisible && id === "more-companies" && (
         <div id="companiesDropdown" ref={ref} style={containerStyle} className={mobile_max_width}>
           <Search_Input />
+          {/* Companies and roles are split and displayed in two rows  */}
           <div style={columnStyle}>
             <ul style={ulStyle}>
-              {dropdown_companies.slice(0, dropdown_companies.length / 2).map((company) => (
+              {filtered_companies.slice(0, filtered_companies.length / 2).map((company) => (
                 <li key={company.id}>
                   <div
                     id={company.id}
@@ -86,7 +111,7 @@ export default function MoreChips({ id }) {
           </div>
           <div style={columnStyle}>
             <ul style={ulStyle}>
-              {dropdown_companies.slice(dropdown_companies.length / 2).map((company) => (
+              {filtered_companies.slice(filtered_companies.length / 2).map((company) => (
                 <li key={company.id}>
                   <div
                     id={company.id}
@@ -111,7 +136,7 @@ export default function MoreChips({ id }) {
             <Search_Input />
             <div style={columnStyle}>
               <ul style={ulStyle}>
-                {dropdown_roles.slice(0, dropdown_roles.length / 2).map((kw) => (
+                {filtered_roles.slice(0, filtered_roles.length / 2).map((kw) => (
                   <li key={kw.id}>
                     <div
                       id={kw.id}
@@ -127,7 +152,7 @@ export default function MoreChips({ id }) {
             </div>
             <div style={columnStyle}>
               <ul style={ulStyle}>
-                {dropdown_roles.slice(dropdown_roles.length / 2).map((kw) => (
+                {filtered_roles.slice(filtered_roles.length / 2).map((kw) => (
                   <li key={kw.id}>
                     <div
                       id={kw.id}
@@ -159,7 +184,7 @@ const containerStyle = {
   borderRadius: "10px",
   background: "#fff",
   overflow: "hidden",
-  minWidth: "350px",
+  minWidth: "400px",
   padding: "3px",
   position: "inherit",
 };
