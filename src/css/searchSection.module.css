@@ -59,6 +59,10 @@
   /* This fixed chips resizing on grid resize */
   align-self: flex-start;
 }
+.chip_container ul {
+  border-radius: 10px;
+}
+
 .main_container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -115,5 +119,11 @@
   }
   .main_container {
     display: block;
+    /* justify-items: center;
+    justify-content: center;
+    text-align: center; */
+  }
+  .mobile_max_width {
+    width: 100%;
   }
 }

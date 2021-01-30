@@ -1,7 +1,12 @@
 import { useStore } from "../../../store";
 import useComponentVisible from "../../helpers/hooks/useComponentVisible";
 import Search_Input from "../Search_Input";
-import { p_px, inline_flex, img_css_class } from "../../../css/searchSection.module.css";
+import {
+  p_px,
+  inline_flex,
+  img_css_class,
+  mobile_max_width,
+} from "../../../css/searchSection.module.css";
 
 export default function MoreChips({ id }) {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
@@ -58,7 +63,7 @@ export default function MoreChips({ id }) {
         </svg>
       </div>
       {isComponentVisible && id === "more-companies" && (
-        <div ref={ref} style={containerStyle}>
+        <div id="companiesDropdown" ref={ref} style={containerStyle} className={mobile_max_width}>
           <Search_Input />
           <div style={columnStyle}>
             <ul style={ulStyle}>
@@ -102,7 +107,7 @@ export default function MoreChips({ id }) {
       )}
       {isComponentVisible &&
         id === "more-roles" && ( //NOTE: keywords should have anoter input where user can type "Contains aditional keywords ..... which solar handles"
-          <div ref={ref} style={containerStyle}>
+          <div id="rolesDropdown" ref={ref} style={containerStyle} className={mobile_max_width}>
             <Search_Input />
             <div style={columnStyle}>
               <ul style={ulStyle}>
@@ -156,7 +161,7 @@ const containerStyle = {
   overflow: "hidden",
   minWidth: "350px",
   padding: "3px",
-  transform: "translate(385px, 34px)",
+  position: "inherit",
 };
 
 const columnStyle = {

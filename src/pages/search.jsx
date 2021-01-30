@@ -10,7 +10,8 @@ const SearchComponent = () => {
 
   useEffect(async () => {
     const testInput = ["denmark", "testing", "test"];
-    const testDAta = await solrAPI.querySearchData(testInput);
+    //NOTE:this was only for testing solr queries , and should be debounced with 250,300ms delay when user is kw  querying
+    // const testDAta = await solrAPI.querySearchData(testInput);
     debugger;
   }, []);
 
