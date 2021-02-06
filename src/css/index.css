@@ -27,9 +27,15 @@ body {
   --bgMain: #f3f3f2;
 }
 /* Footer CSS */
+
 footer {
   background: #dadce1b9;
   padding-bottom: 5px;
+  /* Keep bottom of page didnt work*/
+  /* clear: both;
+  position: relative;
+  height: 200px;
+  margin-top: -200px; */
 }
 footer ul {
   display: flex;

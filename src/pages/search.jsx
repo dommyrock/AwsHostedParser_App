@@ -5,6 +5,7 @@ import { main_container, chip_container } from "../css/searchSection.module.css"
 import { useStore } from "../store";
 import solrAPI from "./api/rest/solr";
 import mockApi from "./api/mockApi";
+import JobCardV2 from "../components/card/JobCardV2";
 
 const SearchComponent = () => {
   const { keywords, roles, companies } = useStore();
@@ -53,6 +54,8 @@ const SearchComponent = () => {
         </div>
         {/* Render childeren with ref.current.innerHTML  */}
       </div>
+      <JobCardV2 jobs={mockstate.jobs} />
+      {/* Bellow Example should be inside JobCardV2 component */}
       <div
         id="innerHTML"
         ref={divRef}
