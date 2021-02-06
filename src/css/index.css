@@ -91,23 +91,22 @@ p {
   color: rgba(0, 0, 0, 0.6);
   font-weight: 600;
 }
-/* GRID CSS */
-.container {
-  background: var(--bgMain);
-  min-height: 100vh;
-  display: flex;
-  /* comment for job_box 3 column grid */
-  flex-direction: column;
-  align-items: center;
 
+.main-container {
+  background: var(--bgMain);
   /* Background image css */
   background-image: radial-gradient(#ddd 1.7px, transparent 0),
     radial-gradient(#ddd 1.5px, transparent 0);
   background-position: 0 0, 25px, 25px;
   background-attachment: fixed;
   background-size: 50px 50px;
-  /* Hide y axis scrol bar that appears on last cards row */
-  overflow: hidden;
+}
+/* GRID CSS */
+.container {
+  display: flex;
+  /* comment for job_box 3 column grid */
+  flex-direction: column;
+  align-items: center;
 }
 
 .container-items {

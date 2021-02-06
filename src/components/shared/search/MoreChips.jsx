@@ -35,12 +35,10 @@ export default function MoreChips({ id }) {
   //   };
 
   //Right now UseEffect runs  2x reason :https://stackoverflow.com/questions/60618844/react-hooks-useeffect-is-called-twice-even-if-an-empty-array-is-used-as-an-ar
+  //This effect is called 2x (once for every componeent we have in search.jsx )
   useEffect(() => {
-    // console.log("Filtered companies state changed", [...filtered_companies]);
-
     //Exited dropdowns
     if (!ref.current) {
-      debugger;
       //Reset data on intial render, and exit
       useStore.setState({ filtered_companies: dropdown_companies });
       useStore.setState({ filtered_roles: dropdown_roles });

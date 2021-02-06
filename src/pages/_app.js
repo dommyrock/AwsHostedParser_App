@@ -27,7 +27,7 @@ function App({ Component, pageProps }) {
           rel="stylesheet"
         ></link>
       </Head>
-      <main>
+      <main className="main-container" style={{ height: "100vh" }}>
         <SWRConfig value={{ fetcher: gqlFetcher, revalidateOnFocus: false }}>
           <NavMain />
           <div className="container">

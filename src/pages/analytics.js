@@ -96,7 +96,7 @@ export default function analytics({ salariesData }) {
     debugger;
   }, []);
   return (
-    <div className="container">
+    <>
       <div className={styles.inner_container}>
         {state && <Chart options={barChartOptions} key="test" />}
         <StackshareContainer />
@@ -110,7 +110,7 @@ export default function analytics({ salariesData }) {
       <Chart options={threeDPieChartOptions} key="3d" />
       {/* <Chart options={groupedChartOptions} key="grouped" /> */}
       {/* <Chart options={bubbleChartOptions} /> Tmporary disabled to test performance*/}
-    </div>
+    </>
   );
 }
 
