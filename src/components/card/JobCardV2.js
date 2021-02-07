@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import {
   job_div_main,
+  job_a_class,
   job_card_header,
   job_card_title,
   job_card_button,
@@ -16,7 +17,7 @@ const JobCardV2 = ({ jobs }) => {
   const divRef = useRef(); //should be used in component where i will render detailed job description
   //TODO : For mobile view remove short description and just show titele and locations
   //Bugs:
-  //1 Footer is broken atm it naps to initial 100vh and stays there
+  //1 Footer is broken atm it snaps to initial (i added min-height to main-container class)
   debugger;
   return (
     <div className={job_div_main}>
@@ -24,15 +25,7 @@ const JobCardV2 = ({ jobs }) => {
         {
           <li>
             <Link href="https://careers.google.com/jobs/results/">
-              <a
-                style={{
-                  display: "block",
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  maxWidth: "980px",
-                  background: "#fff",
-                }}
-              >
+              <a className={job_a_class}>
                 <div itemscope="itemscope" itemtype="http://schema.org/JobPosting">
                   <div className={job_card_header}>
                     <ul

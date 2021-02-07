@@ -27,7 +27,7 @@ function App({ Component, pageProps }) {
           rel="stylesheet"
         ></link>
       </Head>
-      <main className="main-container" style={{ height: "100vh" }}>
+      <main className="main-container">
         <SWRConfig value={{ fetcher: gqlFetcher, revalidateOnFocus: false }}>
           <NavMain />
           <div className="container">
@@ -35,9 +35,9 @@ function App({ Component, pageProps }) {
           </div>
         </SWRConfig>
       </main>
-      <footer>
-        <SocialsContainer />
-      </footer>
+      {/* <footer>
+        <SocialsContainer />//fix the csss first 
+      </footer> */}
     </>
   );
 }
