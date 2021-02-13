@@ -49,11 +49,7 @@ const SearchComponent = () => {
           ))}
           <MoreChips id="more-roles" />
         </div>
-        {/* Render childeren with ref.current.innerHTML  */}
       </div>
-      {/* CURRENTLY I RE-RENDER THIS ON EVERY KEY STORKE IN SEARCH , ADD USECALLBACK /USEMEMO TO HANDLE
-      THIS */}
-      {/* {mockstate.jobs?.length > 0 && <JobCardV2 job={mockstate.jobs[0]} />} V1 */}
       {mockstate.jobs?.length > 0 && (
         <div className={job_div_main}>
           <ol>
@@ -63,12 +59,6 @@ const SearchComponent = () => {
           </ol>
         </div>
       )}
-      {/* Bellow Example should be inside JobCardV2 component */}
-      {/* <div
-        id="innerHTML"
-        ref={divRef}
-        style={{ display: "flex", flexDirection: "column", maxWidth: "80%" }}
-      ></div> */}
     </>
   );
 };

@@ -2,13 +2,14 @@ import { GraphQLClient } from "graphql-request";
 //NOTE: Prisma is minimal api, has no default caching like apollo, relay
 //DOCS :https://github.com/prisma-labs/graphql-request
 
-//TODO: find out how can i cache my site for weeek on vercel's CDN's and after time period "revalidate" data
-
 const gqlClient = new GraphQLClient(
   process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_API_URL : process.env.API_URL,
   {
     headers: {
-      "x-api-key": process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_API_KEY : process.env.API_KEY,
+      "x-api-key":
+        process.env.NODE_ENV === "development"
+          ? process.env.NEXT_PUBLIC_API_KEY
+          : process.env.API_KEY,
     },
   }
 );

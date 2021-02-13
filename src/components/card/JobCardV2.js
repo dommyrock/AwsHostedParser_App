@@ -14,11 +14,12 @@ import {
 
 const JobCardV2 = memo(({ job }) => {
   const divRef = useRef(null);
-  //TODO : For mobile view remove short description and just show titele and locations
-  debugger;
+  //TODO : For mobile view remove short description and just show title and locations
+
   useEffect(() => {
     divRef.current.innerHTML = job.summary;
   }, []);
+
   return (
     <li>
       <Link href="https://careers.google.com/jobs/results/">
@@ -119,6 +120,7 @@ const JobCardV2 = memo(({ job }) => {
               <h3 class="gc-job-qualifications-header gc-heading gc-heading--delta">
                 Qualifications:
               </h3>
+              {/* PASS REF HERE SO I CAN INSERT CARD DESCRIPTION INTO DOM FOR EACH CARD  */}
               <div
                 itemProp="qualifications"
                 class="gc-card__preview gc-job-qualifications gc-job-qualifications--preview gc-user-generated-content"

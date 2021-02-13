@@ -1,5 +1,5 @@
 if (process.env.NODE_ENV === "development") {
-  console.log({
+  console.log("Started server in development mode\n", {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     NEXT_PUBLIC_API_KEY: process.env.NEXT_PUBLIC_API_KEY,
   });
