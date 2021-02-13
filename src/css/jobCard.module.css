@@ -147,9 +147,12 @@ https://www.youtube.com/watch?v=qm0IfG1GyZU
 .job_card_button:hover {
   color: #1967d2;
 }
+/* Remove default outline  */
+.job_card_button:focus {
+  outline: none;
+}
 .job_card_button svg {
   display: inline-block;
-  fill: currentColor;
 }
 
 .job_div_flex_row {
@@ -197,4 +200,11 @@ https://www.youtube.com/watch?v=qm0IfG1GyZU
 }
 .pre_card_content h3 {
   margin: 0;
+}
+.pre_card_content ul {
+  padding-left: 22px;
+  list-style-type: disc;
+}
+.pre_card_content ul li {
+  color: var(--bg2);
 }

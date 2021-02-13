@@ -73,7 +73,7 @@ export default function MoreChips({ id }) {
         style={{ backgroundColor: "#cccc", maxHeight: "24px" }}
       >
         <span className={p_px}>More</span>
-        <svg
+        {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -82,6 +82,19 @@ export default function MoreChips({ id }) {
           height={16}
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+        </svg> */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          width={20}
+          height={20}
+        >
+          <path
+            fillRule="evenodd"
+            d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+            clipRule="evenodd"
+          />
         </svg>
       </div>
       {isComponentVisible && id === "more-companies" && (

@@ -1,0 +1,48 @@
+.container {
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.container h3 {
+  padding: 0;
+  padding-left: 4px;
+  margin: 0;
+  font-size: 16px;
+  line-height: 18px;
+  color: var(--ltblue);
+}
+.container p {
+  padding-left: 4px;
+}
+.container p a {
+  color: #8c8e94;
+}
+.container input {
+  border: none;
+  border-bottom: 1px solid #dadce0;
+  font-family: Google Sans, Roboto, Arial, Helvetica, sans-serif;
+  color: #8c8e94;
+}
+.container input:focus {
+  outline: none;
+}
+.container button {
+  border: none;
+  padding: 4px;
+  background: none;
+  color: var(--ltblue);
+}
+.container button:focus {
+  outline: none;
+}
+.container button svg {
+  fill: #2994eda1;
+}
+.inner {
+  padding: 4px;
+}
+.inner:hover {
+  background: #cccccc26;
+  border-radius: inherit;
+}

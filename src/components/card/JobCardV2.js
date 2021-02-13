@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
-import { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import {
   job_a_class,
   job_card_header,
@@ -14,40 +14,118 @@ import {
 
 const JobCardV2 = memo(({ job }) => {
   const divRef = useRef(null);
+  const [buttons, setButtons] = useState("initial"); //,"duoButtons"
   //TODO : For mobile view remove short description and just show title and locations
-
+  //   TODO : also copy Apply button = link inside this div if it exists for current job
+  const handleClick = (event) => {
+    //disable parent link being followed
+    event.preventDefault();
+    setButtons("duoButtons");
+  };
   useEffect(() => {
     divRef.current.innerHTML = job.summary;
   }, []);
 
+  /* TODO implement this in 2 buttons section
+    const inputRef = useRef(null);
+
+  return (
+    <div className={container}>
+      <h3 id="link-share-heading--92583004368446150">Share</h3>
+      <p>
+        <a
+          href="mailto:?subject=Infrastructure%20Architect%2C%20Google%20Cloud%20Professional%20Services&amp;body=Check%20out%20this%20job%3A%20https%3A%2F%2Fcareers.google.com%2Fjobs%2Fresults%2F92583004368446150%2F."
+          data-gtm-ref="job-actions-email-to-a-friend"
+        >
+          Email job link
+        </a>
+      </p>
+      <div
+        className={inner}
+        onClick={() => {
+          navigator.clipboard.writeText(inputRef.current.value);
+        }}*/
+
   return (
     <li>
-      <Link href="https://careers.google.com/jobs/results/">
+      <Link href="/job/[id]" as={`/job/${2222222222222222}`}>
         <a className={job_a_class}>
           <div itemScope="itemscope" itemType="http://schema.org/JobPosting">
             <div className={job_card_header}>
               <ul style={{ float: "right" }}>
                 <li>
                   <div>
-                    <button
-                      aria-label="Share Director, Cloud Business &amp; Systems Resilience Programs"
-                      className={job_card_button}
-                    >
-                      <svg
-                        width="28"
-                        height="28"
-                        viewBox="0 0 24 24"
-                        role="presentation"
-                        xmlns="http://www.w3.org/2000/svg"
-                        style={{ marginRight: "8px" }}
+                    {buttons === "initial" ? (
+                      <button
+                        aria-label="Share Director, Cloud Business &amp; Systems Resilience Programs"
+                        className={job_card_button}
+                        onClick={(e) => handleClick(e)}
                       >
-                        <g>
-                          <path d="M0 0h24v24H0z" fill="none"></path>
-                          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path>
-                        </g>
-                      </svg>
-                      Share
-                    </button>
+                        <svg
+                          width="28"
+                          height="28"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                          role="presentation"
+                          xmlns="http://www.w3.org/2000/svg"
+                          style={{ marginRight: "8px" }}
+                        >
+                          <g>
+                            <path d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path>
+                          </g>
+                        </svg>
+                        Share
+                      </button>
+                    ) : (
+                      <>
+                        {/* RENDER SHARE AND EMAIL BUTTONS */}
+                        <button
+                          aria-label="Share Director, Cloud Business &amp; Systems Resilience Programs"
+                          className={job_card_button}
+                          onClick={(e) => handleClick(e)}
+                          style={buttonInline_style}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="#fff"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            width="25"
+                            height="25"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            />
+                          </svg>
+                        </button>
+                        <button
+                          aria-label="Share Director, Cloud Business &amp; Systems Resilience Programs"
+                          className={job_card_button}
+                          onClick={(e) => handleClick(e)}
+                          style={buttonInline_style}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            width="25"
+                            height="25"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+                            />
+                          </svg>
+                        </button>
+                      </>
+                    )}
                   </div>
                 </li>
                 {/* TODO : ADD Company icon here if it exists in cdn else show default svg */}
@@ -137,3 +215,10 @@ JobCardV2.propTypes = {
   job: PropTypes.object.isRequired,
 };
 export default JobCardV2;
+
+const buttonInline_style = {
+  padding: "3px",
+  background: "#ccc3",
+  borderRadius: "5px",
+  marginLeft: "4px",
+};
