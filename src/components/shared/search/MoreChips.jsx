@@ -9,6 +9,33 @@ import {
 } from "../../../css/searchSection.module.css";
 import { useEffect } from "react";
 
+//#region inner style
+let containerStyle = {
+  display: "flex",
+  flexDirrection: "row",
+  justifyContent: "space-evenly",
+  textAlign: "left",
+  position: "absolute",
+  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+  borderRadius: "10px",
+  background: "#fff",
+  overflow: "hidden",
+  minWidth: "400px",
+  padding: "3px",
+  top: "3px",
+};
+const ulStyle = {
+  backgroundColor: "rgba(210, 211, 215,0.1)",
+};
+
+const columnStyle = {
+  marginTop: "55px",
+  display: "flex",
+  flexDirection: "columns",
+  justifyItems: "center",
+  padding: "0.5rem",
+};
+//#endregion
 export default function MoreChips({ id }) {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const {
@@ -22,26 +49,28 @@ export default function MoreChips({ id }) {
     addCompany,
   } = useStore();
 
-  //Subscription example
+  //Zustad SBSCRIPTION example
   // const filterSubscription = useStore.subscribe(
   //   (filtered_companies, previous) => console.log(filtered_companies, previous),
   //   (state) => state.filtered_companies
   // );
 
-  //   const [bg_color, setBg_color] = useState("");
-  //   const handleChipColor = () => {----------> NOTE:This was buggy so i removed it for now
-  //     if (!bg_color) setBg_color("#77747459");
-  //     else setBg_color("");
-  //   };
-
-  //Right now UseEffect runs  2x reason :https://stackoverflow.com/questions/60618844/react-hooks-useeffect-is-called-twice-even-if-an-empty-array-is-used-as-an-ar
-  //This effect is called 2x (once for every componeent we have in search.jsx )
+  //NOTE :This effect is called 2x (once for every component we have in search.jsx )
   useEffect(() => {
     //Exited dropdowns
     if (!ref.current) {
       //Reset data on intial render, and exit
       useStore.setState({ filtered_companies: dropdown_companies });
       useStore.setState({ filtered_roles: dropdown_roles });
+
+      //Calculate container top position
+      containerStyle = {
+        ...containerStyle,
+        top: `${
+          document.getElementById("navbar").clientHeight +
+          document.getElementById("main_container").clientHeight
+        }px`,
+      };
     }
   }, [isComponentVisible]);
 
@@ -60,16 +89,17 @@ export default function MoreChips({ id }) {
         break;
     }
   };
+  function detectMob() {
+    return window.innerWidth <= 800 && window.innerHeight <= 600;
+  }
+
   //On search input show filtered lists[filtered_companies,filtered_roles] else show dropdown lists
   return (
     <>
       <div
         id="more-button"
         className={inline_flex}
-        onClick={() => {
-          //   handleChipColor();
-          setIsComponentVisible(!isComponentVisible);
-        }}
+        onClick={() => setIsComponentVisible(!isComponentVisible)}
         style={{ backgroundColor: "#cccc", maxHeight: "24px" }}
       >
         <span className={p_px}>More</span>
@@ -182,28 +212,3 @@ export default function MoreChips({ id }) {
     </>
   );
 }
-const ulStyle = {
-  backgroundColor: "rgba(210, 211, 215,0.1)",
-};
-const containerStyle = {
-  display: "flex",
-  flexDirrection: "row",
-  justifyContent: "space-evenly",
-  textAlign: "left",
-  position: "absolute",
-  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-  borderRadius: "10px",
-  background: "#fff",
-  overflow: "hidden",
-  minWidth: "400px",
-  padding: "3px",
-  position: "inherit",
-};
-
-const columnStyle = {
-  marginTop: "55px",
-  display: "flex",
-  flexDirection: "columns",
-  justifyItems: "center",
-  padding: "0.5rem",
-};

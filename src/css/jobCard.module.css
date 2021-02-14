@@ -97,6 +97,7 @@ https://www.youtube.com/watch?v=qm0IfG1GyZU
 .job_div_main ol {
   list-style-type: none;
   margin: 0;
+  margin-top: 80px;
   padding-left: 0;
 }
 .job_card_header {

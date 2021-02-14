@@ -20,9 +20,6 @@ const SearchComponent = () => {
     setMockState(testResponse.data);
     debugger;
 
-    // This is example of how we can inject hml inside HTML node in react
-    // divRef.current.innerHTML = testResponse.data.jobs[0].description;
-
     /*NEXT 
         1.1 Add company logo to job div so its imediately parsable by humans
         1.2 implement jobs divs, implement job post sharing links (to my site)
@@ -37,26 +34,29 @@ const SearchComponent = () => {
 
   return (
     <>
-      <div className={main_container}>
-        <div className={chip_container}>
+      <div id="main_container" className={main_container}>
+        <div id="companies_chipContainer" className={chip_container}>
           {companies.map((x) => (
             <RoundFilterButton key={x.id} id={x.id} label={x.label} src={x.src} type={x.type} />
           ))}
           <MoreChips id="more-companies" />
         </div>
-        <div className={chip_container}>
+        <div id="roles_chipContainer" className={chip_container}>
           {roles.map((x) => (
             <RoundFilterButton key={x.id} id={x.id} label={x.label} src={x.src} type={x.type} />
           ))}
           <MoreChips id="more-roles" />
+        </div>
+        <div id="kewords_chipContainer">
+          <h3>keywords go here:</h3>
         </div>
       </div>
       {/* Render Cards */}
       {mockstate.jobs?.length > 0 && (
         <div className={job_div_main}>
           <ol>
-            {mockstate.jobs.map((job) => (
-              <JobCardV2 job={job} />
+            {mockstate.jobs.map((job, index) => (
+              <JobCardV2 key={index} job={job} />
             ))}
           </ol>
         </div>

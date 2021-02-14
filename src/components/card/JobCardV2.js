@@ -144,18 +144,21 @@ const JobCardV2 = memo(({ job }) => {
                     itemProp="hiringOrganization"
                   >
                     <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      role="presentation"
                       xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      width="16"
+                      height="16"
                     >
-                      <g>
-                        <path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"></path>
-                        <path d="M0 0h24v24H0z" fill="none"></path>
-                      </g>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                      />
                     </svg>
-                    <span itemProp="name">Google</span>
+                    <span itemProp="name">{job.company_name}</span>
                     <meta
                       content="/jobs/dist/img/assets/g-logo.5fe50104e092c1d56f8cb7575e9a1766.png"
                       itemProp="logo"
