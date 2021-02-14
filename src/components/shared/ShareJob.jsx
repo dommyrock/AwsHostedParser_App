@@ -22,10 +22,10 @@ export default function ShareJob({ mailto, clipboardText }) {
           navigator.clipboard.writeText(inputRef.current.value);
         }}
       >
-        <h3 for="copy-job-url-field--92583004368446150">Job link:</h3>
+        <h3>Job link:</h3>
         <div>
           <input
-            id="copy-job-url-field--92583004368446150"
+            id="clipboardInput"
             data-gtm-ref="job-actions-copy-input"
             type="text"
             value={clipboardText}

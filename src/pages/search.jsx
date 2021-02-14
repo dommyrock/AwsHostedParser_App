@@ -19,6 +19,7 @@ const SearchComponent = () => {
     const testResponse = await mockApi.googleMockQuery();
     setMockState(testResponse.data);
     debugger;
+
     // This is example of how we can inject hml inside HTML node in react
     // divRef.current.innerHTML = testResponse.data.jobs[0].description;
 
@@ -50,6 +51,7 @@ const SearchComponent = () => {
           <MoreChips id="more-roles" />
         </div>
       </div>
+      {/* Render Cards */}
       {mockstate.jobs?.length > 0 && (
         <div className={job_div_main}>
           <ol>

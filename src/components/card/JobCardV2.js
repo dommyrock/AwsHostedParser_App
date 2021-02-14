@@ -16,35 +16,32 @@ const JobCardV2 = memo(({ job }) => {
   const divRef = useRef(null);
   const [buttons, setButtons] = useState("initial"); //,"duoButtons"
   //TODO : For mobile view remove short description and just show title and locations
-  //   TODO : also copy Apply button = link inside this div if it exists for current job
+  //also copy Apply button = link inside this div if it exists for current job
+
   const handleClick = (event) => {
     //disable parent link being followed
     event.preventDefault();
     setButtons("duoButtons");
   };
+  const handleCopyToClipboard = (e) => {
+    e.preventDefault();
+    e.target.style.background = "#84d8843d";
+    navigator.clipboard.writeText(job.company_id); //replace this with prop.jobLink in prod
+  };
+  const handleMailBtnClick = (e) => {
+    e.preventDefault();
+    e.target.style.background = "#84d8843d";
+    //TODO :replace this with real link when api is done, also replace <a> href mailto bellow
+    window.open(
+      "mailto:?subject=Infrastructure Architect, Google Cloud Professional Services&body=Check out this job: https://careers.google.com/jobs/results/92583004368446150",
+      "_blank"
+    );
+  };
+
   useEffect(() => {
+    //inject description into DOM(to be rendered as html, not string)
     divRef.current.innerHTML = job.summary;
   }, []);
-
-  /* TODO implement this in 2 buttons section
-    const inputRef = useRef(null);
-
-  return (
-    <div className={container}>
-      <h3 id="link-share-heading--92583004368446150">Share</h3>
-      <p>
-        <a
-          href="mailto:?subject=Infrastructure%20Architect%2C%20Google%20Cloud%20Professional%20Services&amp;body=Check%20out%20this%20job%3A%20https%3A%2F%2Fcareers.google.com%2Fjobs%2Fresults%2F92583004368446150%2F."
-          data-gtm-ref="job-actions-email-to-a-friend"
-        >
-          Email job link
-        </a>
-      </p>
-      <div
-        className={inner}
-        onClick={() => {
-          navigator.clipboard.writeText(inputRef.current.value);
-        }}*/
 
   return (
     <li>
@@ -80,32 +77,38 @@ const JobCardV2 = memo(({ job }) => {
                     ) : (
                       <>
                         {/* RENDER SHARE AND EMAIL BUTTONS */}
-                        <button
-                          aria-label="Share Director, Cloud Business &amp; Systems Resilience Programs"
-                          className={job_card_button}
-                          onClick={(e) => handleClick(e)}
-                          style={buttonInline_style}
+                        <a
+                          href="mailto:?subject=Infrastructure%20Architect%2C%20Google%20Cloud%20Professional%20Services&amp;body=Check%20out%20this%20job%3A%20https%3A%2F%2Fcareers.google.com%2Fjobs%2Fresults%2F92583004368446150%2F."
+                          target="_blank"
+                          data-gtm-ref="job-actions-email-to-a-friend"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="#fff"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            width="25"
-                            height="25"
+                          <button
+                            aria-label="Share Director, Cloud Business &amp; Systems Resilience Programs"
+                            className={job_card_button}
+                            style={buttonInline_style}
+                            onClick={(e) => handleMailBtnClick(e)}
                           >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                            />
-                          </svg>
-                        </button>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="#fff"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              width="25"
+                              height="25"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                              />
+                            </svg>
+                          </button>
+                        </a>
                         <button
                           aria-label="Share Director, Cloud Business &amp; Systems Resilience Programs"
                           className={job_card_button}
-                          onClick={(e) => handleClick(e)}
+                          onClick={(e) => handleCopyToClipboard(e)}
                           style={buttonInline_style}
                         >
                           <svg
@@ -195,15 +198,9 @@ const JobCardV2 = memo(({ job }) => {
               <meta content="2021-02-05T23:30:43.614Z" itemProp="datePosted" />
             </div>
             <div className={pre_card_content}>
-              <h3 class="gc-job-qualifications-header gc-heading gc-heading--delta">
-                Qualifications:
-              </h3>
+              <h3>Qualifications:</h3>
               {/* PASS REF HERE SO I CAN INSERT CARD DESCRIPTION INTO DOM FOR EACH CARD  */}
-              <div
-                itemProp="qualifications"
-                class="gc-card__preview gc-job-qualifications gc-job-qualifications--preview gc-user-generated-content"
-                ref={divRef}
-              ></div>
+              <div itemProp="qualifications" ref={divRef}></div>
             </div>
           </div>
         </a>

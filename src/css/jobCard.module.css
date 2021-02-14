@@ -153,6 +153,8 @@ https://www.youtube.com/watch?v=qm0IfG1GyZU
 }
 .job_card_button svg {
   display: inline-block;
+  /* register svg click as whole btn click */
+  pointer-events: none;
 }
 
 .job_div_flex_row {
