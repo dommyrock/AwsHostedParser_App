@@ -7,6 +7,7 @@ import solrAPI from "./api/rest/solr";
 import mockApi from "./api/mockApi";
 import JobCardV2 from "../components/card/JobCardV2";
 import { job_div_main } from "../css/jobCard.module.css";
+import HomeSearchInput from "../components/shared/search/HomeSearchInput";
 
 const SearchComponent = () => {
   const { keywords, roles, companies } = useStore();
@@ -48,7 +49,7 @@ const SearchComponent = () => {
           <MoreChips id="more-roles" />
         </div>
         <div id="kewords_chipContainer">
-          <h3>keywords go here:</h3>
+          <HomeSearchInput />
         </div>
       </div>
       {/* Render Cards */}

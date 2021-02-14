@@ -112,7 +112,7 @@
 /* CHIP CSS Ends*/
 
 /* MOBILE VIEW */
-@media screen and (max-width: 620px) {
+@media screen and (max-width: 750px) {
   .searchBox:hover > .searchInput {
     width: 150px;
     padding: 0 6px;
@@ -123,6 +123,8 @@
     justify-content: center;
     text-align: center; */
   }
+}
+@media screen and (max-width: 650px) {
   .mobile_max_width {
     min-width: 100% !important;
     width: 100%;

@@ -24,20 +24,21 @@ export default function Search_Input() {
         break;
     }
   };
-  const handleRef = () => {
+  const handleFocus = () => {
     ref.current.focus();
   };
 
   return (
     <div className={searchBox}>
       <input
+        id="searchContainerInput"
         className={searchInput}
         ref={ref}
         type="text"
         name=""
         placeholder="Search"
         onChange={(e) => handleFiltering(e.target.value)}
-        onMouseOver={() => handleRef()}
+        onMouseOver={() => handleFocus()}
       />
       <button className={searchButton} style={removeBtnSelection} href="#">
         <svg

@@ -22,6 +22,7 @@ let containerStyle = {
   overflow: "hidden",
   minWidth: "400px",
   padding: "3px",
+  zIndex: 10,
   top: "3px",
 };
 const ulStyle = {
