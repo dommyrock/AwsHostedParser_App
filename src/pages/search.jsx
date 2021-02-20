@@ -31,6 +31,8 @@ const SearchComponent = () => {
     //2 NOTE:this was only for testing solr queries , and should be debounced with 250,300ms delay when user is kw  querying
     //const testInput = ["denmark", "testing", "test"];
     // const testDAta = await solrAPI.querySearchData(testInput);
+    //3 abstract Bussiness logic in custom hooks where possible , add suspense , loading ,error states (return those from custom hook , so i can just use it here )
+    //ref => https://www.youtube.com/watch?v=J-g9ZJha8FE&feature=youtu.be&t=481
   }, []);
 
   return (

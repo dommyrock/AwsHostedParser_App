@@ -10,6 +10,14 @@ export default function HomeSearchInput() {
       //TODO
       //apppend keword too tag ui, clear current input and combine solr query from all 3x inputs *company*role*keyword
       //UI make simpler static version of search from existing one
+
+      //https://swr.vercel.app/docs/pagination#useswrinfinite ,
+      //https://www.ibrahima-ndaw.com/blog/data-fetching-in-nextjs-using-useswr/#paginating-the-data-with-useswrinfinite:~:text=Paginating%20the%20data%20with%20useSWRInfinite,-It's
+      //NOTE COULD TRIGGER LOAD NEXT PAGE ON 50% OF LIST REACHED OR SOMETHING LIKE THAT
+      //INTERDECTION OBSERVER EXAMPLE FROM OLDER SWR PAGES API
+      //https://sergiodxa.com/articles/swr/pagination
+      //UI SKELETON
+      //skeleton loader https://www.youtube.com/watch?v=_OZYvKsn60g
       console.log(`${e.key} was pressed`);
     }
   };
