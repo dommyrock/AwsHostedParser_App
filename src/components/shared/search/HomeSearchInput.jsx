@@ -3,8 +3,6 @@ import { useStore } from "../../../store";
 import PropTypes from "prop-types";
 
 export default function HomeSearchInput({ placeholder }) {
-  //   const { filterCompanies, filterRoles } = useStore();
-
   //handle space ,enter key press
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {

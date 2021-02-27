@@ -9,34 +9,6 @@ import {
 } from "../../../css/searchSection.module.css";
 import { useEffect } from "react";
 
-//#region inner style
-let containerStyle = {
-  display: "flex",
-  flexDirrection: "row",
-  justifyContent: "space-evenly",
-  textAlign: "left",
-  position: "absolute",
-  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-  borderRadius: "10px",
-  background: "#fff",
-  overflow: "hidden",
-  minWidth: "400px",
-  padding: "3px",
-  zIndex: 10,
-  top: "3px",
-};
-const ulStyle = {
-  backgroundColor: "rgba(210, 211, 215,0.1)",
-};
-
-const columnStyle = {
-  marginTop: "55px",
-  display: "flex",
-  flexDirection: "columns",
-  justifyItems: "center",
-  padding: "0.5rem",
-};
-//#endregion
 export default function MoreChips({ id }) {
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const {
@@ -90,9 +62,6 @@ export default function MoreChips({ id }) {
         break;
     }
   };
-  function detectMob() {
-    return window.innerWidth <= 800 && window.innerHeight <= 600;
-  }
 
   //On search input show filtered lists[filtered_companies,filtered_roles] else show dropdown lists
   return (
@@ -213,3 +182,31 @@ export default function MoreChips({ id }) {
     </>
   );
 }
+//#region inner style
+let containerStyle = {
+  display: "flex",
+  flexDirrection: "row",
+  justifyContent: "space-evenly",
+  textAlign: "left",
+  position: "absolute",
+  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+  borderRadius: "10px",
+  background: "#fff",
+  overflow: "hidden",
+  minWidth: "400px",
+  padding: "3px",
+  zIndex: 10,
+  top: "3px",
+};
+const ulStyle = {
+  backgroundColor: "rgba(210, 211, 215,0.1)",
+};
+
+const columnStyle = {
+  marginTop: "55px",
+  display: "flex",
+  flexDirection: "columns",
+  justifyItems: "center",
+  padding: "0.5rem",
+};
+//#endregion
