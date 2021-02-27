@@ -21,11 +21,7 @@ const SearchComponent = () => {
     setMockState(testResponse.data);
     debugger;
 
-    /*NEXT 
-        1.1 Add company logo to job div so its imediately parsable by humans
-        1.2 implement jobs divs, implement job post sharing links (to my site)
-    */
-
+    //docs:https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
     //TODO
     //1 Also have separate query on app mount tht fetches Company logos(urls from cdn) w only 3props, id,company,logoUrl
     //2 NOTE:this was only for testing solr queries , and should be debounced with 250,300ms delay when user is kw  querying
@@ -50,8 +46,13 @@ const SearchComponent = () => {
           ))}
           <MoreChips id="more-roles" />
         </div>
-        <div id="kewords_chipContainer">
-          <HomeSearchInput />
+        <div
+          id="kewords_chipContainer"
+          className={chip_container}
+          style={{ display: "block", borderRight: "none" }}
+        >
+          <h4>Job description keywords:</h4>
+          <HomeSearchInput placeholder="Testing,api design..." />
         </div>
       </div>
       {/* Render Cards */}

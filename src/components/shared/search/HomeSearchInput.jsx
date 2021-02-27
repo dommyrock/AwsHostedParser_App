@@ -1,7 +1,8 @@
 import { searchBox, searchInput, searchButton } from "../../../css/searchSection.module.css";
 import { useStore } from "../../../store";
+import PropTypes from "prop-types";
 
-export default function HomeSearchInput() {
+export default function HomeSearchInput({ placeholder }) {
   //   const { filterCompanies, filterRoles } = useStore();
 
   //handle space ,enter key press
@@ -23,13 +24,14 @@ export default function HomeSearchInput() {
   };
 
   return (
-    <div className={searchBox}>
+    <div className={searchBox} style={{ borderRadius: "5px" }}>
       <input
+        style={{ width: "initial", color: "rgb(130 128 128)" }}
         id="homeSearchInput"
         className={searchInput}
         type="text"
         name=""
-        placeholder="Search"
+        placeholder={placeholder}
         onKeyPress={(e) => handleKeyPress(e)}
       />
       <button className={searchButton} style={{ outline: "none", border: 0 }} href="#">
@@ -54,3 +56,6 @@ export default function HomeSearchInput() {
     </div>
   );
 }
+HomeSearchInput.propTypes = {
+  placeholder: PropTypes.string.isRequired,
+};
