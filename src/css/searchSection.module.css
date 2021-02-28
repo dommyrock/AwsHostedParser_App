@@ -56,12 +56,19 @@
   flex-wrap: wrap;
   max-width: 428px;
   padding: 10px;
+  padding-top: 30px;
   /* This fixed chips resizing on grid resize */
   align-self: flex-start;
-  border-right: 3px solid #1c79b340;
+  border-right: 2px solid #3333330a;
 }
 .chip_container ul {
   border-radius: 10px;
+}
+.chip_container h4 {
+  padding-top: 0;
+  margin-top: 0px;
+  margin-bottom: 14px;
+  color: rgb(101 101 101);
 }
 
 .main_container {
